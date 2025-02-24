@@ -1,0 +1,34 @@
+<title>Devoxx 2025</title>
+<html>
+<head>
+    <script
+            crossorigin
+            src="https://unpkg.com/tock-react-kit@latest/build/tock-react-kit-standalone.umd.js"
+    ></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("img/background.webp");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            min-width: 100vw;
+            overflow: hidden;
+        }
+        #chat {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="chat"></div>
+
+<script>
+    TockReact.renderChat(document.getElementById('chat'), 'http://localhost:8080/io/app/devoxx2025/web', '', {}, { disableSse: true });
+</script>
+</body>
+</html>
