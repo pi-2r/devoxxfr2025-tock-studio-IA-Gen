@@ -1,0 +1,47 @@
+# Une liste de fichiers de configuration ou temporaires
+# que vous vous voulez éviter de jamais versionner sous git
+# cf. https://git-scm.com/docs/gitignore
+.gradle/
+.m2/repository/
+/build/
+/manifests/
+**/target/*
+
+# IDEs and editors
+/.idea/*
+!/.idea/runConfigurations
+.project
+.classpath
+*.iml
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDE - VSCode Local History extension
+.history/*
+
+#vert.x
+/file-uploads
+*.log
+
+#System Files
+.DS_Store
+Thumbs.db
+settings.xml
+sign
+travis
+
+# Env
+.env
+
+# Horror csv file
+data/documents_csv/*
+!data/documents_csv/filtered_horror_movies.csv
