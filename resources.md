@@ -1,6 +1,6 @@
 # Des ressources pour aller plus loin sur le sujet de l'IA
 
-<img src="img/inaki-del-olmo-NIJuEQw0RKg-unsplash.jpg"  alt="ressources">
+<img src="img/sleep_indiana.png"  alt="resources">
 
 > "La connaissance s'acquiert par l'expérience, tout le reste n'est que de l'information.", Albert Einstein
 
