@@ -1,0 +1,221 @@
+<title>Devfest 2024</title>
+<html data-theme="dark">
+  <head>
+    <script src="https://unpkg.com/vue@3.4/dist/vue.global.prod.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tock-vue-kit@0.3.6/dist/style.css"
+    />
+    <script
+      crossorigin
+      src="https://unpkg.com/tock-vue-kit@0.3.6/dist/tock-vue-kit.iife.js"
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        overflow: hidden;
+      }
+      #matrix-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        display: none;
+      }
+
+      #chat-wrapper {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      #matrix-switch {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+      }
+
+      :root {
+        --tvk_base_radius: 1em;
+        --tvk_base_spacing: 0.6em;
+        --tvk_colors_brand-hue: 120;
+        --tvk_colors_brand-lightness: 40%;
+        --tvk_colors_brand-saturation: 82%;
+        --tvk_colors_dark_background: hsl(
+          var(--tvk_colors_brand-hue) 5% 20% / 50%
+        );
+        --tvk_colors_dark_brand: hsl(
+          var(--tvk_colors_brand-hue) var(--tvk_colors_brand-saturation) 40%
+        );
+        --tvk_colors_light_background: hsl(
+          var(--tvk_colors_brand-hue) 5% 90% / 50%
+        );
+
+        --tvk_colors_light_surface2: hsl(var(--tvk_colors_brand-hue) 10% 95%);
+        --tvk_footnotes_footnote_background: none;
+        --tvk_footnotes_margin: 1em 0em 0em 0em;
+        --tvk_message_answer_bot_align-items: center;
+        --tvk_message_answer_bot_flex-direction: row;
+        --tvk_message_answer_flex-direction: row;
+        --tvk_message_answer_flex-wrap: nowrap;
+        --tvk_message_answer_gap: var(--tvk_base_spacing);
+        --tvk_message_answer_user_align-items: center;
+        --tvk_message_answer_user_flex-direction: row-reverse;
+        --tvk_message_body_bot_radius-bottom-left: 0;
+        --tvk_message_body_bot_radius-top-left: var(--tvk_message_body_radius);
+        --tvk_message_body_max-width: calc(100% - 2em);
+        --tvk_message_body_user_radius-bottom-right: 0;
+        --tvk_message_body_user_radius-top-right: var(
+          --tvk_message_body_radius
+        );
+        --tvk_message_header_avatar_font-size: 36px;
+        --tvk_message_header_margin: 0em;
+        --tvk_messages_shaders_top-display: none;
+        --tvk_messages_shaders_bottom-display: none;
+        --tvk_question_border: 1px solid var(--tvk_colors_neutral);
+        --tvk_question_box-shadow: inset 0px 0px 5px #00000030;
+        --tvk_wrapper_border-radius: 1em;
+        --tvk_wrapper_padding: var(--tvk_base_spacing);
+        --tvk_wrapper_max-width: 90vw;
+        --tvk_wrapper_min-width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="matrix-bg"></canvas>
+    <button id="matrix-switch">Activer Matrix</button>
+
+    <div id="chat-wrapper"></div>
+
+    <script>
+      TockVueKit.renderChat(
+        document.getElementById("chat-wrapper"),
+        "http://localhost:8080/io/app/devoxx2025/web",
+        {
+          localStorage: {
+            enabled: true,
+          },
+          initialization: {
+            welcomeMessage: "Welcome. How can i scare you ?",
+          },
+          preferences: {
+            messages: {
+              message: {
+                header: {
+                  avatar: {
+                    userIcon: "bi bi-incognito",
+                    botIcon: "bi bi-sign-dead-end",
+                  },
+                  label: {
+                    display: false,
+                  },
+                },
+              },
+            },
+            questionBar: {
+              clearHistory: {
+                icon: "bi bi-heartbreak",
+              },
+              submit: {
+                icon: "bi bi-hammer",
+              },
+            },
+          },
+          wording: {
+            questionBar: {
+              input: {
+                placeholder: "Surprise me...",
+              },
+            },
+          },
+        }
+      );
+
+      const matrixSwitch = document.getElementById("matrix-switch");
+      const canvas = document.getElementById("matrix-bg");
+      const ctx = canvas.getContext("2d");
+      let matrixEnabled = false;
+      let animationId;
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const katakana =
+        "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+      const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const nums = "0123456789";
+      const alphabet = katakana + latin + nums;
+
+      const fontSize = 16;
+      const columns = canvas.width / fontSize;
+
+      const rainDrops = [];
+
+      for (let x = 0; x < columns; x++) {
+        rainDrops[x] = 1;
+      }
+
+      const INTERVAL = 80; // 80 millisecondes, comme dans votre setInterval original
+      let lastTime = 0;
+
+      const draw = (currentTime) => {
+        if (currentTime - lastTime < INTERVAL) {
+          if (matrixEnabled) {
+            animationId = requestAnimationFrame(draw);
+          }
+          return;
+        }
+
+        lastTime = currentTime;
+
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#0F0";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < rainDrops.length; i++) {
+          const text = alphabet.charAt(
+            Math.floor(Math.random() * alphabet.length)
+          );
+          ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+          if (
+            rainDrops[i] * fontSize > canvas.height &&
+            Math.random() > 0.975
+          ) {
+            rainDrops[i] = 0;
+          }
+          rainDrops[i]++;
+        }
+
+        if (matrixEnabled) {
+          animationId = requestAnimationFrame(draw);
+        }
+      };
+
+      matrixSwitch.addEventListener("click", () => {
+        matrixEnabled = !matrixEnabled;
+        if (matrixEnabled) {
+          canvas.style.display = "block";
+          matrixSwitch.textContent = "D\u00e9sactiver Matrix";
+          lastTime = 0;
+          draw(performance.now());
+        } else {
+          canvas.style.display = "none";
+          matrixSwitch.textContent = "Activer Matrix";
+          cancelAnimationFrame(animationId);
+        }
+      });
+    </script>
+  </body>
+</html>
