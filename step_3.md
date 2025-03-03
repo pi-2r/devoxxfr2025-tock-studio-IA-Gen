@@ -1,6 +1,6 @@
 # Accélérons l'entrainement avec de l'IAGen
 
-[<img src="img/Indiana-Jones-Temple-of-Doom.png"  alt="Indiana Jones Temple of Doom">](https://www.youtube.com/watch?v=7A2JZxvpRsI)
+[<img src="img/Indiana-Jones-Temple-of-Doom.png"  alt="Indiana Jones Temple of Doom">](https://www.youtube.com/watch?v=wROFvWDyugU)
 
 
 
