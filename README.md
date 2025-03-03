@@ -1,7 +1,7 @@
 # [Devoxx 2025] A la recherche du RAG perdu 🤠🧭🤖 : créez votre IA Générative sans Internet
-Ce projet github est issue du workshop fait par [Benjamin Bernard](https://devoxx.fr/talk?id=65062), [Julien Buret](https://devoxx.fr/talk?id=65062), [François Nollen](https://devoxx.fr/talk?id=65062) et [Pierre Therrode](https://devoxx.fr/talk?id=65062), pour le Devoxx 2025, avec comme sujet : [A la recherche du RAG perdu 🤠🧭🤖 : créez votre IA Générative sans Internet](https://devoxx.fr/talk?id=65062 )
+Ce projet github est issue du workshop fait par [Benjamin Bernard](https://www.devoxx.fr/agenda-2025/speaker/?id=64078), [Julien Buret](https://www.devoxx.fr/agenda-2025/speaker/?id=64082), [François Nollen](https://www.devoxx.fr/agenda-2025/speaker/?id=64073) et [Pierre Therrode](https://www.devoxx.fr/agenda-2025/speaker/?id=64079), pour le Devoxx 2025, avec comme sujet : [A la recherche du RAG perdu 🤠🧭🤖 : créez votre IA Générative sans Internet](https://devoxx.fr/talk?id=65062 )
 
-<img src="img/photo.png"  alt="workshop A la recherche du RAG perdu 🤠🧭🤖 : créez votre IA Générative sans Internet" width="100%">
+[<img src="img/photo.png"  alt="workshop A la recherche du RAG perdu 🤠🧭🤖 : créez votre IA Générative sans Internet" width="100%">](https://devoxx.fr/talk?id=65062)
 
 
 
