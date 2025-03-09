@@ -51,7 +51,7 @@ L'objectif de cet atelier et de tout faire tourner en local sur votre poste. Pou
 
 Modifiez votre fichier `/etc/hosts` (Mac / Linux) ou `C:\windows\system32\drivers\etc\hosts` y ajouter les éléments suivants :
 ```
-# Codelab DevFest Tock
+# Codelab Devoxx2025 Tock
 192.168.20.2    gpu-server.lan
 192.168.20.3    tock.lan
 ```
@@ -67,7 +67,7 @@ Connectez-vous en filaire idéalement ou en wifi :
 Commencez par cloner ce repository :
 ```bash
 git clone https://github.com/pi-2r/devfest2024-tock-studio-IA-Gen.git
-cd devfest2024-tock-studio-IA-Gen
+cd devoxx2025-tock-studio-IA-Gen
 ```
 
 ## Docker
@@ -150,7 +150,7 @@ Si vous n’avez pas docker-desktop, vous pouvez lancer la commande docker suiva
 éléments sont bien démarrés.
 
 ```bash
-docker compose -p devfest_tock ps
+docker compose -p devoxx_tock ps
 ```
 
 Vous devriez avoir ce rendu :

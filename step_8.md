@@ -36,7 +36,7 @@ Dans le fichier `docker/docker-compose.yml` décommenter la block `langfuse-serv
 ```bash
 cd docker
 source .env
-docker compose -p devfest_tock up -d
+docker compose -p devoxx_tock up -d
 ```
 
 ## Accéder à Langfuse
