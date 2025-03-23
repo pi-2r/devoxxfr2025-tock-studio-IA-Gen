@@ -1,9 +1,9 @@
 # Reprendre le contrôle sur le bot
 
-[<img src="img/neo-deus-ex-machina.png"  alt="neo and deux ex machina">](https://www.youtube.com/watch?v=ao658SKkgX4)
+[<img src="img/Indiana_Jones_interrogation.png"  alt="Indiana Jones interrogation">](https://www.youtube.com/watch?v=VbHgOXIQz20)
 
-> "The program Smith has grown beyond your control. Soon he will spread through this city, as he spread through the 
-> matrix. You cannot stop him. But I can", The Matrix Revolutions, Les Wachowski, 2003
+> "I think you recognize the gravity of your situation you aided and embedded KGB agnets who broke into a top secret 
+> military installation in the middle of the United States of America", Indiana Jones and the Kingdom of the Crystal Skull, Steven Spielberg, 2008
 
 
 <br/>
