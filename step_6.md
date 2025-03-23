@@ -1,12 +1,12 @@
 # Faire dérailler notre bot
 
-[<img src="img/Indiana-Jones-and-The-Kingdom-of-The-Crystal-Skull.jpg"  alt="spread">](https://www.youtube.com/watch?v=G79bEF0GD90)
+[<img src="img/Indiana-Jones-and-The-Kingdom-of-The-Crystal-Skull.png"  alt="spread">](https://www.youtube.com/watch?v=G79bEF0GD90)
 
-> "Mac: This ain't going to be easy.
+>"Mac: This ain't going to be easy.
 > 
 > Indy: Not as easy as it used to be.", 
 > 
->Indiana Jones and the Kingdom of the Crystal Skull, Steven Spielberg, 2008
+> Indiana Jones and the Kingdom of the Crystal Skull, Steven Spielberg, 2008
 
 <br/>
 <u>Objectifs:</u>
@@ -54,12 +54,12 @@ Par exemple :
 
 ## Ressources
 
-| Information                                            | Lien |
-|--------------------------------------------------------|------|
-| ChatGPT Jailbreak Prompts: How to Unchain ChatGPT      | [https://docs.kanaries.net/articles/chatgpt-jailbreak-prompt](https://docs.kanaries.net/articles/chatgpt-jailbreak-prompt) |
-| ChatGPT jailbreak                                      | [https://www.lebigdata.fr/chatgpt-dan](https://www.lebigdata.fr/chatgpt-dan) |
-| How to Jailbreak ChatGPT 4 in 2024 (Prompt + Examples) | [https://weam.ai/blog/guide/jailbreak-chatgpt/](https://weam.ai/blog/guide/jailbreak-chatgpt/) |
-
+| Information                                                                                   | Lien                                                                                                                                                           |
+|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ChatGPT Jailbreak Prompts: How to Unchain ChatGPT                                             | [https://docs.kanaries.net/articles/chatgpt-jailbreak-prompt](https://docs.kanaries.net/articles/chatgpt-jailbreak-prompt)                                     |
+| ChatGPT jailbreak                                                                             | [https://www.lebigdata.fr/chatgpt-dan](https://www.lebigdata.fr/chatgpt-dan)                                                                                   |
+| How to Jailbreak ChatGPT 4 in 2024 (Prompt + Examples)                                        | [https://weam.ai/blog/guide/jailbreak-chatgpt/](https://weam.ai/blog/guide/jailbreak-chatgpt/)                                                                 |
+| The Developer's Playbook for Large Language Model Security: Building Secure AI Applications   | [https://www.oreilly.com/library/view/the-developers-playbook/9781098162191/](https://www.oreilly.com/library/view/the-developers-playbook/9781098162191/)     |
 
 ## Étape suivante
 
