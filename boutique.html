@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinéAventure - Votre boutique de films d'aventure</title>
+    <!-- Ajout de Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hero {
+            background-image: url('hero-adventure.jpg');
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .hero-content {
+            background-color: rgba(0,0,0,0.7);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .films-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .film-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .film-card:hover {
+            transform: translateY(-10px);
+        }
+        .film-image {
+            height: 350px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        .film-info {
+            padding: 15px;
+        }
+        .film-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .film-year {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .film-rating {
+            color: #ff9900;
+            margin-bottom: 10px;
+        }
+        .film-price {
+            font-weight: bold;
+            color: #2a9d8f;
+            font-size: 1.3em;
+            margin: 10px 0;
+        }
+        .btn {
+            display: block;
+            background-color: #e76f51;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* Styles pour l'icône d'alerte et l'animation */
+        .alert-icon {
+            margin-right: 8px;
+            color: #ffcc00;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: translateX(200%);
+            transition: transform 0.5s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 0.5s ease-in-out;
+        }
+        /* Style pour l'icône du panier */
+        .fa-shopping-cart {
+            margin-right: 8px;
+        }
+
+        /* Animation pour le panier */
+        @keyframes addToCart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .cart-animation {
+            animation: addToCart 0.5s ease-in-out;
+        }
+
+        /* Notification pour le panier */
+        .cart-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #2a9d8f;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: translateX(200%);
+            transition: transform 0.5s ease;
+            z-index: 1000;
+        }
+
+        .cart-notification.show {
+            transform: translateX(0);
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">CodeLab CinéAventure Devoxx 2025</div>
+    <p>Les meilleurs films d'aventure du moment à portée de clic !</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Nouveautés</a></li>
+        <li><a href="#">Prochaines Sorties</a></li>
+        <li><a href="#">Promotions</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Notification qui apparaîtra lors de l'inscription aux alertes -->
+<div id="notification" class="notification">
+    <i class="fas fa-check-circle"></i> Vous êtes bien inscrit aux alertes !
+</div>
+<div id="cart-notification" class="cart-notification">
+    <i class="fas fa-check-circle"></i> Produit ajouté au panier !
+</div>
+
+
+<div class="container">
+    <h2>Films à l'affiche</h2>
+    <div class="films-grid">
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BMzQ5YmQ5ZmUtOGY1OC00ZjgzLWE1NmQtNmM5YjQ2MzNhYzQ1XkEyXkFqcGc@._V1_QL75_UY311_CR9,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Mickey 17</div>
+                <div class="film-year">2025</div>
+                <div class="film-rating">★★★★☆ 7.1/10</div>
+                <p>Mickey 17, connu comme un "prescriptible", entreprend un voyage dangereux pour coloniser une planète de glace.</p>
+                <div class="film-price">24,99 €</div>
+                <a href="#" class="btn">Précommander</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BZDcwNzg2ZTEtYzBkZC00NWRmLTg2ZWEtODljZmY2MjVkZGYwXkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Dune: Part Two</div>
+                <div class="film-year">2024</div>
+                <div class="film-rating">★★★★★ 8.5/10</div>
+                <p>Paul Atreides s'unit aux Fremen dans sa quête de vengeance contre les conspirateurs qui ont détruit sa famille.</p>
+                <div class="film-price">19,99 €</div>
+                <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNmJlZGIzMjEtZWE0NS00NTAxLWIyNGItNjYzYzhjMmI3ZWVmXkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Gladiator II</div>
+                <div class="film-year">2024</div>
+                <div class="film-rating">★★★★☆ 6.6/10</div>
+                <p>Après la conquête de sa patrie par les empereurs tyranniques qui dirigent maintenant Rome, Lucius est forcé d'entrer dans le Colisée.</p>
+                <div class="film-price">21,99 €</div>
+                <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BYWNiMmNiMjQtNTU0Ny00YWQ1LTk2NzAtN2RkMGUzNGEwM2M1XkEyXkFqcGc@._V1_QL75_UY311_CR9,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Furiosa: A Mad Max Saga</div>
+                <div class="film-year">2024</div>
+                <div class="film-rating">★★★★☆ 7.5/10</div>
+                <p>L'histoire d'origine de la guerrière renégate Furiosa avant sa rencontre avec Mad Max.</p>
+                <div class="film-price">22,99 €</div>
+                <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BZjBkOTFiNjgtY2Q1NS00OTA2LWE0YTktMzQ0MzMzMzZhNDg4XkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">A Minecraft Movie</div>
+                <div class="film-year">2025</div>
+                <div class="film-rating">Pas encore noté</div>
+                <p>Quatre inadaptés sont soudainement aspirés à travers un portail mystérieux dans un monde cubique bizarre qui prospère grâce à l'imagination.</p>
+                <div class="film-price">23,99 €</div>
+                <a href="#" class="btn">Précommander</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNWNlNTVkMWEtMDkxNC00YTJhLTllOTMtN2FlN2M0YTViMjg0XkEyXkFqcGc@._V1_QL75_UY311_CR19,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Snow White</div>
+                <div class="film-year">2025</div>
+                <div class="film-rating">Pas encore noté</div>
+                <p>Une princesse s'allie à sept nains pour libérer son royaume de sa cruelle belle-mère, la Méchante Reine.</p>
+                <div class="film-price">22,99 €</div>
+                <a href="#" class="btn">Précommander</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BMTk5MGMyODUtNmVhZS00ODQwLTlmMTMtYTBiMGU5ZjdiZTYxXkEyXkFqcGc@._V1_QL75_UY311_CR11,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Flow</div>
+                <div class="film-year">2024</div>
+                <div class="film-rating">★★★★☆ 7.9/10</div>
+                <p>Un chat solitaire, dont la maison est dévastée par une grande inondation, trouve refuge sur un bateau peuplé de diverses espèces.</p>
+                <div class="film-price">18,99 €</div>
+                <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNTNlNjZlNTUtMjc3YS00OWU1LTk5NDQtMWQ1MzNkOWU5YWYyXkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Captain America: Brave New World</div>
+                <div class="film-year">2025</div>
+                <div class="film-rating">★★★☆☆ 5.9/10</div>
+                <p>Sam Wilson, le nouveau Captain America, se retrouve au milieu d'un incident international et doit découvrir le motif derrière un plan mondial néfaste.</p>
+                <div class="film-price">24,99 €</div>
+                <a href="#" class="btn">Précommander</a>
+            </div>
+        </div>
+    </div>
+
+    <h2>Prochainement</h2>
+    <div class="films-grid">
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1710961232986-36cead00da3c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="film-info">
+                <div class="film-title">Shrek 5</div>
+                <div class="film-year">2026</div>
+                <div class="film-rating">Pas encore noté</div>
+                <p>Intrigue inconnue.</p>
+                <div class="film-price">Bientôt disponible</div>
+                <a href="#" class="btn alert-btn"><i class="fas fa-bell alert-icon"></i>S'inscrire aux alertes</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1710961232986-36cead00da3c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="film-info">
+                <div class="film-title">The Odyssey</div>
+                <div class="film-year">2026</div>
+                <div class="film-rating">Pas encore noté</div>
+                <p>Suit Ulysse dans son périlleux voyage de retour après la guerre de Troie, montrant ses rencontres avec Polyphème, les Sirènes, Circé, et se terminant par ses retrouvailles avec sa femme, Pénélope.</p>
+                <div class="film-price">Bientôt disponible</div>
+                <a href="#" class="btn alert-btn"><i class="fas fa-bell alert-icon"></i>S'inscrire aux alertes</a>
+            </div>
+        </div>
+    </div>
+
+    <h2>Classiques intemporels</h2>
+    <div class="films-grid">
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BMDliMmNhNDEtODUyOS00MjNlLTgxODEtN2U3NzIxMGVkZTA1L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Gladiator</div>
+                <div class="film-year">2000</div>
+                <div class="film-rating">★★★★★ 8.5/10</div>
+                <p>Un ancien général romain cherche à se venger de l'empereur corrompu qui a assassiné sa famille et l'a envoyé en esclavage.</p>
+                <div class="film-price">14,99 €</div>
+                <a href="#" class="btn">Ajouter au panier</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Interstellar</div>
+                <div class="film-year">2014</div>
+                <div class="film-rating">★★★★★ 8.7/10</div>
+                <p>Lorsque la Terre devient inhabitable dans le futur, un agriculteur et ancien pilote de la NASA, Joseph Cooper, est chargé de piloter un vaisseau spatial avec une équipe de chercheurs pour trouver une nouvelle planète pour l'humanité.</p>
+                <div class="film-price">16,99 €</div>
+                <a href="#" class="btn">Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- chatbot -->
+<div id="chat-circle" class="btn btn-raised">
+    <div id="chat-overlay"></div>
+    <img src="https://doc.tock.ai/fr/images/botchat.png"/>
+</div>
+<div class="chat-box">
+    <div class="chat-box-header">
+        Parlons un peu de Tock...
+        <span class="chat-box-toggle"><span class="icon fa-window-close"></span></span>
+    </div>
+    <div class="chat-box-body">
+        <div class="chat-box-overlay">
+        </div>
+
+        <div class="chat-logs">
+            <div id="chat"></div>
+            <div class="welcome">Bonjour je suis votre conseiller de la boutique HalloweenShop 😈<br>Une question ? Comment puis-je vous aider ?</div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>Les images et descriptions de films sont utilisées à des fins illustratives uniquement. Les textes ont été générés par LLM.</p>
+</footer>
+<script src="https://doc.tock.ai/fr/assets/js/jquery.min.js"></script>
+<script>
+
+    TockReact.renderChat(document.getElementById('chat'), tockApiUrl, '', {
+        palette: {
+            text: {
+                card: 'rgba(252,170,62,0.8	)',
+                bot: 'black',
+            },
+            background: {
+                card: 'white',
+                bot: 'rgba(252,170,62,0.34)',
+            },
+        },
+        sizing: {
+            loaderSize: '8px',
+            borderRadius: '8px',
+            conversation: {
+                //	width: '720px',
+            },
+        },
+        typography: {
+            fontFamily: '\'Source Sans Pro\', sans-serif',
+        },
+        overrides: {
+            card: {
+                cardContainer: 'width: 27vw;',
+            },
+            chatInput: {
+                icon: 'width: 3vw; height: 3vh;',
+            },
+        },
+    });
+
+    $(function () {
+        var INDEX = 0;
+        $("#chat-submit").click(function (e) {
+            e.preventDefault();
+            var msg = $("#chat-input").val();
+            if (msg.trim() == '') {
+                return false;
+            }
+            generate_message(msg, 'self');
+            var buttons = [
+                {
+                    name: 'Existing User',
+                    value: 'existing'
+                },
+                {
+                    name: 'New User',
+                    value: 'new'
+                }
+            ];
+            setTimeout(function () {
+                generate_message(msg, 'user');
+            }, 1000)
+
+        })
+
+        function generate_message(msg, type) {
+            INDEX++;
+            var str = "";
+            str += "<div id='cm-msg-" + INDEX + "' class=\"chat-msg " + type + "\">";
+            str += "          <span class=\"msg-avatar\">";
+            str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+            str += "          <\/span>";
+            str += "          <div class=\"cm-msg-text\">";
+            str += msg;
+            str += "          <\/div>";
+            str += "        <\/div>";
+            $(".chat-logs").append(str);
+            $("#cm-msg-" + INDEX).hide().fadeIn(300);
+            if (type == 'self') {
+                $("#chat-input").val('');
+            }
+            $(".chat-logs").stop().animate({scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
+        }
+
+        function generate_button_message(msg, buttons) {
+            INDEX++;
+            var btn_obj = buttons.map(function (button) {
+                return "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\"" + button.value + "\">" + button.name + "<\/a><\/li>";
+            }).join('');
+            var str = "";
+            str += "<div id='cm-msg-" + INDEX + "' class=\"chat-msg user\">";
+            str += "          <span class=\"msg-avatar\">";
+            str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+            str += "          <\/span>";
+            str += "          <div class=\"cm-msg-text\">";
+            str += msg;
+            str += "          <\/div>";
+            str += "          <div class=\"cm-msg-button\">";
+            str += "            <ul>";
+            str += btn_obj;
+            str += "            <\/ul>";
+            str += "          <\/div>";
+            str += "        <\/div>";
+            $(".chat-logs").append(str);
+            $("#cm-msg-" + INDEX).hide().fadeIn(300);
+            $(".chat-logs").stop().animate({scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
+            $("#chat-input").attr("disabled", true);
+        }
+
+        $(document).delegate(".chat-btn", "click", function () {
+            var value = $(this).attr("chat-value");
+            var name = $(this).html();
+            $("#chat-input").attr("disabled", false);
+            generate_message(name, 'self');
+        })
+
+        $("#chat-circle").click(function () {
+            $("#chat-circle").toggle('scale');
+            $(".chat-box").toggle('scale');
+        })
+
+        $(".chat-box-toggle").click(function () {
+            $("#chat-circle").toggle('scale');
+            $(".chat-box").toggle('scale');
+        })
+
+    })
+</script>
+<script>
+    // Sélectionner tous les boutons d'alerte
+    const alertButtons = document.querySelectorAll('.alert-btn');
+    const notification = document.getElementById('notification');
+
+    // Ajouter un écouteur d'événement à chaque bouton
+    alertButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Ajouter l'animation de pulsation au bouton
+            this.classList.add('pulse');
+
+            // Afficher la notification
+            notification.classList.add('show');
+
+            // Remplacer le texte et l'icône du bouton
+            this.innerHTML = '<i class="fas fa-check-circle alert-icon"></i>Inscrit aux alertes';
+            this.style.backgroundColor = '#4CAF50';
+
+            // Retirer l'animation après qu'elle soit terminée
+            setTimeout(() => {
+                this.classList.remove('pulse');
+            }, 500);
+
+            // Cacher la notification après 3 secondes
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        });
+    });
+</script>
+<script> // Sélectionner tous les boutons d'ajout au panier
+const cartButtons = document.querySelectorAll('.cart-btn');
+const cartNotification = document.getElementById('cart-notification');
+
+// Ajouter un écouteur d'événement à chaque bouton
+cartButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Ajouter l'animation au bouton
+        this.classList.add('cart-animation');
+
+        // Afficher la notification
+        cartNotification.classList.add('show');
+
+        // Changer temporairement le texte et la couleur du bouton
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
+        this.style.backgroundColor = '#2a9d8f';
+
+        // Retirer l'animation après qu'elle soit terminée
+        setTimeout(() => {
+            this.classList.remove('cart-animation');
+        }, 500);
+
+        // Restaurer le texte et la couleur du bouton après 2 secondes
+        setTimeout(() => {
+            this.innerHTML = originalText;
+            this.style.backgroundColor = '#e76f51';
+        }, 2000);
+
+        // Cacher la notification après 3 secondes
+        setTimeout(() => {
+            cartNotification.classList.remove('show');
+        }, 3000);
+    });
+});
+</script>
+</body>
+</html>
