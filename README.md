@@ -23,10 +23,11 @@ Ce projet github est issue du workshop fait par [Benjamin Bernard](https://www.d
 - [Reprendre le contrôle de notre bot](step_7.md)
 
 
-- [Connecter notre bot à notre boutique](step_8.md)
+- [Observabilité](step_8.md)
+- [ Scrapping de données et RAG](step_9.md)
 
 
-- [Bonus - Observabilité](step_9_bonus_observabilite.md)
+- [Connecter notre bot à notre boutique](step_10.md)
 
 
 - [Remerciements](thanks-you.md)
