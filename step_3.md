@@ -81,7 +81,7 @@ Dans le fichier `docker/docker-compose.yml` décommenter les services `gen_ai_or
 ```bash
 cd docker
 source .env
-docker compose -p devfest_tock up -d
+docker compose -p devoxx_tock up -d
 ```
 
 ## Installer Ollama
