@@ -20,14 +20,22 @@
   - [Fonctionnement du web scraping](#fonctionnement-du-web-scraping)
   
 
-- [Installer le framework Scrapy](#installer-le-framework-scrapy)
+- [Installer Python](##installer-python)
+  - [Créer un environnement virtuel](#créer-un-environnement-virtuel)
+  - [Installer Scrapy](#installer-scrapy)
+  - [Créer un nouveau projet Scrapy](#créer-un-nouveau-projet-scrapy)
+  - [Créer un nouveau Spider](#créer-un-nouveau-spider)
+
+
+- [Commençons à scraper](#commençons-à-scraper)
   - [Extraire les informations souhaitées](#extraire-les-informations-souhaitées)
   - [Contourner les 1er protections anti-bot](#contourner-les-1er-protections-anti-bot)
   - [Activer le javascript dans les paages](#activer-le-javascript)
   
 
 - [Contourner les protections anti-bot via des proxys](#contourner-les-protections-anti-bot-via-des-proxys)
-  - [Proxy low cost](#proxy-low-cost) 
+  - [Proxy low cost](#proxy-low-cost)
+    - [Limites des proxys gratuits](#limites-des-proxys-gratuits)
   - [Proxy plus avancé](#proxy-plus-avancé)
   
 
@@ -42,11 +50,11 @@ la structure du document.
 
 ## Fonctionnement du web scraping
 
-Généralement, le scraping se déroule en plusieurs étapes:
-  - Le programme de scraping reçoit une URL qu'il va charger
+Généralement, le scraping se déroule en plusieurs étapes :
+  - Le programme de scraping reçoit une URL d'un site web qu'il doit lire
   - Il extrait le code HTML sous-jacent de la page web 
-    - Dans le cas des programmes avancés, ils peuvent également interprété les éléments JavaScript et CSS
-  - Le scraper extrait ensuite les données spécifiques recherchées
+    - Dans le cas d'un programme avancé, ils peut interprété les éléments JavaScript et CSS
+  - Le programme extrait ensuite les données spécifiques recherchées
 
 Les données collectées sont généralement structurées dans une base de données ou un tableur pour être facilement exploitables
 
@@ -63,13 +71,36 @@ sur les films d'aventure, à savoir :
 
 Ces informations seront ensuite ingérées dans le RAG de Tock.
 
-# Installer le framework Scrapy
-Installer Scrapy : Assurez-vous d'avoir Python 3 installé, puis installez Scrapy en utilisant pip:
+# Installer Python
+Avant de commencer, assurez-vous d'avoir Python 3 installé sur votre machine.
+Depuis votre terminal, vous pouvez vérifier la version de Python installée en exécutant la commande suivante :
+
+```bash
+python3 --version
+```
+Si vous n'avez pas Python 3 installé, vous pouvez le télécharger depuis le site officiel de Python : [python.org](https://www.python.org/downloads/)
+
+## Créer un environnement virtuel
+
+Depuis le dossier du codelab, créez un environnement virtuel pour le projet et activez-le :
+
+```bash
+python3 -m venv path/to/venv
+```
+puis activez-le :
+
+```bash
+source path/to/venv/bin/activate
+```
+
+
+## Installer Scrapy
 
 ```bash
 pip install Scrapy
 ```
-Créer un nouveau projet Scrapy :
+
+## Créer un nouveau projet Scrapy
 
 ```bash
 scrapy startproject imdb_scraper
@@ -79,11 +110,16 @@ Naviguer vers le dossier du projet :
 ```bash
 cd imdb_scraper
 ```
-Créer un nouveau Spider :
+
+## Créer un nouveau Spider
 
 ```bash
 scrapy genspider imdb_spider imdb.com
 ```
+
+# Commençons à scraper
+
+À présent le framework scrapy est installé et votre projet crée
 
 ## Extraire les informations souhaitées
 Ouvrez le fichier `imdb_spider.py` et ajoutez le code suivant pour extraire les informations souhaitées:
@@ -407,13 +443,23 @@ scrapy crawl imdb_spider_selenium
 ⚠️ La suite de l'étape 9 est à titre informatif. Il est important de respecter les lois en vigueur concernant 
 le scraping de données.
 
+
 ## Proxy low cost
 
-Une premiere approche consiste à utiliser des proxys gratuits, que l'on peut trouver gratuitement sur Internet. 
-Cependant, ces proxys sont souvent lents et peu fiables. Il est aussi possible d'utiliser le systeme de proxy Tor pour scraper des sites web.
+Une première approche consiste à utiliser des proxys afin de se cacher derrière une adresse IP qui n’est pas la sienne pour ralentir le moment où l’on va être bloqué.
 
-Utilisation de proxy passant par le réseau Tor. Roud-robbin de noeud de sortie pour éviter le blocage.
-La technique du round-robbin consiste à faire tourner les noeuds de sortie de manière aléatoire pour éviter le blocage.
+Il est possible d’utiliser des proxys gratuits que l’on peut trouver sur Internet.
+
+Cependant, ces proxys sont souvent lents et peu fiables. Il est aussi possible d'utiliser le logiciel open source proxy Tor pour scraper des sites web.
+
+L’idée derrière cela est de se servir de la multitude de nœuds de sorties qui sont dispatchés à travers le monde, et ainsi avoir plusieurs adresse IP différentes.
+
+Dès lors le fait de changer d’adresse d’IP de façon pseudo dynamique est une technique de type round-robbin.
+
+Cette technique du round-robbin consiste à faire tourner les nœuds de sortie de manière aléatoire pour éviter le blocage.
+
+
+Le projet suivant est un projet sur github qui permet de faire du round-robbin d’adresse IP via Tor.
 
 ```
                Docker Container
@@ -423,15 +469,21 @@ Client <---->   Privoxy <-> HAproxy <-> Tor Proxy 2
                                     <-> Tor Proxy n
 ```
 
-limite du systeme: les noeuds de sortie sont officiellement listé
+# Limites des proxys gratuits
+
+L’utilisation de proxys gratuits peut se heurter à plusieurs limites, comme :
+- Le fait qu’ils soient vites repérés par les systèmes de protections
+- Qu’ils sont parfois lents
+- Qu’ils sont peu fiable d’un point de vue disponibilité
+- Le fait qu’ils soient sans support client
+
 
 ## Proxy plus avancé
 
-utilisation de scrapoxy pour gérer les proxys. Scrapoxy est un outil qui permet de gérer des proxys de manière dynamique.
+Il est possible d’utiliser des systèmes proxys plus avancés qui permettent d’échapper à certains blocages. 
+En guise d’exemple on peut citer le projet open source [Scrapoxy](https://scrapoxy.io/).
 
 [<img src="img/scrapoxy.png" alt="scrapoxy">](https://scrapoxy.io/)
-Il permet de gérer des proxys de manière dynamique et de faire du load balancing entre les proxys.
-
 
 ## Ingérer la données scrapé dans le RAG
 Pour ingérer les données scrapées dans le RAG de Tock, il faut utiliser le fichier CSV généré par le spider et 
