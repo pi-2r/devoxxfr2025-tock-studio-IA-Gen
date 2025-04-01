@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CinéAventure - Votre boutique de films d'aventure</title>
-    <!-- Ajout de Font Awesome pour les icônes -->
+
+    <script crossorigin src="https://unpkg.com/tock-react-kit@latest/build/tock-react-kit-standalone.umd.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/main.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <script src="https://doc.tock.ai/fr/assets/js/jquery.min.js"></script>
+    <script>
+        // Configuration de l'URL d'accès au bot
+        var tockApiUrl = "HTTPS_BOT_URL";
+    </script>
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -42,22 +53,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-        }
-        .hero {
-            background-image: url('hero-adventure.jpg');
-            background-size: cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .hero-content {
-            background-color: rgba(0,0,0,0.7);
-            padding: 30px;
-            border-radius: 10px;
         }
         .films-grid {
             display: grid;
@@ -102,22 +97,272 @@
             font-size: 1.3em;
             margin: 10px 0;
         }
-        .btn {
-            display: block;
-            background-color: #e76f51;
+
+        @keyframes blood-drip {
+            0% {
+                top: -100%;
+            }
+            100% {
+                top: 0;
+            }
+        }
+
+        @keyframes vibrate {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        @keyframes image-vibrate {
+            0% { transform: translate(0); }
+            25% { transform: translate(5px, 5px); }
+            50% { transform: translate(-5px, -5px); }
+            75% { transform: translate(-5px, 5px); }
+            100% { transform: translate(5px, -5px); }
+        }
+
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        #popup-image img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        #chat-circle {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 30;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background: #efefef;
+            text-align: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            color: white;
+            padding: 28px;
+            cursor: pointer;
+            box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        }
+
+
+        #chat-overlay {
+            background: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: none;
+        }
+
+        .chat-box {
+            z-index: 30;
+            display: none;
+            background: #efefef;
+            position: fixed;
+            right: 30px;
+            bottom: 50px;
+            width: 33vw;
+            max-width: 85vw;
+            max-height: 80vh;
+            border-radius: 20px;
+            /*   box-shadow: 0px 5px 35px 9px #464a92; */
+            box-shadow: 20px 20px 5px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .chat-box-toggle {
+            float: right;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .chat-box-header {
+            background: #105fdc;
+            height: 70px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
             color: white;
             text-align: center;
-            padding: 10px;
-            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            padding-top: 17px;
+        }
+
+        .chat-box-body {
+            position: relative;
+            height: 370px;
+            height: auto;
+            /*border:1px solid #ccc;*/
+            overflow: hidden;
+        }
+
+        .chat-box-body:after {
+            content: "";
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAgOCkiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGNpcmNsZSBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgY3g9IjE3NiIgY3k9IjEyIiByPSI0Ii8+PHBhdGggZD0iTTIwLjUuNWwyMyAxMW0tMjkgODRsLTMuNzkgMTAuMzc3TTI3LjAzNyAxMzEuNGw1Ljg5OCAyLjIwMy0zLjQ2IDUuOTQ3IDYuMDcyIDIuMzkyLTMuOTMzIDUuNzU4bTEyOC43MzMgMzUuMzdsLjY5My05LjMxNiAxMC4yOTIuMDUyLjQxNi05LjIyMiA5LjI3NC4zMzJNLjUgNDguNXM2LjEzMSA2LjQxMyA2Ljg0NyAxNC44MDVjLjcxNSA4LjM5My0yLjUyIDE0LjgwNi0yLjUyIDE0LjgwNk0xMjQuNTU1IDkwcy03LjQ0NCAwLTEzLjY3IDYuMTkyYy02LjIyNyA2LjE5Mi00LjgzOCAxMi4wMTItNC44MzggMTIuMDEybTIuMjQgNjguNjI2cy00LjAyNi05LjAyNS0xOC4xNDUtOS4wMjUtMTguMTQ1IDUuNy0xOC4xNDUgNS43IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTg1LjcxNiAzNi4xNDZsNS4yNDMtOS41MjFoMTEuMDkzbDUuNDE2IDkuNTIxLTUuNDEgOS4xODVIOTAuOTUzbC01LjIzNy05LjE4NXptNjMuOTA5IDE1LjQ3OWgxMC43NXYxMC43NWgtMTAuNzV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjcxLjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjE3MC41IiBjeT0iOTUuNSIgcj0iMS41Ii8+PGNpcmNsZSBmaWxsPSIjMDAwIiBjeD0iODEuNSIgY3k9IjEzNC41IiByPSIxLjUiLz48Y2lyY2xlIGZpbGw9IiMwMDAiIGN4PSIxMy41IiBjeT0iMjMuNSIgcj0iMS41Ii8+PHBhdGggZmlsbD0iIzAwMCIgZD0iTTkzIDcxaDN2M2gtM3ptMzMgODRoM3YzaC0zem0tODUgMThoM3YzaC0zeiIvPjxwYXRoIGQ9Ik0zOS4zODQgNTEuMTIybDUuNzU4LTQuNDU0IDYuNDUzIDQuMjA1LTIuMjk0IDcuMzYzaC03Ljc5bC0yLjEyNy03LjExNHpNMTMwLjE5NSA0LjAzbDEzLjgzIDUuMDYyLTEwLjA5IDcuMDQ4LTMuNzQtMTIuMTF6bS04MyA5NWwxNC44MyA1LjQyOS0xMC44MiA3LjU1Ny00LjAxLTEyLjk4N3pNNS4yMTMgMTYxLjQ5NWwxMS4zMjggMjAuODk3TDIuMjY1IDE4MGwyLjk0OC0xOC41MDV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxwYXRoIGQ9Ik0xNDkuMDUgMTI3LjQ2OHMtLjUxIDIuMTgzLjk5NSAzLjM2NmMxLjU2IDEuMjI2IDguNjQyLTEuODk1IDMuOTY3LTcuNzg1LTIuMzY3LTIuNDc3LTYuNS0zLjIyNi05LjMzIDAtNS4yMDggNS45MzYgMCAxNy41MSAxMS42MSAxMy43MyAxMi40NTgtNi4yNTcgNS42MzMtMjEuNjU2LTUuMDczLTIyLjY1NC02LjYwMi0uNjA2LTE0LjA0MyAxLjc1Ni0xNi4xNTcgMTAuMjY4LTEuNzE4IDYuOTIgMS41ODQgMTcuMzg3IDEyLjQ1IDIwLjQ3NiAxMC44NjYgMy4wOSAxOS4zMzEtNC4zMSAxOS4zMzEtNC4zMSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuMjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz48L3N2Zz4=');
+            opacity: 0.1;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+
+        #chat-input {
+            background: #f4f7f9;
+            width: 100%;
+            position: relative;
+            height: 47px;
+            padding-top: 10px;
+            padding-right: 50px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            border: none;
+            resize: none;
+            outline: none;
+            border: 1px solid #ccc;
+            color: #888;
+            border-top: none;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            overflow: hidden;
+        }
+
+        .chat-input > form {
+            margin-bottom: 0;
+        }
+
+        #chat-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #ccc;
+        }
+
+        #chat-input::-moz-placeholder { /* Firefox 19+ */
+            color: #ccc;
+        }
+
+        #chat-input:-ms-input-placeholder { /* IE 10+ */
+            color: #ccc;
+        }
+
+        #chat-input:-moz-placeholder { /* Firefox 18- */
+            color: #ccc;
+        }
+
+        .chat-submit {
+            position: absolute;
+            bottom: 3px;
+            right: 10px;
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            border-radius: 50%;
+            color: #5A5EB9;
+            width: 35px;
+            height: 35px;
+        }
+
+        .chat-logs {
+            padding: 15px;
+            max-height: 50vh;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .chat-logs::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+
+        .chat-logs::-webkit-scrollbar {
+            width: 5px;
+            background-color: #F5F5F5;
+        }
+
+        .chat-logs::-webkit-scrollbar-thumb {
+            background-color: #5A5EB9;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            color: #000;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        nav a {
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
         }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+        .btn {
+            background-color: #ff6600;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
         footer {
             background-color: #333;
-            color: white;
+            color: #f0f0f0;
             text-align: center;
-            padding: 20px;
-            margin-top: 50px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
 
         /* Styles pour l'icône d'alerte et l'animation */
@@ -150,9 +395,6 @@
             100% { transform: scale(1); }
         }
 
-        .pulse {
-            animation: pulse 0.5s ease-in-out;
-        }
         /* Style pour l'icône du panier */
         .fa-shopping-cart {
             margin-right: 8px;
@@ -188,6 +430,7 @@
             transform: translateX(0);
         }
 
+
     </style>
 </head>
 <body>
@@ -195,7 +438,6 @@
     <div class="logo">CodeLab CinéAventure Devoxx 2025</div>
     <p>Les meilleurs films d'aventure du moment à portée de clic !</p>
 </header>
-
 <nav>
     <ul>
         <li><a href="#">Accueil</a></li>
@@ -205,7 +447,6 @@
         <li><a href="#">Contact</a></li>
     </ul>
 </nav>
-
 <!-- Notification qui apparaîtra lors de l'inscription aux alertes -->
 <div id="notification" class="notification">
     <i class="fas fa-check-circle"></i> Vous êtes bien inscrit aux alertes !
@@ -214,22 +455,10 @@
     <i class="fas fa-check-circle"></i> Produit ajouté au panier !
 </div>
 
-
+<!-- films d'aventure -->
 <div class="container">
     <h2>Films à l'affiche</h2>
     <div class="films-grid">
-        <div class="film-card">
-            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BMzQ5YmQ5ZmUtOGY1OC00ZjgzLWE1NmQtNmM5YjQ2MzNhYzQ1XkEyXkFqcGc@._V1_QL75_UY311_CR9,0,210,311_.jpg');"></div>
-            <div class="film-info">
-                <div class="film-title">Mickey 17</div>
-                <div class="film-year">2025</div>
-                <div class="film-rating">★★★★☆ 7.1/10</div>
-                <p>Mickey 17, connu comme un "prescriptible", entreprend un voyage dangereux pour coloniser une planète de glace.</p>
-                <div class="film-price">24,99 €</div>
-                <a href="#" class="btn">Précommander</a>
-            </div>
-        </div>
-
         <div class="film-card">
             <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BZDcwNzg2ZTEtYzBkZC00NWRmLTg2ZWEtODljZmY2MjVkZGYwXkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
             <div class="film-info">
@@ -239,54 +468,6 @@
                 <p>Paul Atreides s'unit aux Fremen dans sa quête de vengeance contre les conspirateurs qui ont détruit sa famille.</p>
                 <div class="film-price">19,99 €</div>
                 <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
-            </div>
-        </div>
-
-        <div class="film-card">
-            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNmJlZGIzMjEtZWE0NS00NTAxLWIyNGItNjYzYzhjMmI3ZWVmXkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
-            <div class="film-info">
-                <div class="film-title">Gladiator II</div>
-                <div class="film-year">2024</div>
-                <div class="film-rating">★★★★☆ 6.6/10</div>
-                <p>Après la conquête de sa patrie par les empereurs tyranniques qui dirigent maintenant Rome, Lucius est forcé d'entrer dans le Colisée.</p>
-                <div class="film-price">21,99 €</div>
-                <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
-            </div>
-        </div>
-
-        <div class="film-card">
-            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BYWNiMmNiMjQtNTU0Ny00YWQ1LTk2NzAtN2RkMGUzNGEwM2M1XkEyXkFqcGc@._V1_QL75_UY311_CR9,0,210,311_.jpg');"></div>
-            <div class="film-info">
-                <div class="film-title">Furiosa: A Mad Max Saga</div>
-                <div class="film-year">2024</div>
-                <div class="film-rating">★★★★☆ 7.5/10</div>
-                <p>L'histoire d'origine de la guerrière renégate Furiosa avant sa rencontre avec Mad Max.</p>
-                <div class="film-price">22,99 €</div>
-                <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
-            </div>
-        </div>
-
-        <div class="film-card">
-            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BZjBkOTFiNjgtY2Q1NS00OTA2LWE0YTktMzQ0MzMzMzZhNDg4XkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
-            <div class="film-info">
-                <div class="film-title">A Minecraft Movie</div>
-                <div class="film-year">2025</div>
-                <div class="film-rating">Pas encore noté</div>
-                <p>Quatre inadaptés sont soudainement aspirés à travers un portail mystérieux dans un monde cubique bizarre qui prospère grâce à l'imagination.</p>
-                <div class="film-price">23,99 €</div>
-                <a href="#" class="btn">Précommander</a>
-            </div>
-        </div>
-
-        <div class="film-card">
-            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNWNlNTVkMWEtMDkxNC00YTJhLTllOTMtN2FlN2M0YTViMjg0XkEyXkFqcGc@._V1_QL75_UY311_CR19,0,210,311_.jpg');"></div>
-            <div class="film-info">
-                <div class="film-title">Snow White</div>
-                <div class="film-year">2025</div>
-                <div class="film-rating">Pas encore noté</div>
-                <p>Une princesse s'allie à sept nains pour libérer son royaume de sa cruelle belle-mère, la Méchante Reine.</p>
-                <div class="film-price">22,99 €</div>
-                <a href="#" class="btn">Précommander</a>
             </div>
         </div>
 
@@ -303,6 +484,30 @@
         </div>
 
         <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BMzQ5YmQ5ZmUtOGY1OC00ZjgzLWE1NmQtNmM5YjQ2MzNhYzQ1XkEyXkFqcGc@._V1_QL75_UY311_CR9,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Mickey 17</div>
+                <div class="film-year">2025</div>
+                <div class="film-rating">★★★★☆ 7.1/10</div>
+                <p>Mickey 17, connu comme un "prescriptible", entreprend un voyage dangereux pour coloniser une planète de glace.</p>
+                <div class="film-price">24,99 €</div>
+                <a href="#" class="btn">Précommander</a>
+            </div>
+        </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNmJlZGIzMjEtZWE0NS00NTAxLWIyNGItNjYzYzhjMmI3ZWVmXkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">Gladiator II</div>
+                <div class="film-year">2024</div>
+                <div class="film-rating">★★★★☆ 6.6/10</div>
+                <p>Après la conquête de sa patrie par les empereurs tyranniques qui dirigent maintenant Rome, Lucius est forcé d'entrer dans le Colisée.</p>
+                <div class="film-price">21,99 €</div>
+                <a href="#" class="btn cart-btn"><i class="fas fa-shopping-cart"></i> Ajouter au panier</a>
+            </div>
+        </div>
+
+        <div class="film-card">
             <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BNTNlNjZlNTUtMjc3YS00OWU1LTk5NDQtMWQ1MzNkOWU5YWYyXkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
             <div class="film-info">
                 <div class="film-title">Captain America: Brave New World</div>
@@ -313,6 +518,21 @@
                 <a href="#" class="btn">Précommander</a>
             </div>
         </div>
+
+        <div class="film-card">
+            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BZjBkOTFiNjgtY2Q1NS00OTA2LWE0YTktMzQ0MzMzMzZhNDg4XkEyXkFqcGc@._V1_QL75_UX210_CR0,0,210,311_.jpg');"></div>
+            <div class="film-info">
+                <div class="film-title">A Minecraft Movie</div>
+                <div class="film-year">2025</div>
+                <div class="film-rating">Pas encore noté</div>
+                <p>Quatre inadaptés sont soudainement aspirés à travers un portail mystérieux dans un monde cubique bizarre qui prospère grâce à l'imagination.</p>
+                <div class="film-price">23,99 €</div>
+                <a href="#" class="btn">Précommander</a>
+            </div>
+        </div>
+
+
+
     </div>
 
     <h2>Prochainement</h2>
@@ -341,43 +561,18 @@
             </div>
         </div>
     </div>
-
-    <h2>Classiques intemporels</h2>
-    <div class="films-grid">
-        <div class="film-card">
-            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BMDliMmNhNDEtODUyOS00MjNlLTgxODEtN2U3NzIxMGVkZTA1L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg');"></div>
-            <div class="film-info">
-                <div class="film-title">Gladiator</div>
-                <div class="film-year">2000</div>
-                <div class="film-rating">★★★★★ 8.5/10</div>
-                <p>Un ancien général romain cherche à se venger de l'empereur corrompu qui a assassiné sa famille et l'a envoyé en esclavage.</p>
-                <div class="film-price">14,99 €</div>
-                <a href="#" class="btn">Ajouter au panier</a>
-            </div>
-        </div>
-
-        <div class="film-card">
-            <div class="film-image" style="background-image: url('https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg');"></div>
-            <div class="film-info">
-                <div class="film-title">Interstellar</div>
-                <div class="film-year">2014</div>
-                <div class="film-rating">★★★★★ 8.7/10</div>
-                <p>Lorsque la Terre devient inhabitable dans le futur, un agriculteur et ancien pilote de la NASA, Joseph Cooper, est chargé de piloter un vaisseau spatial avec une équipe de chercheurs pour trouver une nouvelle planète pour l'humanité.</p>
-                <div class="film-price">16,99 €</div>
-                <a href="#" class="btn">Ajouter au panier</a>
-            </div>
-        </div>
-    </div>
 </div>
+
 <!-- chatbot -->
 <div id="chat-circle" class="btn btn-raised">
     <div id="chat-overlay"></div>
     <img src="https://doc.tock.ai/fr/images/botchat.png"/>
 </div>
+
 <div class="chat-box">
     <div class="chat-box-header">
         Parlons un peu de Tock...
-        <span class="chat-box-toggle"><span class="icon fa-window-close"></span></span>
+        <span class="chat-box-toggle"><span class="fa fa-window-close"></span></span>
     </div>
     <div class="chat-box-body">
         <div class="chat-box-overlay">
@@ -385,14 +580,18 @@
 
         <div class="chat-logs">
             <div id="chat"></div>
-            <div class="welcome">Bonjour je suis votre conseiller de la boutique HalloweenShop 😈<br>Une question ? Comment puis-je vous aider ?</div>
+            <div class="welcome">Bonjour je suis votre conseiller de la boutique CodeLab CinéAventure Devoxx 2025 🤠<br>Une question ? Comment puis-je vous aider ?</div>
         </div>
     </div>
 </div>
+
 <footer>
+    <p>A la recherche du RAG perdu 🤠🧭🤖 : créez votre IA Générative sans Internet</p>
     <p>Les images et descriptions de films sont utilisées à des fins illustratives uniquement. Les textes ont été générés par LLM.</p>
 </footer>
+<!-- Scripts -->
 <script src="https://doc.tock.ai/fr/assets/js/jquery.min.js"></script>
+<!-- bot -->
 <script>
 
     TockReact.renderChat(document.getElementById('chat'), tockApiUrl, '', {
@@ -403,7 +602,7 @@
             },
             background: {
                 card: 'white',
-                bot: 'rgba(252,170,62,0.34)',
+                bot: 'rgba(165, 228, 218, 0.58) none repeat scroll 0% 0%;',
             },
         },
         sizing: {
@@ -468,31 +667,6 @@
                 $("#chat-input").val('');
             }
             $(".chat-logs").stop().animate({scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
-        }
-
-        function generate_button_message(msg, buttons) {
-            INDEX++;
-            var btn_obj = buttons.map(function (button) {
-                return "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\"" + button.value + "\">" + button.name + "<\/a><\/li>";
-            }).join('');
-            var str = "";
-            str += "<div id='cm-msg-" + INDEX + "' class=\"chat-msg user\">";
-            str += "          <span class=\"msg-avatar\">";
-            str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
-            str += "          <\/span>";
-            str += "          <div class=\"cm-msg-text\">";
-            str += msg;
-            str += "          <\/div>";
-            str += "          <div class=\"cm-msg-button\">";
-            str += "            <ul>";
-            str += btn_obj;
-            str += "            <\/ul>";
-            str += "          <\/div>";
-            str += "        <\/div>";
-            $(".chat-logs").append(str);
-            $("#cm-msg-" + INDEX).hide().fadeIn(300);
-            $(".chat-logs").stop().animate({scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
-            $("#chat-input").attr("disabled", true);
         }
 
         $(document).delegate(".chat-btn", "click", function () {
@@ -581,6 +755,33 @@ cartButtons.forEach(button => {
         setTimeout(() => {
             cartNotification.classList.remove('show');
         }, 3000);
+    });
+});
+</script>
+<script>$(function () {
+    // Variable pour suivre l'état du chat
+    let chatOpen = false;
+
+    // Fonction pour ouvrir/fermer le chat
+    function toggleChat() {
+        if (chatOpen) {
+            $(".chat-box").hide();
+            $("#chat-circle").show();
+        } else {
+            $(".chat-box").show();
+            $("#chat-circle").hide();
+        }
+        chatOpen = !chatOpen;
+    }
+
+    // Événement pour le bouton du chat
+    $("#chat-circle").click(function() {
+        toggleChat();
+    });
+
+    // Événement pour le bouton de fermeture
+    $(".chat-box-toggle").click(function() {
+        toggleChat();
     });
 });
 </script>
