@@ -92,14 +92,15 @@
 
 ## Lecture académique
 
-| Titre                                                             | Type                                       | Auteur(s)                                             | Lien                                                                                        |
-|-------------------------------------------------------------------|--------------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| Attention Is All You Need                                         | Article scientifique (arXiv)               | Vaswani et al.                                        | https://arxiv.org/abs/1706.03762                                                            |
-| ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs | Article scientifique (arXiv)               | -                                                     | https://arxiv.org/abs/2402.11753                                                            |
-| Awesome LLMs Evaluation Papers                                    | Dépôt GitHub                               | tjunlp-lab                                            | https://github.com/tjunlp-lab/Awesome-LLMs-Evaluation-Papers                                |
-| Awesome hallucination detection                                   | Dépôt GitHub                               | EdinburghNLP                                          | https://github.com/EdinburghNLP/awesome-hallucination-detection                             |
-| LLM for Recommendation Systems                                    | Dépôt GitHub                               | WLiK                                                  | https://github.com/WLiK/LLM4Rec-Awesome-Papers                                              |
-| The Value of Open Source Software                                 | Harvard Business School                    | Manuel Hoffmann, Frank Nagle, Yanuo Zhou              | https://www.hbs.edu/ris/Publication%20Files/24-038_51f8444f-502c-4139-8bf2-56eb4b65c58a.pdf |
+| Titre                                                             | Type                         | Auteur(s)                                | Lien                                                                                        |
+|-------------------------------------------------------------------|------------------------------|------------------------------------------|---------------------------------------------------------------------------------------------|
+| Attention Is All You Need                                         | Article scientifique (arXiv) | Vaswani et al.                           | https://arxiv.org/abs/1706.03762                                                            |
+| ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs | Article scientifique (arXiv) | -                                        | https://arxiv.org/abs/2402.11753                                                            |
+| Awesome LLMs Evaluation Papers                                    | Dépôt GitHub                 | tjunlp-lab                               | https://github.com/tjunlp-lab/Awesome-LLMs-Evaluation-Papers                                |
+| Awesome hallucination detection                                   | Dépôt GitHub                 | EdinburghNLP                             | https://github.com/EdinburghNLP/awesome-hallucination-detection                             |
+| LLM for Recommendation Systems                                    | Dépôt GitHub                 | WLiK                                     | https://github.com/WLiK/LLM4Rec-Awesome-Papers                                              |
+| The Value of Open Source Software                                 | Harvard Business School      | Manuel Hoffmann, Frank Nagle, Yanuo Zhou | https://www.hbs.edu/ris/Publication%20Files/24-038_51f8444f-502c-4139-8bf2-56eb4b65c58a.pdf |
+| Les LLMs pour les nuls                                            | cnrs                         | Olga Seminck                             | https://mate-shs.cnrs.fr/wp-content/uploads/2025/01/Les_LLMs_pour_les_nuls_mateSHS.pdf      |
 
 ## Cours
 
