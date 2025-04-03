@@ -468,6 +468,9 @@ Le projet suivant est un projet sur github qui permet de faire du round-robbin d
 Client <---->   Privoxy <-> HAproxy <-> Tor Proxy 2
                                     <-> Tor Proxy n
 ```
+source: https://github.com/pi-2r/round-robin-tor-proxy/
+
+⚠️ Attention à ne pas lancer l'image Docker quand vous êtes sur votre réseau d'entreprise.
 
 # Limites des proxys gratuits
 
