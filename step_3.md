@@ -12,7 +12,7 @@ Objectifs:
 ## Sommaire
 
 - [Introduction](#introduction)
-  - [Qu'est-ce que le LLM ?](#quest-ce-que-le-llm)  
+  - [LLM et modèles de fondation](#llm-et-modeles-de-fondation)
 
 
 - [Lancer les services gen-ai](#lancer-les-services-gen-ai)
@@ -44,7 +44,8 @@ Objectifs:
 
 Cette introduction a pour objectif d’expliquer la notion de LLM.
 
-### Qu'est-ce que le LLM
+## LLM et modèles de fondation
+
 Un modèle de langage à grande échelle (LLM, pour Large Language Model) est conçu pour comprendre et générer du texte en
 utilisant un vaste ensemble de données d'apprentissage. Cette approche permet d'imiter le langage humain de 
 manière convaincante et d'effectuer une variété de tâches liées au texte, telles que répondre à des questions, 
