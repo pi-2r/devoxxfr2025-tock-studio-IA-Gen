@@ -66,7 +66,7 @@ Connectez-vous en filaire idéalement ou en wifi :
 
 Commencez par cloner ce repository :
 ```bash
-git clone https://github.com/pi-2r/devfest2024-tock-studio-IA-Gen.git
+git clone https://github.com/pi-2r/devoxxfr2025-tock-studio-IA-Gen.git
 cd devoxx2025-tock-studio-IA-Gen
 ```
 
@@ -184,7 +184,7 @@ N'hésitez pas à arrêter la stack docker et supprimer les ressources créés :
 ```bash
 cd docker
 source .env
-docker compose -p devfest_tock down -v
+docker compose -p devoxx_tock down -v
 ```
 
  
