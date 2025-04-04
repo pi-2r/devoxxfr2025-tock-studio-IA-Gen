@@ -192,7 +192,7 @@ Exécution du script via l'image de tooling a la racine du dossier de cet atelie
 # Sourcer vos variables d'environnement
 source docker/.env
 # Lancer le conteneur de tooling pour exécuter le script
-docker run --rm -it \
+docker run --name tooling_tock --rm -it \
     -v "$(pwd)/data":/app/data \
     -e NO_PROXY="host.docker.internal,ollama-server,postgres-db,localhost" \
     -e no_proxy="host.docker.internal,ollama-server,postgres-db,localhost" \
@@ -210,6 +210,10 @@ python /app/data/scripts/transform_horror_movie.py
 # Vérifiez le contenu du CSV filtré
 head data/documents_csv/filtered_horror_movies.csv -n 2
 ```
+
+Vous devriez avoir ce type de résultat :
+
+<img src="img/tooling_result.png" alt="tooling result">
 
 ## Ingestion avec le tooling
 
@@ -247,7 +251,7 @@ Si besoin ajustez les variables d'environnement `TOCK_BOT_ID` / `TOCK_BOT_NAMESP
 # Sourcer vos variables d'environnement
 source docker/.env
 # Lancer un shell dans l'image de tooling en mode interactif
-docker run --rm -it \
+docker run --name tooling_tock --rm -it \
     -v "$(pwd)/data":/app/data \
     -e NO_PROXY="host.docker.internal,ollama-server,postgres-db,localhost" \
     -e no_proxy="host.docker.internal,ollama-server,postgres-db,localhost" \
@@ -259,7 +263,7 @@ docker run --rm -it \
 
 ```bash
 # A l'intérieur du shell de l'image
-export TOCK_BOT_ID=devfest2024
+export TOCK_BOT_ID=devoxx2025
 export TOCK_BOT_NAMESPACE=app
 export EMBEDDING_JSON_CONFIGURATION=/app/data/configurations/embeddings_ollama_settings.json
 python tock-llm-indexing-tools/index_documents.py data/documents_csv/filtered_horror_movies.csv $TOCK_BOT_NAMESPACE $TOCK_BOT_ID $EMBEDDING_JSON_CONFIGURATION data/configurations/vector_store_pgvector_settings.json 5000 -v
