@@ -85,6 +85,14 @@ source .env
 docker compose -p devoxx_tock up -d
 ```
 
+Vous devriez avoir ce rendu depuis la console :
+
+<img src="img/gen_ai_docker_compose_devoxx_2025.png" alt="gen ai docker compose">
+
+Si vous tout est bon, en vous rendant sur cette page: http://localhost:8000/docs, vous devriez avoir cette page Swagger
+
+<img src="img/swagger_gen_ai_orchestrator.png" alt="swagger">
+
 ## Installer Ollama
 
 Pour installer Ollama, vous devez aller sur le lien suivant : https://ollama.com/ et suivre les instructions pour télécharger Ollama sur votre machine. Une fois que cela est fait, dézipper le fichier et installer le programme sur votre machine. A la fin de l’installation Ollama vous conseil d’installer un model sur votre machine. Ce modèle fait plus de 6Go, et nous n’allons pas en avoir besoin. Il faut donc décliner le téléchargement de ce modèle.
@@ -249,7 +257,7 @@ que vous souhaitez utiliser.
 <img src="img/gen-ai-settings-sentence-generation.png" alt="exemple de configuration avec Azure OpenAI">
 
 ## Générer des phrases d'entraînement
-Pour tester si Langfuse est bien connecté avec Tock Studio, allez dans **Stories & Answers** > **FAQs stories**. 
+Pour vérifier que l'IA générative est bien configurée, allez dans **Stories & Answers** > **FAQs stories**. 
 Là, vous allez cliquer sur **+ NEW FAQ STORY**.
 
 <img src="img/new-faq-with-IA.png" alt="new faq story">
