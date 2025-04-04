@@ -187,7 +187,7 @@ df_filtered.to_csv('data/documents_csv/filtered_horror_movies.csv', index=False,
 
 ```
 
-Exécution du script via l'image de tooling :
+Exécution du script via l'image de tooling a la racine du dossier de cet atelier :
 ```bash
 # Sourcer vos variables d'environnement
 source docker/.env
