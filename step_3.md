@@ -127,6 +127,14 @@ ollama pull tinyllama
 ollama pull nomic-embed-text
 ```
 
+Si vous souhaitez en savoir plus sur les modèles, c'est par ici :
+
+| Modèle            | Lien                                                                                          |
+|-------------------|-----------------------------------------------------------------------------------------------|
+| tinyllama         | [https://ollama.com/library/tinyllama](https://ollama.com/library/tinyllama)                  |
+| nomic-embed-text  | [https://ollama.com/library/nomic-embed-text](https://ollama.com/library/nomic-embed-text)    |
+
+
 ### Tester avec un petit prompt
 
 ```bash
