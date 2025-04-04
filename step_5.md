@@ -74,8 +74,10 @@ Cette fonctionnalité permettra à TOCK de générer une réponse à une requêt
 - Le prompt est le script qui détermine la personnalité du Bot, le contexte dans lequel il doit répondre, la façon dont il doit s’adresser à l’utilisateur, les recommandations ou instructions de réponses, les styles et formats de réponses.
 
 ### Configurer Ollama pour LLM Engine
-Pour connecter ollama à Tock studio, il vous faut renseigner l’accès à Ollama via cette url d’accès (**BaseUrl**) : http://ollama-server:11434. 
+Pour connecter ollama à Tock studio, il vous faut renseigner l’accès à Ollama via cette url d’accès (**BaseUrl**) : http://ollama-server:11434.. 
 Pour le modèle (**Model**), là c’est à vous de renseigner le nom du modèle que vous utilisez dans ce CodeLab (ici nous avons tinyllama). Enfin pour la température, vous pouvez laisser la valeur par défaut à 0.7.
+
+⚠️ Si Ollama est lancé en local depuis votre ordinateur vous devez changer la valeur de base url de défaut par "http://host.docker.internal:11434"
 
 <img src="img/rag-settings-example-ollama.png" alt="rag settings ollama">
 
@@ -107,6 +109,7 @@ Pour connecter ollama à Tock studio sur la partie embedding, il vous faut rense
 Pour le modèle (**Model**), là c’est à vous de renseigner le nom du modèle que vous utilisez dans ce CodeLab 
 (ici nous avons **nomic-embed-text**).
 
+⚠️ Si Ollama est lancé en local depuis votre ordinateur vous devez changer la valeur de base url de défaut par "http://host.docker.internal:11434"
 
 <img src="img/embedding-ollama-setting.png" alt="embedding ollama">
 
