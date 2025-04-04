@@ -234,6 +234,8 @@ Cette vectorisation intervient à 2 endroit, pour ingérer la base documentaire 
 La configuration est sous format json situé dans `data/configurations/embeddings_ollama_settings.json`, ce fichier contient le nom du modèle d'embedding ollama utilisé et l'emplacement du serveur ollama (vu du conteneur auquel nous fournirons un extra-host `ollama-server` qui pointe vers le bon serveur).
 Vous n'avez pas besoin de le modifier sauf si utilisez un modèle ollama d'emebdding différent.
 
+> ⚠️ Si Ollama est lancé en local depuis votre ordinateur vous devez changer la valeur de base url de défaut par "http://host.docker.internal:11434"
+
 #### Configuration avec OpenAI ou Azure OpenAI
 
 Vous pouvez utiliser un des modèles fourni par OpenAI ou Azure OpenAI comme modèle d'embedding dans ce cas inspirez vous configuration présentes ici : [tock-llm-indexing-tools
@@ -268,6 +270,7 @@ export TOCK_BOT_NAMESPACE=app
 export EMBEDDING_JSON_CONFIGURATION=/app/data/configurations/embeddings_ollama_settings.json
 python tock-llm-indexing-tools/index_documents.py data/documents_csv/filtered_horror_movies.csv $TOCK_BOT_NAMESPACE $TOCK_BOT_ID $EMBEDDING_JSON_CONFIGURATION data/configurations/vector_store_pgvector_settings.json 5000 -v
 ```
+
 
 Chaque ingestion d'un ensemble documentaire est associée à un ID de session d'indexation, nous allons le renseigner dans la configuration de TOCK. Ces sessions sont utilent en production pour revenir en arrière en cas de défaut d'ingestion.
 
