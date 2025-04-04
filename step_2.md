@@ -157,14 +157,14 @@ A ce stade, nous vous proposons donc de désactiver votre FAQ. Retournez dans
 
 ## Ressources
 
-| Information                                                                   | Lien |
-|-------------------------------------------------------------------------------|------|
-| Tock                                                                          | [https://doc.tock.ai/tock/](https://doc.tock.ai/tock/) |
-| NLP (ou TALN en Français)                                                     | [https://fr.wikipedia.org/wiki/Traitement_automatique_des_langues](https://fr.wikipedia.org/wiki/Traitement_automatique_des_langues) |
-| Apache OpenNLP                                                                | [https://opennlp.apache.org/](https://opennlp.apache.org/) |
-| Stanford CoreNLP                                                              | [https://stanfordnlp.github.io/CoreNLP/](https://stanfordnlp.github.io/CoreNLP/) |
-| Facebook Duckling                                                             | [https://github.com/facebook/duckling](https://github.com/facebook/duckling) |
-| Comment les I.A. font-elles pour comprendre notre langue ? (ScienceEtonnante) | [https://www.youtube.com/watch?v=CsQNF9s78Nc](https://www.youtube.com/watch?v=CsQNF9s78Nc) |
+| Information                                                                   | Lien                                                                                                                                  |
+|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| Tock                                                                          | [https://doc.tock.ai/tock/](https://doc.tock.ai/tock/)                                                                                |
+| NLP (ou TALN en Français)                                                     | [https://fr.wikipedia.org/wiki/Traitement_automatique_des_langues](https://fr.wikipedia.org/wiki/Traitement_automatique_des_langues)  |
+| Apache OpenNLP                                                                | [https://opennlp.apache.org/](https://opennlp.apache.org/)                                                                            |
+| Stanford CoreNLP                                                              | [https://stanfordnlp.github.io/CoreNLP/](https://stanfordnlp.github.io/CoreNLP/)                                                      |
+| Facebook Duckling                                                             | [https://github.com/facebook/duckling](https://github.com/facebook/duckling)                                                          |
+| Comment les I.A. font-elles pour comprendre notre langue ? (ScienceEtonnante) | [https://www.youtube.com/watch?v=CsQNF9s78Nc](https://www.youtube.com/watch?v=CsQNF9s78Nc)                                            |
 
 
 ## Étape suivante
