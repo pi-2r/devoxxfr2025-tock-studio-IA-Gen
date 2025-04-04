@@ -1,0 +1,5 @@
+{
+    "provider": "Ollama",
+    "model": "nomic-embed-text",
+    "base_url": "http://ollama-server:11434"
+}

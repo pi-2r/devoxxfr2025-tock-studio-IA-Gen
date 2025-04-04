@@ -1,0 +1,11 @@
+{
+    "provider": "PGVector",
+    "host": "postgres-db",
+    "port": 5433,
+    "username": "postgres",
+    "password": {
+        "type": "Raw",
+        "value": "ChangeMe"
+    },
+    "database": "postgres"
+}

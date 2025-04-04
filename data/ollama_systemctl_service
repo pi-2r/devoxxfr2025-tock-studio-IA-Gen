@@ -1,0 +1,16 @@
+[sudo] Mot de passe de Benjamin.Bernard : 
+[Unit]
+Description=Ollama Service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+Environment="PATH=/home/Benjamin.Bernard/.pyenv/shims:/home/Benjamin.Bernard/.pyenv/bin:/home/Benjamin.Bernard/.nvm/versions/node/v18.13.0/bin:/home/Benjamin.Bernard/.rvm/gems/ruby-3.3.4/bin:/home/Benjamin.Bernard/.rvm/gems/ruby-3.3.4@global/bin:/home/Benjamin.Bernard/.rvm/rubies/ruby-3.3.4/bin:/home/Benjamin.Bernard/.cargo/bin:/home/Benjamin.Bernard/bin:/home/Benjamin.Bernard/.local/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/Benjamin.Bernard/.rvm/bin:~/bin/:/home/Benjamin.Bernard/.docker/cli-plugins/:/home/Benjamin.Bernard/Documents/Apps/aws/venv/bin:/home/Benjamin.Bernard/Documents/Apps/yq:/home/Benjamin.Bernard/Documents/Apps/ngrok://home/Benjamin.Bernard/.local/bin:/home/Benjamin.Bernard/Documents/Apps/sonar/sonar-scanner-5.0.1.3006-linux/bin:/home/Benjamin.Bernard/.pyenv/bin:/home/Benjamin.Bernard/.rvm/bin"
+Environment="OLLAMA_HOST=0.0.0.0:11434"
+
+[Install]
+WantedBy=default.target

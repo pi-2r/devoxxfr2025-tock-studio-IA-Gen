@@ -47,13 +47,19 @@ dans un coin de votre domicile mais dans une base de données dite vectorielle.
 L'extraction d'information utilise une technique de découpage (embedding) pour placer les idées dans la base de 
 données vectorielle (une base de données avec des coins).
 
-Plus les idées sont proches, plus elles sont proches dans la base de données vectorielle.
+Plus les idées sont similaires, plus elles sont proches dans la base de données vectorielle.
 
 <img src="img/vector_database.png" alt="base de données vectorielles">
 
-On a évoqué les livres, mais cela fonctionne parfaitement avec vos documents numérique tel que des articles, des pages web, des documents PDF, des fichiers texte, des bases de données, etc.
+On a évoqué les livres, mais cela fonctionne parfaitement avec vos documents numérique tel que des articles, des pages 
+web, des documents PDF, des fichiers texte, des bases de données, etc.
 
-Dés lors, le RAG (Retrieving augmented Generation) est une méthode qui permet de répondre (formulé par une IA ou LLM) à une question en se basant sur une base de connaissances, placées dans une base de données vectorielle.
+Dès lors, le **RAG** (**R**etrieving **A**ugmented **G**eneration) est une méthode qui combine la récupération 
+d'informations (**retrieval**) avec la génération de texte par une intelligence artificielle (**IA**) ou un 
+modèle de langage (**LLM**).
+
+Cette technique permet à l'IA de répondre à des questions en s'appuyant sur une base de connaissances externe, 
+généralement stockée dans une base de données vectorielle.
 
 
 ## Trouver un data set sur kaggle
