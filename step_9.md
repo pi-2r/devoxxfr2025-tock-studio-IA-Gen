@@ -158,19 +158,19 @@ class ImdbSpider(scrapy.Spider):
     # Fonction pour extraire toutes les informations d'un film
     try:
       title = self.remove_number_before_dot(self.extract_title(film, index))
-      url = self.extract_url(film, index)
+      url =  self.extract_url(film, index)
       year = self.extract_year(film, index)
       time = self.extract_duration(film, index)
       resume = self.extract_summary(film, index)
       score = self.extract_score(film, index)
 
       item = {
-        'titre': title,
-        'annee_sortie': year,
-        'duree': time,
+        'title': title,
+        'year': year,
+        'time': time,
         'resume': resume,
         'metascore': score,
-        'lien': url,
+        'url': url,
       }
       self.logger.info(f"Film traité : {item}")
       return item
@@ -188,7 +188,7 @@ class ImdbSpider(scrapy.Spider):
     # Extraction de l'URL de la page détaillée du film
     a_element = film.css(f'li.ipc-metadata-list-summary-item:nth-child({index}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(3)').get()
     selector = scrapy.Selector(text=a_element)
-    return "https://www.imdb.com" + selector.css('a::attr(href)').get()
+    return "https://www.imdb.com" + selector.css('a::attr(href)').get().split('/?')[0]
 
   def extract_year(self, film, index):
     # Extraction de l'année de sortie du film
@@ -210,7 +210,7 @@ class ImdbSpider(scrapy.Spider):
 
   def extract_score(self, film, index):
     # Extraction du score du film
-    span_text = film.css(f'li.ipc-metadata-list-summary-item:nth-child({index}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > span:nth-child(3) > span:nth-child(2) > span:nth-child(1)').get()
+    span_text = film.css(f'li.ipc-metadata-list-summary-item:nth-child({index}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(4) > span:nth-child(1)').get()
     selector = scrapy.Selector(text=span_text)
     return selector.xpath('.//text()').get().strip()
 
@@ -218,6 +218,18 @@ class ImdbSpider(scrapy.Spider):
   def remove_number_before_dot(self, text):
     # Supprime le numéro de classement (ex: "1. ") au début du titre
     return re.sub(r'^\d+\.\s', '', text)
+
+  def escape_csv_field(self, text):
+    # Échapper correctement les champs pour le format CSV
+    if text is None:
+      return ""
+    # Remplacer les guillemets par des doubles guillemets
+    text = text.replace('"', '""')
+    # Si le texte contient des virgules, des guillemets ou des sauts de ligne, l'entourer de guillemets
+    if ',' in text or '"' in text or '\n' in text or '\r' in text:
+      text = f'"{text}"'
+    return text
+
 ```
 
 Configurer le pipeline pour exporter en CSV : Dans le fichier `settings.py`, ajoutez ou modifiez la ligne suivante pour exporter les données en CSV:
@@ -283,7 +295,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
   ]
 
   def __init__(self, *args, **kwargs):
-    super(ImdbSpider, self).__init__(*args, **kwargs)
+    super(ImdbSpiderSelenium, self).__init__(*args, **kwargs)
     # Configuration du webdriver
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
@@ -303,7 +315,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
     time.sleep(5)
 
     # Nombre de fois à cliquer sur "50 en plus"
-    click_count = 5
+    click_count = 100
 
     # XPath exact du bouton fourni par l'utilisateur
     button_xpath = "/html/body/div[2]/main/div[2]/div[3]/section/section/div/section/section/div[2]/div/section/div[2]/div[2]/div[2]/div/span/button"
@@ -397,7 +409,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
         # Supprimer les numéros au début (ex: "1. Film Title")
         title = re.sub(r'^\d+\.\s*', '', title)
 
-      url = film.css('a.ipc-title-link-wrapper::attr(href)').get()
+      url = film.css('a.ipc-title-link-wrapper::attr(href)').get().split('/?')[0]
       if url:
         url = "https://www.imdb.com" + url
 
@@ -415,12 +427,12 @@ class ImdbSpiderSelenium(scrapy.Spider):
         score = score.strip()
 
       item = {
-        'titre': title,
-        'annee_sortie': year,
-        'duree': time,
+        'title': title,
+        'year': year,
+        'time': time,
         'resume': resume,
         'metascore': score,
-        'lien': url,
+        'url': url,
       }
       return item
     except Exception as e:
@@ -430,6 +442,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
   def closed(self, reason):
     # Fermer le navigateur à la fin
     self.driver.quit()
+
 ```
 Avant d'exécuter le spider, prenez le temps de lire le code et de comprendre les différentes étapes. Dés que cela est fait
 exécutez le Spider en utilisant la commande suivante :

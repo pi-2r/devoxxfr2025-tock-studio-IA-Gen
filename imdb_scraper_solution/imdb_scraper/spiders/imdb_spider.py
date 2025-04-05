@@ -38,12 +38,12 @@ class ImdbSpider(scrapy.Spider):
             score = self.extract_score(film, index)
 
             item = {
-                'titre': title,
-                'annee_sortie': year,
-                'duree': time,
+                'title': title,
+                'year': year,
+                'time': time,
                 'resume': resume,
                 'metascore': score,
-                'lien': url,
+                'url': url,
             }
             self.logger.info(f"Film traité : {item}")
             return item
@@ -61,7 +61,7 @@ class ImdbSpider(scrapy.Spider):
         # Extraction de l'URL de la page détaillée du film
         a_element = film.css(f'li.ipc-metadata-list-summary-item:nth-child({index}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(3)').get()
         selector = scrapy.Selector(text=a_element)
-        return "https://www.imdb.com" + selector.css('a::attr(href)').get()
+        return "https://www.imdb.com" + selector.css('a::attr(href)').get().split('/?')[0]
 
     def extract_year(self, film, index):
         # Extraction de l'année de sortie du film

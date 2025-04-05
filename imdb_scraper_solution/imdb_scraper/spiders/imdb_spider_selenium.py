@@ -16,7 +16,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
     ]
 
     def __init__(self, *args, **kwargs):
-        super(ImdbSpider, self).__init__(*args, **kwargs)
+        super(ImdbSpiderSelenium, self).__init__(*args, **kwargs)
         # Configuration du webdriver
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
@@ -36,7 +36,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
         time.sleep(5)
 
         # Nombre de fois à cliquer sur "50 en plus"
-        click_count = 5
+        click_count = 100
 
         # XPath exact du bouton fourni par l'utilisateur
         button_xpath = "/html/body/div[2]/main/div[2]/div[3]/section/section/div/section/section/div[2]/div/section/div[2]/div[2]/div[2]/div/span/button"
@@ -130,7 +130,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
                 # Supprimer les numéros au début (ex: "1. Film Title")
                 title = re.sub(r'^\d+\.\s*', '', title)
 
-            url = film.css('a.ipc-title-link-wrapper::attr(href)').get()
+            url = film.css('a.ipc-title-link-wrapper::attr(href)').get().split('/?')[0]
             if url:
                 url = "https://www.imdb.com" + url
 
@@ -148,12 +148,12 @@ class ImdbSpiderSelenium(scrapy.Spider):
                 score = score.strip()
 
             item = {
-                'titre': title,
-                'annee_sortie': year,
-                'duree': time,
+                'title': title,
+                'year': year,
+                'time': time,
                 'resume': resume,
                 'metascore': score,
-                'lien': url,
+                'url': url,
             }
             return item
         except Exception as e:
