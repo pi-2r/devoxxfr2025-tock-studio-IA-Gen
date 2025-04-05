@@ -31,7 +31,7 @@ class ImdbSpider(scrapy.Spider):
         # Fonction pour extraire toutes les informations d'un film
         try:
             title = self.remove_number_before_dot(self.extract_title(film, index))
-            url = self.extract_url(film, index)
+            url =  self.extract_url(film, index)
             year = self.extract_year(film, index)
             time = self.extract_duration(film, index)
             resume = self.extract_summary(film, index)
@@ -83,7 +83,7 @@ class ImdbSpider(scrapy.Spider):
 
     def extract_score(self, film, index):
         # Extraction du score du film
-        span_text = film.css(f'li.ipc-metadata-list-summary-item:nth-child({index}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > span:nth-child(3) > span:nth-child(2) > span:nth-child(1)').get()
+        span_text = film.css(f'li.ipc-metadata-list-summary-item:nth-child({index}) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(4) > span:nth-child(1)').get()
         selector = scrapy.Selector(text=span_text)
         return selector.xpath('.//text()').get().strip()
 
