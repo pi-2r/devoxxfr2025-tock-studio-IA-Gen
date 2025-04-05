@@ -2,11 +2,13 @@
 
 [<img src="img/india-jones-crystal-skull.jpg"  alt="india-jones-crystal-skull">](https://www.youtube.com/watch?v=zc6Q_TNd5pA)
 
+> "Follow the lines that only the gods can read that lead to Orellana's cradle.", Indiana Jones and the Kingdom of the Crystal Skull, Steven Spielberg, 2008
+ 
 <br/>
 <u>Objectifs:</u>
 
 - Découvrir langfuse, création d'un compte, projet et clé d'API
-- Configurer langfuse dans tock
+- Configurer langfuse dans Tock
 
 ## Sommaire
 
@@ -19,6 +21,7 @@
 
 - [Langfuse et Tock Studio](#langfuse-et-tock-studio)
     - [Connecter Tock Studio à Langfuse](#connecter-tock-studio-à-langfuse)
+    - [Interroger le bot](#interroger-le-bot)
     - [générer des phrases d'entraînement](#générer-des-phrases-dentraînement)
     - [Voir les traces dans Langfuse](#voir-les-traces-dans-langfuse)
 
@@ -38,6 +41,11 @@ cd docker
 source .env
 docker compose -p devoxx_tock up -d
 ```
+
+Vous devriez avoir ce résultat :
+
+<img src="img/result_langfuse_docker_compose.png" alt="resultat docker compose langfuse">
+
 
 ## Accéder à Langfuse
 Pour accéder à la plateforme Langfuse, rendez à l'adresse suivante http://localhost:3000/.
@@ -65,7 +73,7 @@ Vous devriez voir votre nouvelle organisation apparaitre dans la liste des organ
 Ensuite vous allez cliquer sur le bouton **Next**.
 
 ## Créer un nouveau projet
-Là vous allez définir le nom de votre nouveau projet. Dans notre cas, se sera codelab-tock-project, puis de cliquer sur **Create**.
+Là vous allez définir le nom de votre nouveau projet. Dans notre cas, se sera **codelab-tock-project**, puis de cliquer sur **Create**.
 Vous devriez voir une nouvelle page apparaitre avec les informations de votre projet.
 
 <img src="img/langfuse-new-project-with-all-information.png" alt="nouveau projet">
@@ -98,6 +106,19 @@ Remplissez les différents champs, de cet écran avec la clé publique et sécr�
 dans l’interface Langfuse.
 
 Pour l'url d'accès à Langfuse vous devez renseigner cette url: http://langfuse-server:3000
+
+⚠️ N'oubliez pas d'activer l'option **Observability activation** après avoir rempli les champs et sauvegarder les paramètres.
+
+
+## Interroger le bot
+Pour tester la connexion entre Tock et Langfuse, vous allez interroger le bot avec une phrase d’exemple.
+Dans le menu de gauche, allez dans **Bot** > **Test Bot** pour arriver sur cette page.
+
+```bash
+is there a horror film with Bugs Bunny?
+```
+
+<img src="img/test_bot_for_langfuse.png" alt="test bot">
 
 ## Voir les traces de génération de phrases
 
