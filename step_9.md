@@ -602,23 +602,24 @@ du champ **Indexing session id** puis sauvegarder la modification.
 
 ## Interroger le bot
 
+Dès lors vous pouvez tester les nouvelles connaissances de votre bot.
 
 ## Ressources
 
-| Information                                                    | Lien                                                                                                               |
-|----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
-| Warning : Web scraping et RGPD                                 | https://www.plravocats.fr/blog/data-protection-rgpd/warning-web-scraping-et-rgpd                                   |
-| Le web scraping est-il illégal ?                               | https://datadome.co/fr/guides-fr/scraping-fr/le-web-scraping-est-il-illegal/                                       |
-| Comment pratiquer le scraping de données en toute légalité ?   | https://www.leto.legal/guides/comment-pratiquer-le-scraping-de-donnees-en-toute-legalite                           |
-| Web Scraping with Python: Data Extraction from the Modern Web  | https://www.oreilly.com/library/view/web-scraping-with/9781098145347/                                              |
-| scrapy                                                         | https://scrapy.org/                                                                                                |
-| Le projet Tor                                                  | https://www.torproject.org/fr/                                                                                     |
-| Tor (network)                                                  | https://en.wikipedia.org/wiki/Tor_(network)                                                                        |
-| Comment mettre en place un proxy TOR ?                         | https://korben.info/installer-proxy-tor.html                                                                       |
-| Architecture d’une protection anti-bot (Fabien Vauchelles)     | https://www.youtube.com/watch?v=bW17uUSG5TI                                                                        |
-| Scrapoxy: super proxies manager                                | https://scrapoxy.io/                                                                                               |
-| Fabien's WebScraping Anti-Ban Workshop                         | https://github.com/scrapoxy/scraping-workshop                                                                      |
-| Architecture d’une protection anti-bot (Fabien Vauchelles)     | https://www.youtube.com/watch?v=bW17uUSG5TI                                                                        |
+| Information                                                        | Lien                                                                                       |
+|--------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| Warning : Web scraping et RGPD                                     | https://www.plravocats.fr/blog/data-protection-rgpd/warning-web-scraping-et-rgpd           |
+| Le web scraping est-il illégal ?                                   | https://datadome.co/fr/guides-fr/scraping-fr/le-web-scraping-est-il-illegal/               |
+| Comment pratiquer le scraping de données en toute légalité ?       | https://www.leto.legal/guides/comment-pratiquer-le-scraping-de-donnees-en-toute-legalite   |
+| Web Scraping with Python: Data Extraction from the Modern Web      | https://www.oreilly.com/library/view/web-scraping-with/9781098145347/                      |
+| scrapy                                                             | https://scrapy.org/                                                                        |
+| Le projet Tor                                                      | https://www.torproject.org/fr/                                                             |
+| Tor (network)                                                      | https://en.wikipedia.org/wiki/Tor_(network)                                                |
+| Comment mettre en place un proxy TOR ?                             | https://korben.info/installer-proxy-tor.html                                               |
+| Architecture d’une protection anti-bot (Fabien Vauchelles)         | https://www.youtube.com/watch?v=bW17uUSG5TI                                                |
+| Scrapoxy: super proxies manager                                    | https://scrapoxy.io/                                                                       |
+| Fabien's WebScraping Anti-Ban Workshop                             | https://github.com/scrapoxy/scraping-workshop                                              |
+| 🇬🇧 Mastering Web Scraping with Scrapoxy - Fabien Vauchelles      | https://www.youtube.com/watch?v=jLTNgn6BZuk                                                |
 
 
 
