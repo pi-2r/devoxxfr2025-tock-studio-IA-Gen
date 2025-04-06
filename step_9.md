@@ -40,6 +40,10 @@
   
 
 - [Ingérer la données scrapé dans le RAG](#ingérer-la-données-scrapé-dans-le-rag)
+  - [Exécuter le script](#exécuter-le-script)
+  - [Lancer l'ingestion de données](#lancer-lingestion-de-données)
+  - [Configurer le RAG](#configurer-le-rag)
+  - [Interroger le bot](#interroger-le-bot)
 
 
 
@@ -504,6 +508,88 @@ En guise d’exemple on peut citer le projet open source [Scrapoxy](https://scra
 ## Ingérer la données scrapé dans le RAG
 Pour ingérer les données scrapées dans le RAG de Tock, il faut utiliser le fichier CSV généré par le spider et 
 l'importer dans la base de données vectorielle de Tock.
+
+Comment nous l’avons vue dans [l’étape 4](step_4.md), il est possible d’ingérer des données dans un certain format. Nous allons 
+donc reprendre le même procédé et l’adapter pour notre besoin.
+
+## Exécuter le script
+
+Le script est présent dans `data/scripts/transform_imdb_movie.py`, nous vous proposons une image docker de tooling pour l'exécuter plus bas.
+
+Ce script est volontairement simplifié nous vous invitons à le lire / adapter aux besoins en fonction de votre dataset. A noter que la colonne "source" peut-être laisée vide si vous n'avez pas de version en ligne du document.
+
+```python
+import pandas as pd
+
+# Load the CSV file
+df = pd.read_csv('/app/data/documents_csv/imdb_movies.csv')
+
+# Set the number of random rows you want to keep
+n = 20  # Example value
+
+# Randomly select n rows
+df_sampled = df.sample(n=n, random_state=42)  # random_state ensures reproducibility
+
+# Keep only the specified columns
+columns_to_keep = ['url', 'title', 'resume' ]
+df_filtered = df_sampled[columns_to_keep].copy()
+
+# Rename columns
+df_filtered.rename(columns={'url': 'source', 'title': 'title', 'resume': 'text'}, inplace=True)
+
+# Save the filtered DataFrame to a CSV file, excluding rows with empty 'resume'
+df_filtered[df_filtered['text'].notna()].to_csv('data/documents_csv/filtered_imdb_movies.csv', index=False, sep='|')
+```
+Exécution du script via l'image de tooling a la racine du dossier de cet atelier :
+```bash
+# Sourcer vos variables d'environnement
+source docker/.env
+# Lancer le conteneur de tooling pour exécuter le script
+docker run --name tooling_tock --rm -it \
+    -v "$(pwd)/data":/app/data \
+    -e NO_PROXY="host.docker.internal,ollama-server,postgres-db,localhost" \
+    -e no_proxy="host.docker.internal,ollama-server,postgres-db,localhost" \
+    --add-host=ollama-server:$OLLAMA_SERVER \
+    --add-host=postgres-db:$POSTGRES_DB_SERVER \
+    "${PLATFORM}tock/llm-indexing-tools:${TAG}" \
+    /bin/bash
+```
+
+Dans le conteneur :
+```bash
+# Excuter le script
+python /app/data/scripts/transform_imdb_movie.py
+
+# Vérifiez le contenu du CSV filtré
+head data/documents_csv/filtered_imdb_movies.csv -n 2
+```
+
+Vous devriez avoir ce type de résultat :
+
+<img src="img/scraping_tooling_result.png" alt="scraping tooling result">
+
+## Lancer l'ingestion de données
+
+Dans cette partie, nous partons du principe que vous avez déjà correctement configurer les éléments avec [l’étape 4](step_4.md).
+
+Depuis le conteneur, nous allons juste lancer l’ingestion de données.
+
+```bash
+# A l'intérieur du shell de l'image
+export TOCK_BOT_ID=devoxx2025
+export TOCK_BOT_NAMESPACE=app
+export EMBEDDING_JSON_CONFIGURATION=/app/data/configurations/embeddings_ollama_settings.json
+python tock-llm-indexing-tools/index_documents.py data/documents_csv/filtered_imdb_movies.csv $TOCK_BOT_NAMESPACE $TOCK_BOT_ID $EMBEDDING_JSON_CONFIGURATION data/configurations/vector_store_pgvector_settings.json 5000 -v
+```
+
+Comme évoqué en [étape 4](step_4.md), chaque ingestion d'un ensemble documentaire est associée à un ID de session d'indexation, nous allons le renseigner dans la configuration de TOCK. Ces sessions sont utilent en production pour revenir en arrière en cas de défaut d'ingestion.
+
+![Sortie du script](./img/scraping-python-ingestion-result.png)
+
+
+## Configurer le RAG
+
+## Interroger le bot
 
 
 ## Ressources
