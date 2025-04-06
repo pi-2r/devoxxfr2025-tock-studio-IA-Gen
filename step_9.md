@@ -586,8 +586,19 @@ Comme évoqué en [étape 4](step_4.md), chaque ingestion d'un ensemble document
 
 ![Sortie du script](./img/scraping-python-ingestion-result.png)
 
+> ⚠️ Si vous avez filtré sur l’ensemble des films qui sont présents dans le fichier csv, à savoir 5050 films, l’ingestion 
+peut prendre jusqu’à 5 min suivant le modèle de votre machine.
+
 
 ## Configurer le RAG
+Dans cette partie nous allons juste nous baser sur ce qui a été fait en [étape 5](step_5.md) pour ne modifier d’un seul champ. 
+Nous partons donc du principe que l’[étape 5](step_5.md) a correctement été réalisée.
+
+Dès lors, vous devez aller **Gen AI** >  **Rag settings** puis dans la section "**Indexing session**" changer la valeur 
+du champ **Indexing session id** puis sauvegarder la modification.
+
+<img src="img/change-indexing-session-id.png" alt="change indexing session id">
+
 
 ## Interroger le bot
 
