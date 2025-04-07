@@ -9,6 +9,7 @@
     - [ ] Schéma de réseau en annexe pour ces histoire de docker et host internal.
     - [ ] Step 5 refaire un test avec model gemma.
     - [ ] Step 6 MAJ la capture d'écran.
+    - [X] Mettre lien promptfoo dans la partie 7 -red teaming-
     - [ ] Lire promptfoo sur le hacking LLM
     - [ ] Step 7 capture d'écran sur le ban de jailbreak / Rag Excluded avec un exemple de jailbreak. @Pierre
     - [ ] Step 7 revoir les reco prompt coté Arkéa @Benjamin
