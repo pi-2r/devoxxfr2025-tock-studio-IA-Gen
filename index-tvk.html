@@ -10,12 +10,14 @@
       crossorigin
       src="https://unpkg.com/tock-vue-kit@0.3.6/dist/tock-vue-kit.iife.js"
     ></script>
+
     <style>
       body {
         margin: 0;
         padding: 0;
         background-color: #000;
         overflow: hidden;
+        background: url(img/explorator.jpg) no-repeat center center fixed;
       }
       #matrix-bg {
         position: fixed;
@@ -47,9 +49,9 @@
       :root {
         --tvk_base_radius: 1em;
         --tvk_base_spacing: 0.6em;
-        --tvk_colors_brand-hue: 120;
+        --tvk_colors_brand-hue: 84;
         --tvk_colors_brand-lightness: 40%;
-        --tvk_colors_brand-saturation: 82%;
+        --tvk_colors_brand-saturation: 62%;
         --tvk_colors_dark_background: hsl(
           var(--tvk_colors_brand-hue) 5% 20% / 50%
         );
@@ -91,9 +93,6 @@
     </style>
   </head>
   <body>
-    <canvas id="matrix-bg"></canvas>
-    <button id="matrix-switch">Activer Matrix</button>
-
     <div id="chat-wrapper"></div>
 
     <script>
@@ -105,7 +104,8 @@
             enabled: true,
           },
           initialization: {
-            welcomeMessage: "Welcome. How can i scare you ?",
+            welcomeMessage:
+              "If you wanna be a good archaeologist, you gotta get out of the library...",
           },
           preferences: {
             messages: {
@@ -113,7 +113,7 @@
                 header: {
                   avatar: {
                     userIcon: "bi bi-incognito",
-                    botIcon: "bi bi-sign-dead-end",
+                    botIcon: "bi bi-sunglasses",
                   },
                   label: {
                     display: false,
@@ -123,99 +123,22 @@
             },
             questionBar: {
               clearHistory: {
-                icon: "bi bi-heartbreak",
+                icon: "bi bi-wind",
               },
               submit: {
-                icon: "bi bi-hammer",
+                icon: "bi bi-feather",
               },
             },
           },
           wording: {
             questionBar: {
               input: {
-                placeholder: "Surprise me...",
+                placeholder: "𓇌𓅱𓂋 𓎡𓏲𓋴𓏔𓈖 𓉔𓂋",
               },
             },
           },
         }
       );
-
-      const matrixSwitch = document.getElementById("matrix-switch");
-      const canvas = document.getElementById("matrix-bg");
-      const ctx = canvas.getContext("2d");
-      let matrixEnabled = false;
-      let animationId;
-
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      const katakana =
-        "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
-      const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      const nums = "0123456789";
-      const alphabet = katakana + latin + nums;
-
-      const fontSize = 16;
-      const columns = canvas.width / fontSize;
-
-      const rainDrops = [];
-
-      for (let x = 0; x < columns; x++) {
-        rainDrops[x] = 1;
-      }
-
-      const INTERVAL = 80; // 80 millisecondes, comme dans votre setInterval original
-      let lastTime = 0;
-
-      const draw = (currentTime) => {
-        if (currentTime - lastTime < INTERVAL) {
-          if (matrixEnabled) {
-            animationId = requestAnimationFrame(draw);
-          }
-          return;
-        }
-
-        lastTime = currentTime;
-
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = "#0F0";
-        ctx.font = fontSize + "px monospace";
-
-        for (let i = 0; i < rainDrops.length; i++) {
-          const text = alphabet.charAt(
-            Math.floor(Math.random() * alphabet.length)
-          );
-          ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-          if (
-            rainDrops[i] * fontSize > canvas.height &&
-            Math.random() > 0.975
-          ) {
-            rainDrops[i] = 0;
-          }
-          rainDrops[i]++;
-        }
-
-        if (matrixEnabled) {
-          animationId = requestAnimationFrame(draw);
-        }
-      };
-
-      matrixSwitch.addEventListener("click", () => {
-        matrixEnabled = !matrixEnabled;
-        if (matrixEnabled) {
-          canvas.style.display = "block";
-          matrixSwitch.textContent = "D\u00e9sactiver Matrix";
-          lastTime = 0;
-          draw(performance.now());
-        } else {
-          canvas.style.display = "none";
-          matrixSwitch.textContent = "Activer Matrix";
-          cancelAnimationFrame(animationId);
-        }
-      });
     </script>
   </body>
 </html>
