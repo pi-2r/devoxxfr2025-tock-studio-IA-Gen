@@ -101,6 +101,9 @@ Cette pratique permet aux organisations de découvrir et corriger de manière pr
 
 Le "red teaming" est considéré comme une bonne pratique dans le développement responsable des systèmes utilisant des LLM, permettant d'identifier les risques potentiels comme la génération de contenu inapproprié, les fuites d'informations, ou les problèmes de contrôle d'accès
 
+Si vous souhaitez tester la robustesse de votre model, nous vous invitons à regarder le projet open source Promptfoo :
+
+[<img src="img/promptfoo-result.png"  alt="promptfoo-result">](https://github.com/promptfoo/promptfoo?tab=readme-ov-file#promptfoo-llm-evals--red-teaming)
 
 ## Ressources
 
