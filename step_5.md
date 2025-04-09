@@ -34,6 +34,7 @@
 
 
 ## Gen AI / RAG Settings
+
 ## Configuration
 
 Dans le menu de gauche au niveau **Gen AI** > **RAG Settings** (Retrieving augmented Generation) vous allez pouvoir 
@@ -72,6 +73,8 @@ Cette fonctionnalité permettra à TOCK de générer une réponse à une requêt
 <img src="img/prompt.png" alt="prompt">
 
 - Le prompt est le script qui détermine la personnalité du Bot, le contexte dans lequel il doit répondre, la façon dont il doit s’adresser à l’utilisateur, les recommandations ou instructions de réponses, les styles et formats de réponses.
+
+## LLM Engine
 
 ### Configurer Ollama pour LLM Engine
 <details>
