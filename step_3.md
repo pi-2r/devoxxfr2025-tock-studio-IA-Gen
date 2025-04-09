@@ -17,20 +17,19 @@ Objectifs:
 
 - [Lancer les services gen-ai](#lancer-les-services-gen-ai)
 
+
 - [Installer Ollama](#installer-ollama)
-  - [Installation depuis le Codelab](#installation-depuis-le-codelab)
-    - [Récupérer les modèles pour l'atelier sur la machine GPU](#récupérer-les-modèles-pour-latelier-sur-la-machine-gpu)
+  - [Récupérer les modèles pour l'atelier sur la machine GPU](#récupérer-les-modèles-pour-latelier-sur-la-machine-gpu)
     - [Autorisation de la registy locale insecure](#autorisation-de-la-registry-locale-insecure)
-      - [Sous linux](#sous-linux)
-      - [Sous MacOS / Windows](#sous-macos--windows)
   - [Récupérer les modèles depuis internet hors du Codelab](#récupérer-les-modèles-depuis-internet-hors-du-codelab)
   - [Tester avec un petit prompt](#tester-avec-un-petit-prompt)
+  - [⚠️ Fallback : Ollama ne marche pas](#-fallback--ollama-ne-marche-pas)
 
 
 - [Gen AI - Sentence generation](#gen-ai---sentence-generation)
   - [Ollama](#Ollama)
       - [configuration sous Linux](#configuration-sous-linux)
-      - [configuration sous MacOs](#configuration-sous-macos)
+      - [Configuration sous MacOs](#configuration-sous-macos)
       - [Tester l'accès à Ollama](#tester-laccès-à-ollama)
       - [Configurer Ollama dans le generate sentence](#configurer-ollama-dans-le-generate-sentence)
   - [Configurer OpenAI dans le generate sentence](#configurer-openai-dans-le-generate-sentence)
