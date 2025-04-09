@@ -89,12 +89,12 @@ Si vous n'avez pas Python 3 installé, vous pouvez le télécharger depuis le si
 Depuis le dossier du codelab, créez un environnement virtuel pour le projet et activez-le :
 
 ```bash
-python3 -m venv path/to/venv
+python3 -m venv tock_devoxx2025_venv
 ```
 puis activez-le :
 
 ```bash
-source path/to/venv/bin/activate
+source tock_devoxx2025_venv/bin/activate
 ```
 
 
@@ -105,6 +105,8 @@ pip install Scrapy
 ```
 
 ## Créer un nouveau projet Scrapy
+Toujours depuis le dossier de ce codelab, vous allez renseigner les commandes suivantes depuis votre terminal.
+
 
 ```bash
 scrapy startproject imdb_scraper
