@@ -74,14 +74,21 @@ Cette fonctionnalité permettra à TOCK de générer une réponse à une requêt
 - Le prompt est le script qui détermine la personnalité du Bot, le contexte dans lequel il doit répondre, la façon dont il doit s’adresser à l’utilisateur, les recommandations ou instructions de réponses, les styles et formats de réponses.
 
 ### Configurer Ollama pour LLM Engine
-Pour connecter ollama à Tock studio, il vous faut renseigner l’accès à Ollama via cette url d’accès (**BaseUrl**) : http://ollama-server:11434.. 
+<details>
+  <summary>Voir la configuration Ollama</summary>
+
+Pour connecter ollama à Tock studio, il vous faut renseigner l’accès à Ollama via cette url d’accès (**BaseUrl**) : http://ollama-server:11434..
 Pour le modèle (**Model**), là c’est à vous de renseigner le nom du modèle que vous utilisez dans ce CodeLab (ici nous avons tinyllama). Enfin pour la température, vous pouvez laisser la valeur par défaut à 0.7.
 
 ⚠️ Si Ollama est lancé en local depuis votre ordinateur vous devez changer la valeur de base url de défaut par "http://host.docker.internal:11434"
 
 <img src="img/rag-settings-example-ollama.png" alt="rag settings ollama">
+</details>
+
 
 ### Configurer OpenAi pour LLM Engine
+<details>
+  <summary>Voir la configuration OpenAi</summary>
 
 Si vous souhaitez utiliser openAI, vous devez vous inscrire sur la plateforme [OpenAI](https://platform.openai.com/docs/introduction)
 pour obtenir une clé d'API. Une fois cela fait rendez-vous à cette page [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys) pour générer votre clé d'API.
@@ -90,8 +97,12 @@ Dès que vous avez votre clé d'API, vous pouvez la renseigner dans le champ **A
 Par exemple vous pourriez avoir ce genre de rendu.
 
 <img src="img/rag-settings-example-openai.png" alt="rag settings  openai">
+</details>
+
 
 ### Configurer AzureOpenAI pour LLM Engine
+<details>
+  <summary>Voir la configuration AzureOpenAI</summary>
 
 Si vous souhaitez utiliser Azure OpenAI, vous devez vous inscrire sur la plateforme
 [Azure OpenAI](https://azure.microsoft.com/fr-fr/products/ai-services/openai-service) et d'avoir un compte professionnel  
@@ -100,13 +111,17 @@ Une fois cela fait, vous pouvez renseigner votre clé d'API dans le champ **API 
 que vous souhaitez utiliser.
 
 <img src="img/rag-settings-example-azure.png" alt="rag settings azure">
+</details>
 
-### Emdedding
+## Emdedding
 
 ### Configurer Ollama pour Emdedding
 
-Pour connecter ollama à Tock studio sur la partie embedding, il vous faut renseigner l’accès à Ollama via cette url d’accès (**BaseUrl**) : http://ollama-server:11434.
-Pour le modèle (**Model**), là c’est à vous de renseigner le nom du modèle que vous utilisez dans ce CodeLab 
+<details>
+  <summary>Voir la configuration Ollama</summary>
+
+Pour connecter Ollama à Tock studio sur la partie embedding, il vous faut renseigner l’accès à Ollama via cette url d’accès (**BaseUrl**) : http://ollama-server:11434.
+Pour le modèle (**Model**), là c’est à vous de renseigner le nom du modèle que vous utilisez dans ce CodeLab
 (ici nous avons **nomic-embed-text**).
 
 ⚠️ Si Ollama est lancé en local depuis votre ordinateur vous devez changer la valeur de base url de défaut par "http://host.docker.internal:11434"
@@ -114,23 +129,31 @@ Pour le modèle (**Model**), là c’est à vous de renseigner le nom du modèle
 <img src="img/embedding-ollama-setting.png" alt="embedding ollama">
 
 Pour le reste de configuration, nous vous invitons à aller directement au chapitre [Configuration final et activation](#configuration-final-et-activation)
+</details>
+
 
 
 ### Configurer OpenAi pour Emdedding
+<details>
+  <summary>Voir la configuration OpenAi</summary>
 
 Si vous souhaitez utiliser openAI, vous devez vous inscrire sur la plateforme [OpenAI](https://platform.openai.com/docs/introduction)
-pour obtenir une clé d'API. Une fois cela fait rendez-vous à cette page [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys) 
+pour obtenir une clé d'API. Une fois cela fait rendez-vous à cette page [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
 pour générer votre clé d'API.
 
-Dès que vous avez votre clé d'API, vous pouvez la renseigner dans le champ **API Key** et choisir le model 
+Dès que vous avez votre clé d'API, vous pouvez la renseigner dans le champ **API Key** et choisir le model
 (**Model name**) actuellement disponible : **text-embedding-ada-002**.
 Par exemple vous pourriez avoir ce genre de rendu.
 
 <img src="img/embedding-openai-settings.png" alt="embedding openai">
 
 Pour le reste de configuration, nous vous invitons à aller directement au chapitre [Configuration final et activation](#configuration-final-et-activation)
+</details>
 
 ### Configurer AzureOpenAI pour Emdedding
+
+<details>
+  <summary>Voir la configuration AzureOpenAI</summary>
 
 Si vous souhaitez utiliser Azure OpenAI, vous devez vous inscrire sur la plateforme
 [Azure OpenAI](https://azure.microsoft.com/fr-fr/products/ai-services/openai-service) et d'avoir un compte professionnel  
@@ -141,6 +164,8 @@ que vous souhaitez utiliser.
 <img src="img/embedding-azureopenai-settings.png" alt="embedding azure">
 
 Pour le reste de configuration, nous vous invitons à aller directement au chapitre [Configuration final et activation](#configuration-final-et-activation)
+</details>
+
 
 ### Configuration final et activation
 Cette partie s’attarde sur les intitulés **Indexing session** et **Conversation flow**.
