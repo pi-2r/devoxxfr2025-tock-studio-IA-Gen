@@ -5,7 +5,7 @@
     - [ ] Tester de nouveaux LLMs en choisir 1-2.
     - [ ] Screenshot le nom du bot.
     - [ ] Compresseur introduit en plus (?)
-    - [ ] Step 4 capture d'écran à revoir.
+    - [X] Step 4 capture d'écran à revoir.
     - [ ] Schéma de réseau en annexe pour ces histoire de docker et host internal.
     - [ ] Step 5 refaire un test avec model gemma.
     - [ ] Step 6 MAJ la capture d'écran.
@@ -14,6 +14,7 @@
     - [ ] Step 7 capture d'écran sur le ban de jailbreak / Rag Excluded avec un exemple de jailbreak. @Pierre
     - [ ] Step 7 revoir les reco prompt coté Arkéa @Benjamin
     - [ ] Step 7 ou bis ? ajouter la partie compresseur avec leur serveur amené chez nous.
+    - [X] Step 9 où lancer les commandes scrapy
 - [ ] Activer le debug RAG par défaut dans le docker compose.
 - [ ] Voir avec l'orga :
   - [ ] Prise réseau.
