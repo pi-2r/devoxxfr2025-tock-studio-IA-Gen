@@ -1,7 +1,7 @@
 # Todo
 
 - [ ] Rédac :
-    - [ ] Refaire le tuto avec la dernière version de TOCK et voir pour une autre release avec Julien si besoin.
+    - [X] Refaire le tuto avec la dernière version de TOCK et voir pour une autre release avec Julien si besoin.
     - [ ] Tester de nouveaux LLMs en choisir 1-2.
     - [ ] Screenshot le nom du bot.
     - [ ] Compresseur introduit en plus (?)
@@ -17,14 +17,18 @@
 - [ ] Activer le debug RAG par défaut dans le docker compose.
 - [ ] Voir avec l'orga :
   - [ ] Prise réseau.
-  - [ ] Nombre de participants
-- [ ] Revoir la page du tock vue kit `index-tvk.html` en mode Indiana Johnes @Rodolphe.
+  - [ ] Nombre de participants : 
+- [X] Revoir la page du tock vue kit `index-tvk.html` en mode Indiana Johnes @Rodolphe.
 - [ ] Matériel :
-  - [ ] @Benjamin vient avec un Mac à la place de l'UC
-  - [ ] @Benjamin routeur Wifi
+  - [ ] @Benjamin vient avec un Mac à la place de l'UC, bien penser à fixer son IP sur l'AP wifi.
+  - [X] @Benjamin routeur Wifi
   - [ ] Pierre ou autre ? Avoir un 2ème switch 4p si possible.
+  - [ ] Multiprises.
 - Plan de backup :
-  - [ ] Azure OpenAI, @Benjamin voir avec l'équipe Data Archi pour avoir au moins une clé.
+  - [ ] Azure OpenAI, @Benjamin voir avec l'équipe Data Archi pour avoir au moins une clé. ==> Orga de dev bis sinon ?
   - [ ] Machine de backup avec tout le codelab, générer 20 indentifiants avec property et roles et prévoir un PAD pour que chaque personnes choissent son ID @Benjamin.
   - [ ] Préparer le MAC en backup de l'UC.
+  - [ ] Tester une registry ollama locale : https://github.com/simonfrey/ollama-registry-pull-through-proxy
+  - [ ] Voir pour gérer l'hébergement du nomic embed tiny (si la registry local ollama marche pas)
+
 

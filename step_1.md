@@ -220,7 +220,7 @@ _new_assistant_).
 
 ## Créer votre 1er Application
 
-On va maintenant créer pour le Codelab une application nommée _devfest2024_ (car plusieurs bots peuvent coexister dans une instance de plateforme Tock).
+On va maintenant créer pour le Codelab une application nommée _devoxx2025_ (car plusieurs bots peuvent coexister dans une instance de plateforme Tock).
 
 Dans la section **Settings > Applications**, cliquez sur **+ NEW APPLICATION** et remplissez les champs comme dans cet exemple :
 

@@ -35,7 +35,6 @@ services:
     command: --bind_ip_all --port 27019 --replSet "tock"
 
   mongo-setup:
-    container_name: "mongo-setup"
     image: "${PLATFORM}mongo:${MONGO}"
     depends_on:
       - "mongo"
