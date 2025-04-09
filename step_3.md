@@ -244,12 +244,21 @@ Vous devriez avoir ce rendu.
 
 ### Configurer Ollama dans le generate sentence
 
+<details>
+  <summary>Voir la configuration Ollama</summary>
+
 Pour connecter ollama à Tock studio, il vous faut renseigner l’accès à Ollama via cette url d’accès : http://ollama-server:11434 .
 Pour le modèle, là c’est à vous de renseigner le nom du modèle que vous utilisez dans ce CodeLab (ici nous avons tinyllama)
 
 <img src="img/llm-engine-ollama.png" alt="exemple de configuration avec Ollama">
 
+</details>
+
+
 ### Configurer OpenAI dans le generate sentence
+
+<details>
+  <summary>Voir la configuration openAI</summary>
 
 Si vous souhaitez utiliser openAI, vous devez vous inscrire sur la plateforme [OpenAI](https://platform.openai.com/docs/introduction)
 pour obtenir une clé d'API. Une fois cela fait rendez-vous à cette page [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys) pour générer votre clé d'API.
@@ -258,6 +267,9 @@ Dès que vous avez votre clé d'API, vous pouvez la renseigner dans le champ **A
 Par exemple vous pourriez avoir ce genre de rendu.
 
 <img src="img/llm-engine-openai.png" alt="exemple de configuration avec openAI">
+
+</details>
+
 
 ### Configure AzureOpenAI dans le generate sentence
 
