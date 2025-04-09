@@ -218,7 +218,7 @@ services:
   #     tock_gen_ai_orchestrator_vector_store_secret_manager_provider:
   #     tock_gen_ai_orchestrator_vector_store_credentials_secret_name:
 
-  # Copy from https://github.com/langfuse/langfuse/blob/main/docker-compose.yml
+  # # Copy from https://github.com/langfuse/langfuse/blob/main/docker-compose.yml
   # langfuse-server:
   #   image: ${PLATFORM}langfuse/langfuse:${LANGFUSE_TAG}
   #   depends_on:
