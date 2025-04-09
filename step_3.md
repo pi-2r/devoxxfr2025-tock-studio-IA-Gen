@@ -227,6 +227,13 @@ sudo systemctl restart ollama.service
 
 Sur MacOs pour exposer Ollama sur l'ip 0.0.0.0, suivez les instructions de cette issue : https://github.com/ollama/ollama/issues/3581#issuecomment-2052338405
 
+```bash
+launchctl setenv OLLAMA_HOST "0.0.0.0"
+# Si installé via homebrew : restart ollama
+brew services restart ollama 
+# Sinon en mode graphique via l'icon en haut
+```
+
 
 ### Tester l'accès à Ollama
 
@@ -254,6 +261,9 @@ Par exemple vous pourriez avoir ce genre de rendu.
 
 ### Configure AzureOpenAI dans le generate sentence
 
+<details>
+  <summary>Voir la configuration Azure</summary>
+
 Si vous souhaitez utiliser Azure OpenAI, vous devez vous inscrire sur la plateforme
 [Azure OpenAI](https://azure.microsoft.com/fr-fr/products/ai-services/openai-service) et d'avoir un compte professionnel  
 afin d'avoir une clé d'API.
@@ -262,6 +272,8 @@ que vous souhaitez utiliser.
 
 
 <img src="img/gen-ai-settings-sentence-generation.png" alt="exemple de configuration avec Azure OpenAI">
+
+</details>
 
 ## Générer des phrases d'entraînement
 Pour vérifier que l'IA générative est bien configurée, allez dans **Stories & Answers** > **FAQs stories**. 
