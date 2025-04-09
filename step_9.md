@@ -321,7 +321,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
     time.sleep(5)
 
     # Nombre de fois à cliquer sur "50 en plus"
-    click_count = 100
+    click_count = 5
 
     # XPath exact du bouton fourni par l'utilisateur
     button_xpath = "/html/body/div[2]/main/div[2]/div[3]/section/section/div/section/section/div[2]/div/section/div[2]/div[2]/div[2]/div/span/button"
