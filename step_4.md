@@ -289,6 +289,7 @@ df_filtered = df_filtered.loc[:, columns_to_keep]
 
 # Save the filtered DataFrame to a CSV file
 df_filtered.to_csv('data/documents_csv/filtered_horror_movies.csv', index=False, sep='|')
+
 ```
 
 Exécution du script via l'image de tooling a la racine du dossier de cet atelier :
