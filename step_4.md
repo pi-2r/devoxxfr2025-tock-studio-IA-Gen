@@ -15,6 +15,11 @@
 ## Sommaire
 
 - [Qu'est-ce que le RAG ?](#quest-ce-que-le-rag)
+  - [J'aime lire](#jaime-lire)
+  - [Le concept des bases de données vectorielles](#le-concept-des-bases-de-données-vectorielles)
+  - [Recherche par similarité](#recherche-par-similarité)
+  - [Applications concrètes](#applications-concrètes)
+  - [Exemples de bases vectorielles](#exemples-de-bases-vectorielles)
 
   
 - [Trouver un data set sur kaggle](#trouver-un-data-set-sur-kaggle)
@@ -26,7 +31,7 @@
   - [Configuration d'embedding](#configuration-d-embedding)
     - [Configuration avec ollama](#configuration-avec-ollama)
     - [Configuration avec OpenAI ou Azure OpenAI](#configuration-avec-openai-ou-azure-openai)
-  - - [Lancer l'ingestion](#lancer-lingestion)
+    - [Lancer l'ingestion](#lancer-lingestion)
 
 
 - [Étape suivante](#étape-suivante)
@@ -34,27 +39,86 @@
 ## Qu'est-ce que le RAG
 <img src="img/rag.png" alt="RAG">
 
-Imaginez que vous lisez un livre, à chaque idée dans le livre, vous allez arracher la ou les pages pour les placer 
-dans un coin de votre piece de votre maison ou appartement (ou un chateau, cela depend de votre budget !). 
-Quand un(e) ami(e) vous demande par exemple de quoi parle le chapitre 5 du livre que vous avez-lu, vous allez chercher 
-dans le coin de la pièce les pages correspondantes pour lui répondre avec vos propres mots.
+### J'aime lire
+Imaginez que vous lisez un livre, à chaque idée dans le livre, vous allez arracher la ou les pages pour les placer dans 
+un coin de votre pièce de votre maison ou appartement (ou un château, cela dépend de votre budget !). Quand un(e) ami(e) 
+vous demande par exemple de quoi parle le chapitre 5 du livre que vous avez lu, vous allez chercher dans le coin de la 
+pièce les pages correspondantes pour lui répondre avec vos propres mots.
 
-Là vous avez lu un livre, imaginez maintenant que vous avez lu des milliers de livres, et que vous avez arraché des 
-pages de chaque livre pour les placer dans un coin des différentes piéces de votre domicile. Vous devez incollable !
+Là vous avez lu un livre, imaginez maintenant que vous avez lu des milliers de livres, et que vous avez arraché des pages
+de chaque livre pour les placer dans un coin des différentes pièces de votre domicile. Vous devez être incollable !
+
+### Le concept des bases de données vectorielles
 
 Maintenant, c'est un programme informatique qui va lire les livres, extraire les idées des pages pour les placer non pas 
-dans un coin de votre domicile mais dans une base de données dite vectorielle.
-L'extraction d'information utilise une technique de découpage (embedding) pour placer les idées dans la base de 
-données vectorielle (une base de données avec des coins).
+dans un coin de votre domicile mais dans une base de données dite vectorielle. L'extraction d'information utilise une 
+technique de découpage (embedding) pour transformer les idées en vecteurs numériques qui seront stockés dans la base de 
+données vectorielle.
 
-Plus les idées sont similaires, plus elles sont proches dans la base de données vectorielle.
+**La multi-dimensionnalité :** Contrairement à notre exemple physique limité à trois dimensions (longueur, largeur, hauteur), 
+les bases vectorielles opèrent dans des espaces à plusieurs centaines, voire milliers de dimensions. Chaque dimension 
+représente une caractéristique sémantique du texte. Par exemple, un vecteur pourrait avoir une dimension pour le niveau 
+de formalité, une autre pour le domaine scientifique, une autre encore pour la tonalité émotionnelle, et ainsi de suite.
+
+**Proximité sémantique :** Plus les idées sont similaires conceptuellement, plus leurs vecteurs sont proches dans cet espace 
+multidimensionnel. Cette proximité est mesurée mathématiquement par des métriques comme la distance cosinus ou euclidienne. 
+Ainsi, deux paragraphes parlant de physique quantique, même avec des mots différents, se retrouveront proches l'un de 
+l'autre dans l'espace vectoriel.
+
+**Gestion des données non structurées :** L'un des grands avantages des bases vectorielles est leur capacité à traiter 
+efficacement des données non structurées comme du texte, des images ou des sons. Là où les bases de données traditionnelles 
+exigent des schémas rigides, les bases vectorielles convertissent ces données complexes en représentations numériques comparables.
 
 <img src="img/vector_database.png" alt="base de données vectorielles">
 
-On a évoqué les livres, mais cela fonctionne parfaitement avec vos documents numérique tel que des articles, des pages 
-web, des documents PDF, des fichiers texte, des bases de données, etc.
+### Recherche par similarité
 
-Dès lors, le **RAG** (**R**etrieving **A**ugmented **G**eneration) est une méthode qui combine la récupération 
+Quand vous interrogez une base vectorielle, votre requête est elle-même transformée en vecteur. Le système recherche 
+alors les vecteurs les plus proches de celui de votre requête. C'est comme si, au lieu de demander "où sont 
+les pages du chapitre 5 ?", vous demandiez "où sont les pages qui parlent de révolution industrielle ?" et que votre 
+ami intelligent parcourait instantanément tous les coins de son appartement pour trouver les pages conceptuellement liées 
+à ce sujet.
+
+Cette recherche par similarité permet :
+- De trouver des informations pertinentes même si elles ne contiennent pas exactement les mêmes mots que votre requête
+- De découvrir des connexions thématiques que vous n'auriez pas anticipées
+- D'obtenir des résultats nuancés, classés par degré de pertinence
+
+### Applications concrètes
+
+On a évoqué les livres, mais cela fonctionne parfaitement avec vos documents numériques tels que des articles, 
+des pages web, des documents PDF, des fichiers texte, des bases de données, etc. Les bases vectorielles sont 
+particulièrement utiles pour :
+
+- Les moteurs de recherche sémantique
+- Les systèmes de recommandation de produits ou contenus
+- Les assistants IA capables de puiser dans une base de connaissances
+- L'analyse de sentiment et la détection de tendances dans de grands corpus
+
+
+### Exemples de bases vectorielles
+
+**Pinecone** est l'une des bases vectorielles les plus populaires, offrant une infrastructure cloud qui permet de 
+stocker et rechercher des milliards de vecteurs avec une latence minimale. Elle s'intègre facilement avec les frameworks 
+d'IA modernes et propose des fonctionnalités avancées comme le filtrage métadonnées et la mise à jour en temps réel.
+
+**Vectorize** (par SingleStore) combine la puissance des bases vectorielles avec celle des bases SQL traditionnelles, 
+permettant des requêtes hybrides qui associent recherche par similarité et filtrage structuré. Cela permet par exemple 
+de chercher des documents similaires à votre requête, mais uniquement parmi ceux publiés après une certaine date.
+
+**pgvector** est une extension pour PostgreSQL qui ajoute la prise en charge des types de données vectorielles. Cela 
+permet d'utiliser PostgreSQL comme une base de données vectorielle.
+
+D'autres solutions comme **Weaviate**, **Milvus**, et **Qdrant** offrent également des fonctionnalités spécialisées 
+pour différents cas d'usage, de l'intégration avec des modèles de langage spécifiques à l'optimisation pour certains 
+types de données.
+
+Cette technologie est au cœur de nombreuses applications d'IA modernes, permettant de naviguer intelligemment dans des 
+océans d'informations non structurées avec une précision et une nuance impossibles avec les méthodes de recherche 
+traditionnelles.
+
+
+Le **RAG** (**R**etrieving **A**ugmented **G**eneration) est une méthode qui combine la récupération 
 d'informations (**retrieval**) avec la génération de texte par une intelligence artificielle (**IA**) ou un 
 modèle de langage (**LLM**).
 
@@ -64,7 +128,8 @@ généralement stockée dans une base de données vectorielle.
 
 ## Trouver un data set sur kaggle
 
-Vous pouvez rechercher n'importe quel dataset de la thématique qui vous intéresse idéalement un dataset avec des URL ou références vous permettant de relier les documents à des versions en ligne.
+Vous pouvez rechercher n'importe quel dataset de la thématique qui vous intéresse idéalement un dataset avec des URL ou 
+références vous permettant de relier les documents à des versions en ligne.
 
 Dataset proposés sur Kaggle :
 * [Séries TV](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows)

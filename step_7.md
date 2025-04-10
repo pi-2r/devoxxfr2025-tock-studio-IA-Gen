@@ -105,7 +105,7 @@ en transformant le texte brut en une forme spécifique que les modèles peuvent 
 
 ### Vecteurs d'embedding
 
-Souvenez-vous lors de l’étape 2.2([Préparons notre base documentaire](step2_2.md)), nous avons présenté de manière simple 
+Souvenez-vous lors de l’étape 4([Préparons notre base documentaire](step4.md)), nous avons présenté de manière simple 
 la notion de RAG, le découpage, et ainsi que la base de données vectoriel. 
 
 <img src="img/vector_database.png" alt="base de données vectorielles">
