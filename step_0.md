@@ -15,7 +15,7 @@ la solution a depuis été reprise par de nombreuses entreprises et une communau
 
 Conçue comme une plateforme d'intégration de briques NLP (Natural Language Processing) sans dépendance forte et apportant
 à la fois des interfaces graphiques utilisateur et un framework conversationnel en Kotlin, la plateforme a ensuite bien
-évolué : connecteurs à de nombreux canaux texte et voix, création de bots en mode "low code" dans Tock Studio,
+évolué : connecteurs à de nombreux canaux textuels et vocaux, création de bots en mode "low code" dans Tock Studio,
 compatibilité avec d'autres langages de programmation comme Javascript ou Python, ajout de fonctionnalités analytiques,
 gestion multilingue, etc.
 

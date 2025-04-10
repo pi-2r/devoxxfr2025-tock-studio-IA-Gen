@@ -85,8 +85,8 @@ Par exemple :
 
 ## LLM red teaming
 
-Le "LLM red teaming" est une méthode qui consiste à tester systématiquement les modèles de langage (LLM) pour identifier leurs vulnérabilités avant qu'ils ne soient déployés
-Cette pratique s'inspire des techniques traditionnelles de cybersécurité où des "pirates éthiques" simulent des attaques pour trouver des failles. Dans le contexte des LLM, le « red teaming »(l’équipe rouge) vise à découvrir les comportements indésirables que pourrait avoir un modèle face à des pirates.
+Le "LLM red teaming" est une méthode qui consiste à tester systématiquement les modèles de langage (LLM) pour identifier leurs vulnérabilités avant qu'ils ne soient déployés.
+Cette pratique s'inspire des techniques traditionnelles de cybersécurité où des "pirates éthiques" simulent des attaques pour trouver des failles. Dans le contexte des LLM, le « red teaming » (l’équipe rouge) vise à découvrir les comportements indésirables que pourrait avoir un modèle face à des pirates.
 
 Le "red teaming" des LLM implique généralement les étapes suivantes :
 
@@ -99,7 +99,7 @@ Le "red teaming" des LLM implique généralement les étapes suivantes :
 L'objectif n'est jamais malveillant, mais au contraire de renforcer la sécurité et la fiabilité des systèmes d'IA.
 Cette pratique permet aux organisations de découvrir et corriger de manière proactive les risques avant que des acteurs malveillants ne puissent les exploiter.
 
-Le "red teaming" est considéré comme une bonne pratique dans le développement responsable des systèmes utilisant des LLM, permettant d'identifier les risques potentiels comme la génération de contenu inapproprié, les fuites d'informations, ou les problèmes de contrôle d'accès
+Le "red teaming" est considéré comme une bonne pratique dans le développement responsable des systèmes utilisant des LLM, permettant d'identifier les failles/risques potentiels comme la génération de contenu inapproprié, les fuites d'informations, ou les problèmes de contrôle d'accès.
 
 Si vous souhaitez tester la robustesse de votre model, nous vous invitons à regarder le projet open source Promptfoo :
 

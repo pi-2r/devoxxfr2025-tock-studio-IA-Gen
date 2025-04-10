@@ -34,7 +34,7 @@
 ## Qu'est-ce que le RAG
 <img src="img/rag.png" alt="RAG">
 
-Imaginez que vous lissez un livre, à chaque idée dans le livre, vous allez arracher la ou les pages pour les placer 
+Imaginez que vous lisez un livre, à chaque idée dans le livre, vous allez arracher la ou les pages pour les placer 
 dans un coin de votre piece de votre maison ou appartement (ou un chateau, cela depend de votre budget !). 
 Quand un(e) ami(e) vous demande par exemple de quoi parle le chapitre 5 du livre que vous avez-lu, vous allez chercher 
 dans le coin de la pièce les pages correspondantes pour lui répondre avec vos propres mots.
@@ -227,7 +227,7 @@ L'ingestion consite globalement en 2 grandes étapes :
 
 Vous l'avez compris nous avons besoin d'un modèle qui depuis un texte (description d'un film), nous sort un vecteur qui représente ce texte. Nous allons utiliser le modèle [nomic-embed-text](https://ollama.com/library/nomic-embed-text), vous pouvez retrouver d'autres [modèles d'embedding compatible ollama ici](https://ollama.com/search?&c=embedding).
 
-Cette vectorisation intervient à 2 endroit, pour ingérer la base documentaire (configuré à l'aide d'un fichier json fourni au script d'ingestion) et pour donner une représentation de chaque requête utilisateur (ceci sera configuré via les RAG Settings de doc).
+Cette vectorisation intervient à deux endroits, pour ingérer la base documentaire (configuré à l'aide d'un fichier json fourni au script d'ingestion) et pour donner une représentation de chaque requête utilisateur (ceci sera configuré via les RAG Settings de doc).
 
 #### Configuration avec ollama
 

@@ -138,9 +138,19 @@ Depuis la racine de ce dossier, appliquez ces 3 commandes :
 ```bash
 cd docker
 source .env
-chmod a+r scripts/init-pgvect.sql # Quid sous windows ?
+chmod a+r scripts/init-pgvect.sql
 docker compose -p devoxx_tock up -d
 ```
+
+<details>
+  <summary>chmod n'est pas disponible sous windows voici l'étape avec powershell</summary>
+
+    $file = "scripts\init-pgvect.sql"
+    $acl = Get-Acl $file
+    $accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule("Everyone","Read","Allow")
+    $acl.SetAccessRule($accessRule)
+    $acl | Set-Acl $file
+</details>
 
 Une fois que tout est lancé, vous devriez avoir ce rendu au niveau des ressources si vous avez docker-desktop:
 
@@ -180,7 +190,7 @@ Modifiez votre fichier `docker/.env`, lignes suivantes :
 export POSTGRES_DB_SERVER=192.168.20.3 # OUR CODELAB, remote tock stack at tock.lan, unfornately docker compose needs an IP addr
 ```
 
-N'hésitez pas à arrêter la stack docker et supprimer les ressources créés :
+N'hésitez pas à arrêter la stack docker et supprimer les ressources créées :
 ```bash
 cd docker
 source .env

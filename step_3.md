@@ -45,19 +45,35 @@ Cette introduction a pour objectif d’expliquer la notion de LLM.
 
 ## LLM et modèles de fondation
 
-Un modèle de langage à grande échelle (LLM, pour Large Language Model) est conçu pour comprendre et générer du texte en
-utilisant un vaste ensemble de données d'apprentissage. Cette approche permet d'imiter le langage humain de 
-manière convaincante et d'effectuer une variété de tâches liées au texte, telles que répondre à des questions, 
-rédiger des textes, traduire des langues et bien plus encore. 
+Un modèle de langage à grande échelle (LLM, pour Large Language Model) est un système d’intelligence artificielle conçu 
+pour comprendre et générer du texte en s’appuyant sur un vaste corpus d’apprentissage. Entraîné sur des milliards de 
+paramètres, il peut analyser et produire du contenu textuel qui imite le langage humain avec un niveau de cohérence et 
+de pertinence remarquable. Ces modèles fonctionnent grâce à des architectures de réseaux de neurones profonds, 
+principalement basées sur des transformers, qui leur permettent de capturer les nuances linguistiques, les contextes et 
+les relations sémantiques complexes. Les LLM peuvent accomplir diverses tâches linguistiques comme répondre à des 
+questions, résumer des textes, traduire entre langues, rédiger différents types de contenus, et même raisonner sur des 
+problèmes complexes, le tout sans avoir été spécifiquement programmés pour chacune de ces tâches. Leur capacité 
+d’apprentissage par transfert leur permet d’adapter leurs connaissances générales à des domaines spécifiques avec un 
+minimum d’exemples supplémentaires.
 
-Les LLM sont entraînés sur des centaines de milliards de mots et peuvent comprendre le contexte, l'humour, 
-les métaphores et même certains aspects culturels spécifiques.
+Les modèles de fondation sont une catégorie plus large de modèles d’intelligence artificielle qui servent de base pour 
+de multiples applications et adaptations. Un modèle de fondation peut être un LLM, mais il peut aussi être entraîné pour 
+traiter des images, de l’audio, ou des données multimodales (combinant plusieurs types de médias). Ces modèles sont 
+conçus pour être polyvalents et réutilisables dans divers contextes, pouvant être adaptés et affinés pour des tâches 
+spécifiques sans nécessiter un ré-entraînement complet.
+Les modèles de fondation se caractérisent par leur adaptabilité et leur capacité à effectuer un large éventail de tâches 
+disparates avec précision en fonction des instructions reçues. Ils se divisent principalement en trois catégories : 
 
-Les modèles de fondation, quant à eux, sont une catégorie plus large de modèles d'intelligence artificielle qui servent
-de base pour de multiples applications et adaptations. Un modèle de fondation peut être un LLM, mais il peut aussi être 
-entraîné pour traiter des images, de l'audio, ou des données multimodales (c'est-à-dire des données qui combinent 
-plusieurs types de médias). L'idée est de créer un modèle polyvalent qui peut ensuite être personnalisé ou affiné pour 
-des tâches spécifiques sans avoir à être ré-entraîné depuis zéro.
+- ceux dédiés au traitement du langage naturel (comme GPT-4 ou Llama)
+- ceux spécialisés dans la vision par ordinateur (comme Stable Diffusion ou DALL-E)
+- les systèmes multimodaux capables d’intégrer plusieurs types de données.
+
+Contrairement aux modèles traditionnels qui sont limités à une fonction spécifique, les modèles de fondation sont 
+entraînés sur des données à grande échelle et développent une compréhension profonde des données initiales, ce qui leur 
+permet d’être ensuite affinés pour des cas d’usage précis.
+
+Cette approche de préentraînement suivie d’ajustements 
+spécifiques constitue leur principe fondamental de fonctionnement.
 
 <img src="img/fondation_model.png" alt="fondation model">
 
@@ -70,8 +86,9 @@ sont comme des **plates-formes de lancement** modulaires qui peuvent soutenir di
 de lancer un satellite, d'envoyer un rover sur Mars ou de mettre en orbite un télescope spatial.
 <img src="img/rocket-apollo-11.png" alt="fusée apollo 11">
 
-Vous en conviendrez que si la plates-forme de lancement (**Fondation Model**) est solide et droite, la fusée (le **LLM**) fait un strike dans l'espace, 
-en revanche si le la plates-forme de lancement est bancale et que la fusée par chez le voisin, il risque d'y avoir des dégâts !
+Vous en conviendrez que si la plates-forme de lancement (**Fondation Model**) est solide et droite, la fusée (le **LLM**) 
+fait un strike dans l'espace, en revanche si le la plates-forme de lancement est bancale et que la fusée part chez le 
+voisin, il risque d'y avoir des dégâts !
 
 En se basant sur des modèles de fondation solides et éprouvés, les développeurs peuvent créer des applications qui utilisent l'IA de manière plus efficace et plus sûre.
 
@@ -88,7 +105,7 @@ Vous devriez avoir ce rendu depuis la console :
 
 <img src="img/gen_ai_docker_compose_devoxx_2025.png" alt="gen ai docker compose">
 
-Si vous tout est bon, en vous rendant sur cette page: http://localhost:8000/docs, vous devriez avoir cette page Swagger
+Si vous tout est bon en vous rendant sur cette page : http://localhost:8000/docs, vous devriez avoir cette page Swagger
 
 <img src="img/swagger_gen_ai_orchestrator.png" alt="swagger">
 
@@ -100,7 +117,7 @@ Pour installer Ollama, vous devez aller sur le lien suivant : https://ollama.com
 
 ### Récupérer les modèles pour l'atelier sur la machine GPU
 
-Pour éviter de congestionner le réseau, nous avons pré-téléchargé les modèles pour voir.
+Pour éviter de congestionner le réseau, nous avons pré-téléchargé les modèles pour vous.
 
 * Télécharger l'archive :
   * Version light si vous n'avez pas de GPU ou peu d'espace disque disponible http://gpu-server.lan/ollama_models/tinyllama_nomic-embed-text.tar
@@ -140,9 +157,8 @@ Si vous souhaitez en savoir plus sur les modèles, c'est par ici :
 ollama run tinyllama
 ```
 
-Une fois ce modèle téléchargé et toujours dans le terminal vous pouvez tester/jouer avec le modèle
-(entrez une question pour voir si le modèle répond), ou quitter
-en appuyant sur CTRL + D.
+Une fois ce modèle téléchargé et toujours dans le terminal, vous pouvez tester/jouer avec le modèle (entrez une question 
+pour voir si le modèle répond), ou quitter en appuyant sur CTRL + D.
 
 ### ⚠️ Fallback : Ollama ne marche pas
 
@@ -153,8 +169,8 @@ Modifiez dans le fichier `docker/.env` les lignes suivantes pour utiliser le ser
 ```bash
 # Ollama (requires RAM and works better with a GPU)
 #   export OLLAMA_SERVER=host-gateway # LOCAL ollama server
-#   export OLLAMA_SERVER=192.168.20.2 # OUR CODELAB ollama server at gpu-server.lan, unfornately docker compose needs an IP addr
-export OLLAMA_SERVER=192.168.20.2 # OUR CODELAB ollama server at gpu-server.lan, unfornately docker compose needs an IP addr
+#   export OLLAMA_SERVER=192.168.20.2 # OUR CODELAB ollama server at gpu-server.lan, unfortunately docker compose needs an IP addr
+export OLLAMA_SERVER=192.168.20.2 # OUR CODELAB ollama server at gpu-server.lan, unfortunately docker compose needs an IP addr
 ```
 
 
@@ -261,7 +277,9 @@ Pour le modèle, là c’est à vous de renseigner le nom du modèle que vous ut
   <summary>Voir la configuration openAI</summary>
 
 Si vous souhaitez utiliser openAI, vous devez vous inscrire sur la plateforme [OpenAI](https://platform.openai.com/docs/introduction)
-pour obtenir une clé d'API. Une fois cela fait rendez-vous à cette page [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys) pour générer votre clé d'API.
+pour obtenir une clé d'API (attention cela nécessite d'acheter des crédits).
+Une fois cela fait rendez-vous à cette page [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys) 
+pour générer votre clé d'API.
 
 Dès que vous avez votre clé d'API, vous pouvez la renseigner dans le champ **API Key** et choisir le model (**Model name**) que vous souhaitez utiliser.
 Par exemple vous pourriez avoir ce genre de rendu.
