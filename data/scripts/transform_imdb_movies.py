@@ -4,7 +4,7 @@ import pandas as pd
 df = pd.read_csv('/app/data/documents_csv/imdb_movies.csv')
 
 # Define the number of random rows to keep
-n = 1000  # Example value or 5050 with all the movies
+n = 50  # Example value or 5050 with all the movies
 
 # Filter entries without a synopsis or with an empty synopsis
 df = df[df['resume'].notna() & (df['resume'] != '')]

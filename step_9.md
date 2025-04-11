@@ -526,22 +526,57 @@ import pandas as pd
 # Load the CSV file
 df = pd.read_csv('/app/data/documents_csv/imdb_movies.csv')
 
-# Set the number of random rows you want to keep
-n = 20  # Example value
+# Define the number of random rows to keep
+n = 50  # Example value or 5050 with all the movies
+
+# Filter entries without a synopsis or with an empty synopsis
+df = df[df['resume'].notna() & (df['resume'] != '')]
 
 # Randomly select n rows
-df_sampled = df.sample(n=n, random_state=42)  # random_state ensures reproducibility
+df_sampled = df.sample(n=min(n, len(df)), random_state=42)  # random_state ensures reproducibility
 
 # Keep only the specified columns
-columns_to_keep = ['url', 'title', 'resume' ]
-df_filtered = df_sampled[columns_to_keep].copy()
+columns_to_keep = [
+  'title', 'year', 'time', 'resume', 'metascore', 'url'
+]
+
+df_filtered = df_sampled.loc[:, columns_to_keep]
+
+# Create a new 'text' column based on the template
+text_template = (
+  "### $title\n\n"
+  "* Movie title: $title\n"
+  "* Release year: $year\n"
+  "* Duration: $time\n"
+  "* Metascore: $metascore\n\n"
+  "#### Synopsis of $title\n"
+  "$resume\n"
+  "\n\n"
+)
+
+df_filtered['text'] = df_filtered.apply(lambda row: text_template
+                                        .replace('$title', str(row['title']))
+                                        .replace('$year', str(row['year']))
+                                        .replace('$time', str(row['time']) if pd.notna(row['time']) else "Not specified")
+                                        .replace('$metascore', str(row['metascore']) if pd.notna(row['metascore']) else "Not available")
+                                        .replace('$resume', str(row['resume'])), axis=1)
 
 # Rename columns
-df_filtered.rename(columns={'url': 'source', 'title': 'title', 'resume': 'text'}, inplace=True)
+df_filtered.rename(columns={'url': 'source', 'text': 'text', 'title': 'title'}, inplace=True)
 
-# Save the filtered DataFrame to a CSV file, excluding rows with empty 'resume'
-df_filtered[df_filtered['text'].notna()].to_csv('data/documents_csv/filtered_imdb_movies.csv', index=False, sep='|')
+# Keep only the specified columns for the final result
+final_columns = ['source', 'title', 'text']
+df_filtered = df_filtered.loc[:, final_columns]
+
+# Check if the DataFrame is not empty before saving
+if not df_filtered.empty:
+  # Save the filtered DataFrame to a CSV file
+  df_filtered.to_csv('data/documents_csv/filtered_imdb_movies.csv', index=False, sep='|')
+  print(f"CSV file created with {len(df_filtered)} movies.")
+else:
+  print("No movies with a synopsis were found. No CSV file was created.")
 ```
+
 Exécution du script via l'image de tooling a la racine du dossier de cet atelier :
 ```bash
 # Sourcer vos variables d'environnement
@@ -563,7 +598,7 @@ Dans le conteneur :
 python /app/data/scripts/transform_imdb_movie.py
 
 # Vérifiez le contenu du CSV filtré
-head data/documents_csv/filtered_imdb_movies.csv -n 2
+head data/documents_csv/filtered_imdb_movies.csv -n 10
 ```
 
 Vous devriez avoir ce type de résultat :
@@ -581,7 +616,7 @@ Depuis le conteneur, nous allons juste lancer l’ingestion de données.
 export TOCK_BOT_ID=devoxx2025
 export TOCK_BOT_NAMESPACE=app
 export EMBEDDING_JSON_CONFIGURATION=/app/data/configurations/embeddings_ollama_settings.json
-python tock-llm-indexing-tools/index_documents.py data/documents_csv/filtered_imdb_movies.csv $TOCK_BOT_NAMESPACE $TOCK_BOT_ID $EMBEDDING_JSON_CONFIGURATION data/configurations/vector_store_pgvector_settings.json 5000 -v
+python tock-llm-indexing-tools/index_documents.py --input-csv=data/documents_csv/filtered_imdb_movies.csv --namespace=$TOCK_BOT_NAMESPACE --bot-id=$TOCK_BOT_ID --embeddings-json-config=$EMBEDDING_JSON_CONFIGURATION --vector-store-json-config=data/configurations/vector_store_pgvector_settings.json --chunks-size=5000 -v
 ```
 
 Comme évoqué en [étape 4](step_4.md), chaque ingestion d'un ensemble documentaire est associée à un ID de session d'indexation, nous allons le renseigner dans la configuration de TOCK. Ces sessions sont utilent en production pour revenir en arrière en cas de défaut d'ingestion.
