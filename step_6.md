@@ -21,7 +21,7 @@
 - [Quelques techniques de jailbreak](#quelques-techniques-de-jailbreak)
 - [Lui faire changer de personnalité](#lui-faire-changer-de-personnalité)
 - [Les risques liés au jailbreak de prompt](#les-risques-liés-au-jailbreak-de-prompt)
-  -[Techniques d'attaque liées au jailbreak de prompt](#techniques-dattaque-liées-au-jailbreak-de-prompt)
+  - [Techniques d'attaque liées au jailbreak de prompt](#techniques-dattaque-liées-au-jailbreak-de-prompt)
 - [LLM red teaming](#llm-red-teaming)
 
 
