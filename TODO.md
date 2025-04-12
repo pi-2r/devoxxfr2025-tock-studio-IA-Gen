@@ -12,7 +12,7 @@
     - [X] Step 6 MAJ la capture d'écran.
     - [X] Mettre lien promptfoo dans la partie 7 -red teaming-
     - [ ] Lire promptfoo sur le hacking LLM
-    - [ ] Step 7 capture d'écran sur le ban de jailbreak / Rag Excluded avec un exemple de jailbreak. @Pierre
+    - [X] Step 7 capture d'écran sur le ban de jailbreak / Rag Excluded avec un exemple de jailbreak. @Pierre
     - [ ] Step 7 revoir les reco prompt coté Arkéa @Benjamin
     - [ ] Step 7 ou bis ? ajouter la partie compresseur avec leur serveur amené chez nous.
     - [X] Step 9 où lancer les commandes scrapy
