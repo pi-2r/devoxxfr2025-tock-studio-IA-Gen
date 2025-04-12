@@ -18,8 +18,8 @@
     - [X] Step 9 où lancer les commandes scrapy
 - [ ] Activer le debug RAG par défaut dans le docker compose.
 - [ ] Voir avec l'orga :
-  - [ ] Prise réseau.
-  - [ ] Nombre de participants : 
+  - [X] Prise réseau.
+  - [ ] Nombre de participants : => répondre à l'orga
 - [X] Revoir la page du tock vue kit `index-tvk.html` en mode Indiana Johnes @Rodolphe.
 - [ ] Matériel :
   - [ ] @Benjamin vient avec un Mac à la place de l'UC, bien penser à fixer son IP sur l'AP wifi.
