@@ -97,10 +97,10 @@ Cette pratique s'inspire des techniques traditionnelles de cybersécurité où d
 
 Le "red teaming" des LLM implique généralement les étapes suivantes :
 
-1 - **Simulation d'attaques adverses** : création d'entrées malveillantes ou problématiques pour tenter de faire produire au LLM des réponses inappropriées
+- 1 - **Simulation d'attaques adverses** : création d'entrées malveillantes ou problématiques pour tenter de faire produire au LLM des réponses inappropriées
 
 
-2 - **Évaluation des réponses** : analyse des sorties du modèle pour identifier les vulnérabilités et les comportements indésirables.
+- 2 - **Évaluation des réponses** : analyse des sorties du modèle pour identifier les vulnérabilités et les comportements indésirables.
 
 
 L'objectif n'est jamais malveillant, mais au contraire de renforcer la sécurité et la fiabilité des systèmes d'IA.
