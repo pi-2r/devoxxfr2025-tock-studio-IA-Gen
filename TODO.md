@@ -2,13 +2,14 @@
 
 - [ ] Rédac :
     - [X] Refaire le tuto avec la dernière version de TOCK et voir pour une autre release avec Julien si besoin.
-    - [ ] Tester de nouveaux LLMs en choisir 1-2.
+    - [X] Tester de nouveaux LLMs en choisir 1-2.
     - [ ] Screenshot le nom du bot.
     - [ ] Compresseur introduit en plus (?)
     - [X] Step 4 capture d'écran à revoir.
     - [ ] Schéma de réseau en annexe pour ces histoire de docker et host internal.
+    - [X] Step 5 refaire un test avec model Mistral.
     - [ ] Step 5 refaire un test avec model gemma.
-    - [ ] Step 6 MAJ la capture d'écran.
+    - [X] Step 6 MAJ la capture d'écran.
     - [X] Mettre lien promptfoo dans la partie 7 -red teaming-
     - [ ] Lire promptfoo sur le hacking LLM
     - [ ] Step 7 capture d'écran sur le ban de jailbreak / Rag Excluded avec un exemple de jailbreak. @Pierre
