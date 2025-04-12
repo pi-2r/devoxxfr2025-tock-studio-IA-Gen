@@ -137,18 +137,22 @@ ollama list # Devrait vous afficher les modèles
 **TODO préparer l'archive et tester cette étape !!!**
 
 ### Récupérer les modèles depuis internet hors du Codelab
-Si vous voulez récupérer les modèles en hors atelier, nous vous invitons à télécharger plusieurs modèles en fonction de machine, à savoir :
 
-- **Tinyllama** si vous avez une machine pas très puissante
-- **Mistral** et **gemma**, si vous avez à minimum 16Go de RAM
+Pour utiliser les modèles en dehors de l'environnement d'atelier, nous vous recommandons de télécharger différents 
+modèles selon les capacités de votre machine :
 
-Pour la partie embedding (découpage), nous allons utiliser :
+- **Tinyllama** idéal pour les machines avec des ressources limitées
+- **Mistral** et **gemma**, recommandés si vous disposez d'au moins 16 Go de RAM
+
+Pour la partie embedding (vectorisation du texte), nous utiliserons :
 - **nomic-embed-text**
 
-Pour récupérer un modèle depuis ollama il suffit de taper la commande suivante :
+La récupération d'un modèle depuis Ollama s'effectue simplement via la commande suivante :
+
 ```bash
 ollama pull <le_nom_de_votre_modèle>
 ```
+
 Dans notre cas, nous allons récupérer les modèles suivants en tapant ces comamndes dans le terminal :
 ```
 ollama pull mistral
