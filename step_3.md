@@ -22,7 +22,7 @@ Objectifs:
   - [Récupérer les modèles pour l'atelier sur la machine GPU](#récupérer-les-modèles-pour-latelier-sur-la-machine-gpu)
     - [Autorisation de la registy locale insecure](#autorisation-de-la-registry-locale-insecure)
   - [Récupérer les modèles depuis internet hors du Codelab](#récupérer-les-modèles-depuis-internet-hors-du-codelab)
-  - [Tester avec un petit prompt](#tester-avec-un-petit-prompt)
+  - [Tester le prompt](#tester-le-prompt)
   - [⚠️ Fallback : Ollama ne marche pas](#-fallback--ollama-ne-marche-pas)
 
 
@@ -137,25 +137,49 @@ ollama list # Devrait vous afficher les modèles
 **TODO préparer l'archive et tester cette étape !!!**
 
 ### Récupérer les modèles depuis internet hors du Codelab
+Si vous voulez récupérer les modèles en hors atelier, nous vous invitons à télécharger plusieurs modèles en fonction de machine, à savoir :
 
+- **Tinyllama** si vous avez une machine pas très puissante
+- **Mistral** et **gemma**, si vous avez à minimum 16Go de RAM
+
+Pour la partie embedding (découpage), nous allons utiliser :
+- **nomic-embed-text**
+
+Pour récupérer un modèle depuis ollama il suffit de taper la commande suivante :
+```bash
+ollama pull <le_nom_de_votre_modèle>
 ```
-ollama pull tinyllama
+Dans notre cas, nous allons récupérer les modèles suivants en tapant ces comamndes dans le terminal :
+```
+ollama pull mistral
 ollama pull nomic-embed-text
 ```
 
-Si vous souhaitez en savoir plus sur les modèles, c'est par ici :
-
-| Modèle            | Lien                                                                                          |
-|-------------------|-----------------------------------------------------------------------------------------------|
-| tinyllama         | [https://ollama.com/library/tinyllama](https://ollama.com/library/tinyllama)                  |
-| nomic-embed-text  | [https://ollama.com/library/nomic-embed-text](https://ollama.com/library/nomic-embed-text)    |
-
-
-### Tester avec un petit prompt
+Pour vérifier que nous avons les modèles sur notre machine, il suffit de taper cette commande dans notre terminal pour avoir ce type de rendu :
 
 ```bash
-ollama run tinyllama
+ ollama list
+ ```
+
+<img src="img/ ollama_list.png" alt="ollama list">
+
+💡Si vous souhaitez en savoir plus sur les modèles, c'est par ici :
+
+| Modèle            | Lien                                                                                       |
+|-------------------|--------------------------------------------------------------------------------------------|
+| Tinyllama         | [https://ollama.com/library/tinyllama](https://ollama.com/library/tinyllama)               |
+| Gemma             | [https://ollama.com/library/gemma](https://ollama.com/library/gemma)                       |
+| Mistral 🇫🇷      | [https://ollama.com/library/mistral](https://ollama.com/library/mistral)                   |
+| Nomic-embed-text  | [https://ollama.com/library/nomic-embed-text](https://ollama.com/library/nomic-embed-text) |
+ 
+
+### Tester le prompt
+
+```bash
+ollama run mistral
 ```
+
+<img src="img/ollama_run_mistral.png" alt="ollama run mistral">
 
 Une fois ce modèle téléchargé et toujours dans le terminal, vous pouvez tester/jouer avec le modèle (entrez une question 
 pour voir si le modèle répond), ou quitter en appuyant sur CTRL + D.
