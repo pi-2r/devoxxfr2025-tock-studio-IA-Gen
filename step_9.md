@@ -516,7 +516,7 @@ donc reprendre le même procédé et l’adapter pour notre besoin.
 
 ## Exécuter le script
 
-Le script est présent dans `data/scripts/transform_imdb_movie.py`, nous vous proposons une image docker de tooling pour l'exécuter plus bas.
+Le script est présent dans `data/scripts/transform_imdb_movies.py`, nous vous proposons une image docker de tooling pour l'exécuter plus bas.
 
 Ce script est volontairement simplifié nous vous invitons à le lire / adapter aux besoins en fonction de votre dataset. A noter que la colonne "source" peut-être laisée vide si vous n'avez pas de version en ligne du document.
 
@@ -595,7 +595,7 @@ docker run --name tooling_tock --rm -it \
 Dans le conteneur :
 ```bash
 # Excuter le script
-python /app/data/scripts/transform_imdb_movie.py
+python /app/data/scripts/transform_imdb_movies.py
 
 # Vérifiez le contenu du CSV filtré
 head data/documents_csv/filtered_imdb_movies.csv -n 10
