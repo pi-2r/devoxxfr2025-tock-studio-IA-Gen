@@ -132,7 +132,7 @@ Vous pouvez rechercher n'importe quel dataset de la thématique qui vous intére
 références vous permettant de relier les documents à des versions en ligne.
 
 Dataset proposés sur Kaggle :
-* [Séries TV](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows)
+* [Séries TV](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows), notre exemple se basera dessus.
 * [Horror Movies dataset](https://www.kaggle.com/datasets/sujaykapadnis/horror-movies-dataset/data)
 
 Télécharger le dataset en zip et le décompresser dans le dossier `data/documents_csv/`.
@@ -147,9 +147,8 @@ Pour ingérer ce dataset nous allons utiliser le script [index_documents.py de T
 
 Format du fichier CSV d'entrée :
 ```csv
-source|title|text
-https://www.themoviedb.org/movie/837286|Semangat Ular|Zaiton comes under the influence of the spell cast by a snake spirit. With her body under possession, she incapacitates her father and is lured to a hypnotised rendezvous with the snake spirit in his harem pit. The spirit takes on an anthropomorphised form and charms Zaiton, convincing her that her fiancée Rahim is a philanderer. Rahim and Zaiton’s father turn to a wise shaman to rescue Zaiton.
-https://www.themoviedb.org/movie/25886|Graveyard Disturbance|Five young robbers spend a whole night in a dark catacomb to win a priceless treasure. They will have to fight against lots of ferocious zombies and vampires. At the end they will meet the Death in person!
+"id","name","number_of_seasons","number_of_episodes","original_language","vote_count","vote_average","overview","adult","backdrop_path","first_air_date","last_air_date","homepage","in_production","original_name","popularity","poster_path","type","status","tagline","genres","created_by","languages","networks","origin_country","spoken_languages","production_companies","production_countries","episode_run_time"
+"1399","Game of Thrones","8","73","en","21857","8.442","Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.","False","/2OMB0ynKlyIenMJWI2Dy9IWT4c.jpg","2011-04-17","2019-05-19","http://www.hbo.com/game-of-thrones","False","Game of Thrones","1083.917","/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg","Scripted","Ended","Winter Is Coming","Sci-Fi & Fantasy, Drama, Action & Adventure","David Benioff, D.B. Weiss","en","HBO","US","English","Revolution Sun Studios, Television 360, Generator Entertainment, Bighead Littlehead","United Kingdom, United States of America","0"
 ```
 
 Voici un script python qui convertie la dataset donnée en exemple dans ce format de sortie en en gardant qu'une portion. Vous pouvez effectuer ces opération dans le langage de votre choix.
@@ -217,81 +216,6 @@ df_filtered = df_filtered.loc[:, columns_to_keep]
 df_filtered.to_csv('data/documents_csv/filtered_tv_series.csv', index=False, sep='|')
 ```
 
-### Exemple de script python utilisant Panda - Data set horror movies
-
-Ce script est présent dans [data/scripts/transform_horror_movie.py](./data/scripts/transform_horror_movie.py), nous vous proposons une image docker de tooling pour l'exécuter plus bas.
-
-
-Ce script est volontairement simplifié nous vous invitons à le lire / adapter aux besoins en fonction de votre dataset.
-A noter que la colonne "source" peut-être laisée vide si vous n'avez pas de version en ligne du document.
-
-```python
-import pandas as pd
-
-# Load the CSV file
-df = pd.read_csv('/app/data/documents_csv/horror_movies.csv')
-
-# Define the number of random rows to keep
-n = 35  # Example value
-
-# Filter only horror movies
-df = df[df['genre_names'].str.contains('Horror', na=False)]
-
-# Randomly select n rows
-df_sampled = df.sample(n=n, random_state=42)  # random_state ensures reproducibility
-
-# Keep only the specified columns
-columns_to_keep = [
-  'title', 'original_title', 'runtime', 'original_language',
-  'overview', 'release_date', 'tagline', 'genre_names', 'budget', 'revenue'
-]
-
-df_filtered = df_sampled.loc[:, columns_to_keep]
-
-# Create a new 'text' column based on the template
-text_template = (
-  "### $title\n\n"
-  "* Movie title: $title\n"
-  "* Original title: $original_title\n"
-  "* Runtime (minutes): $runtime\n"
-  "* Original language: $original_language\n"
-  "* Release date: $release_date\n"
-  "* Tagline: $tagline\n"
-  "* Genres: $genre_names\n"
-  "* Budget: $budget\n"
-  "* Revenue: $revenue\n\n"
-  "#### Overview of $title\n"
-  "$overview\n"
-  "\n\n"
-)
-
-df_filtered['text'] = df_filtered.apply(lambda row: text_template
-                                        .replace('$title', str(row['title']))
-                                        .replace('$original_title', str(row['original_title']))
-                                        .replace('$runtime', str(row['runtime']))
-                                        .replace('$original_language', str(row['original_language']))
-                                        .replace('$release_date', str(row['release_date']))
-                                        .replace('$tagline', str(row['tagline']))
-                                        .replace('$genre_names', str(row['genre_names']))
-                                        .replace('$budget', str(row['budget']))
-                                        .replace('$revenue', str(row['revenue']))
-                                        .replace('$overview', str(row['overview'])), axis=1)
-
-# Rename columns
-df_filtered.rename(columns={'title': 'title', 'text': 'text'}, inplace=True)
-
-# Add a source column (as it's required in the final format)
-df_filtered['source'] = df_filtered.apply(lambda row: f"https://www.themoviedb.org/movie/{row.name}", axis=1)
-
-# Keep only the specified columns for the final format
-columns_to_keep = ['source', 'title', 'text']
-df_filtered = df_filtered.loc[:, columns_to_keep]
-
-# Save the filtered DataFrame to a CSV file
-df_filtered.to_csv('data/documents_csv/filtered_horror_movies.csv', index=False, sep='|')
-
-```
-
 Exécution du script via l'image de tooling a la racine du dossier de cet atelier :
 ```bash
 # Sourcer vos variables d'environnement
@@ -310,15 +234,13 @@ docker run --name tooling_tock --rm -it \
 Dans le conteneur :
 ```bash
 # Excuter le script
-python /app/data/scripts/transform_horror_movies.py
+python /app/data/scripts/transform_tv_shows.py
 
 # Vérifiez le contenu du CSV filtré
-head data/documents_csv/filtered_horror_movies.csv -n 10
+head data/documents_csv/filtered_tv_series.csv -n 45
 ```
 
-Vous devriez avoir ce type de résultat :
-
-<img src="img/tooling_result.png" alt="tooling result">
+Nous vous avons déjà mis à disposition le fichier résultant de ce filtre si besoin ici dans `data/documents_csv/filtered_tv_series.csv`.
 
 ## Ingestion avec le tooling
 
@@ -373,7 +295,7 @@ docker run --name tooling_tock --rm -it \
 export TOCK_BOT_ID=devoxx2025
 export TOCK_BOT_NAMESPACE=app
 export EMBEDDING_JSON_CONFIGURATION=/app/data/configurations/embeddings_ollama_settings.json
-python tock-llm-indexing-tools/index_documents.py --input-csv=data/documents_csv/filtered_horror_movies.csv --namespace=$TOCK_BOT_NAMESPACE --bot-id=$TOCK_BOT_ID --embeddings-json-config=$EMBEDDING_JSON_CONFIGURATION --vector-store-json-config=data/configurations/vector_store_pgvector_settings.json --chunks-size=5000 -v
+python tock-llm-indexing-tools/index_documents.py --input-csv=data/documents_csv/filtered_tv_series.csv --namespace=$TOCK_BOT_NAMESPACE --bot-id=$TOCK_BOT_ID --embeddings-json-config=$EMBEDDING_JSON_CONFIGURATION --vector-store-json-config=data/configurations/vector_store_pgvector_settings.json --chunks-size=5000 -v
 ```
 
 

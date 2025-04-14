@@ -18,9 +18,10 @@
     - [ ] Step 7 revoir les reco prompt coté Arkéa @Benjamin
     - [ ] Step 7 ou bis ? ajouter la partie compresseur avec leur serveur amené chez nous.
     - [X] Step 9 où lancer les commandes scrapy
-    - [ ] Changement du dataset film horreur ?? ==> Séries.
+    - [X] Changement du dataset film horreur ?? ==> Séries.
     - [ ] Langfuse partie public URL et indiquer qu'il y a un lien dans tock.
     - [ ] Tock Vue Kit se base sur la locale du navigateur est doc le bot répond en FR. Changement dans le prompt possible.
+    - [ ] Step 4 : Mettre à dispo le CSV `TMDB_tv_dataset_v3.csv` sur le serveur.
 - [ ] Activer le debug RAG par défaut dans le docker compose.
 - [ ] Voir avec l'orga :
   - [X] Prise réseau.

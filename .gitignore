@@ -45,4 +45,5 @@ travis
 # Horror csv file
 data/documents_csv/*
 !data/documents_csv/filtered_horror_movies.csv
+!data/documents_csv/filtered_tv_series.csv
 !data/documents_csv/filtered_imdb_movies.csv
