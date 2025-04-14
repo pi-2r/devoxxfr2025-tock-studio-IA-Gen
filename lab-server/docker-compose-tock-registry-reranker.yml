@@ -239,6 +239,13 @@ services:
     ports:
       - "5000:5000"
 
+  ollama-registry-proxy:
+    image: ghcr.io/beans-bytes/ollama-registry-pull-through-proxy:latest
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./cache_dir_docker:/pull-through-cache
+
 volumes:
   tockmongo:
   tockmongo2:
