@@ -236,6 +236,8 @@ services:
   docker_registry:
     image: registry:3
     restart: always
+    volumes:
+      - ./data/docker_registry:/var/lib/registry
     ports:
       - "5000:5000"
 

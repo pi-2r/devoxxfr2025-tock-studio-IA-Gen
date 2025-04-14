@@ -3,16 +3,16 @@
 
 images=(
     "mongo:8.0.6"
-    "tock/build_worker:25.3.2"
-    "tock/duckling:25.3.2"
-    "tock/kotlin_compiler:25.3.2"
-    "tock/bot_admin:25.3.2"
-    "tock/nlp_api:25.3.2"
-    "tock/bot_api:25.3.2"
+    "tock/build_worker:25.3.1"
+    "tock/duckling:25.3.1"
+    "tock/kotlin_compiler:25.3.1"
+    "tock/bot_admin:25.3.1"
+    "tock/nlp_api:25.3.1"
+    "tock/bot_api:25.3.1"
     "pgvector/pgvector:pg17"
-    "tock/gen-ai-orchestrator-server:25.3.2"
+    "tock/gen-ai-orchestrator-server:25.3.1"
     "langfuse/langfuse:2.95.8"
-    "tock/llm-indexing-tools:25.3.2"
+    "tock/llm-indexing-tools:25.3.1"
 )
 
 platforms=("linux/arm64" "linux/amd64")
