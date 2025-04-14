@@ -16,6 +16,8 @@
     - [ ] Step 7 revoir les reco prompt coté Arkéa @Benjamin
     - [ ] Step 7 ou bis ? ajouter la partie compresseur avec leur serveur amené chez nous.
     - [X] Step 9 où lancer les commandes scrapy
+    - [ ] Changement du dataset film horreur ?? ==> Séries.
+    - [ ] Langfuse partie public URL et indiquer qu'il y a un lien dans tock.
 - [ ] Activer le debug RAG par défaut dans le docker compose.
 - [ ] Voir avec l'orga :
   - [X] Prise réseau.
