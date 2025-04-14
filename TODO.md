@@ -38,5 +38,8 @@
   - [ ] Préparer le MAC en backup de l'UC.
   - [ ] Tester une registry ollama locale : https://github.com/simonfrey/ollama-registry-pull-through-proxy
   - [ ] Voir pour gérer l'hébergement du nomic embed tiny (si la registry local ollama marche pas)
+  - [ ] Test si registry:3 supporte ou pas mieux le multi architecture
+  - [ ] Pré-ingérer des données dans tous les bots.
+
 
 
