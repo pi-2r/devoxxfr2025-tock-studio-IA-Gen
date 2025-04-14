@@ -1,0 +1,64 @@
+Email,Password,org,roles,Nom,Description
+indiana.jones@lucasfilm.com,password,indiana.jones,nlpUser|botUser|admin|technicalAdmin,Indiana Jones,"Archéologue et aventurier emblématique, protagoniste principal de la série."
+marion.ravenwood@lucasfilm.com,password,marion.ravenwood,nlpUser|botUser|admin|technicalAdmin,Marion Ravenwood,"Ancienne amante d’Indiana, forte tête et partenaire dans plusieurs aventures."
+sallah@lucasfilm.com,password,sallah,nlpUser|botUser|admin|technicalAdmin,Sallah,"Ami fidèle d’Indiana, expert en excavations en Égypte."
+marcus.brody@lucasfilm.com,password,marcus.brody,nlpUser|botUser|admin|technicalAdmin,Marcus Brody,"Directeur de musée et collègue d’Indiana, souvent dépassé par les événements."
+rene.belloq@lucasfilm.com,password,rene.belloq,nlpUser|botUser|admin|technicalAdmin,René Belloq,"Rival archéologue d’Indiana, souvent allié aux nazis."
+willie.scott@lucasfilm.com,password,willie.scott,nlpUser|botUser|admin|technicalAdmin,Willie Scott,Chanteuse américaine entraînée malgré elle dans une aventure périlleuse.
+short.round@lucasfilm.com,password,short.round,nlpUser|botUser|admin|technicalAdmin,Short Round,Jeune orphelin chinois et acolyte plein d’énergie d’Indiana.
+mola.ram@lucasfilm.com,password,mola.ram,nlpUser|botUser|admin|technicalAdmin,Mola Ram,"Prêtre maléfique dirigeant le culte Thuggee dans ""Le Temple maudit""."
+henry.jones@lucasfilm.com,password,henry.jones,nlpUser|botUser|admin|technicalAdmin,Henry Jones Sr.,"Père d’Indiana, professeur spécialisé dans la quête du Graal."
+elsa.schneider@lucasfilm.com,password,elsa.schneider,nlpUser|botUser|admin|technicalAdmin,Elsa Schneider,"Docteure autrichienne séduisante, aux intentions ambiguës."
+walter.donovan@lucasfilm.com,password,walter.donovan,nlpUser|botUser|admin|technicalAdmin,Walter Donovan,Homme d'affaires financant la quête du Graal avec des buts égoïstes.
+colonel.vogel@lucasfilm.com,password,colonel.vogel,nlpUser|botUser|admin|technicalAdmin,Colonel Vogel,"Officier nazi brutal dans ""La Dernière Croisade""."
+kazim@lucasfilm.com,password,kazim,nlpUser|botUser|admin|technicalAdmin,Kazim,Membre de la Confrérie protégeant le secret du Graal.
+irina.spalko@lucasfilm.com,password,irina.spalko,nlpUser|botUser|admin|technicalAdmin,Irina Spalko,Agent soviétique cherchant le crâne de cristal pour le compte de l’URSS.
+mutt.williams@lucasfilm.com,password,mutt.williams,nlpUser|botUser|admin|technicalAdmin,Mutt Williams,"Fils d’Indiana Jones et Marion Ravenwood, motard rebelle."
+george.mac@lucasfilm.com,password,george.mac,nlpUser|botUser|admin|technicalAdmin,George “Mac” McHale,"Vieil ami d’Indy, agent double ambigu."
+harold.oxley@lucasfilm.com,password,harold.oxley,nlpUser|botUser|admin|technicalAdmin,Harold Oxley,Archéologue fou obsédé par le crâne de cristal.
+colonel.dovchenko@lucasfilm.com,password,colonel.dovchenko,nlpUser|botUser|admin|technicalAdmin,Colonel Dovchenko,Militaire soviétique au service de Spalko.
+dean.charles@lucasfilm.com,password,dean.charles,nlpUser|botUser|admin|technicalAdmin,Dean Charles Stanforth,"Collègue et doyen à l’université, défend Indiana."
+satipo@lucasfilm.com,password,satipo,nlpUser|botUser|admin|technicalAdmin,Satipo,Guide péruvien qui trahit Indiana dans le premier film.
+jock.lindsey@lucasfilm.com,password,jock.lindsey,nlpUser|botUser|admin|technicalAdmin,Jock Lindsey,Pilote qui sauve Indiana en hydravion au début du premier film.
+barranca@lucasfilm.com,password,barranca,nlpUser|botUser|admin|technicalAdmin,Barranca,Guide de la jungle qui tente aussi de trahir Indiana.
+lao.che@lucasfilm.com,password,lao.che,nlpUser|botUser|admin|technicalAdmin,Lao Che,"Gangster chinois de Shanghai dans ""Le Temple maudit""."
+wu.han@lucasfilm.com,password,wu.han,nlpUser|botUser|admin|technicalAdmin,Wu Han,"Vieil ami d’Indiana, tué au Club Obi-Wan à Shanghai."
+chattar.lal@lucasfilm.com,password,chattar.lal,nlpUser|botUser|admin|technicalAdmin,Chattar Lal,"Premier ministre de Pankot, complice des Thuggee."
+maharaja.zalim@lucasfilm.com,password,maharaja.zalim,nlpUser|botUser|admin|technicalAdmin,Maharaja Zalim Singh,Jeune dirigeant manipulé par Mola Ram.
+chef.des@lucasfilm.com,password,chef.des,nlpUser|botUser|admin|technicalAdmin,Chef des gardes,Responsable de la sécurité du palais de Pankot.
+captain.phillip@lucasfilm.com,password,captain.phillip,nlpUser|botUser|admin|technicalAdmin,Captain Phillip Blumburtt,"Officier britannique, enquête sur les événements de Pankot."
+garth.fedora@lucasfilm.com,password,garth.fedora,nlpUser|botUser|admin|technicalAdmin,Garth (Fedora),"Aventurier inspirant jeune Indiana, lui transmettant son chapeau."
+herman.mueller@lucasfilm.com,password,herman.mueller,nlpUser|botUser|admin|technicalAdmin,Herman Mueller,Camarade scout d'Indiana durant sa jeunesse.
+adolf.hitler@lucasfilm.com,password,adolf.hitler,nlpUser|botUser|admin|technicalAdmin,Adolf Hitler,"Apparaît dans ""La Dernière Croisade"" lors d’une scène à Berlin."
+sultan.de@lucasfilm.com,password,sultan.de,nlpUser|botUser|admin|technicalAdmin,Sultan de Hatay,Souverain acceptant pots-de-vin pour soutenir les nazis.
+claire.lieberman@lucasfilm.com,password,claire.lieberman,nlpUser|botUser|admin|technicalAdmin,Claire Lieberman,Scénariste hollywoodienne dans une intrigue parallèle.
+arnold.toht@lucasfilm.com,password,arnold.toht,nlpUser|botUser|admin|technicalAdmin,Arnold Toht,"Officier nazi sadique, brûlé par le médaillon de l’Arche."
+colonel.dietrich@lucasfilm.com,password,colonel.dietrich,nlpUser|botUser|admin|technicalAdmin,Colonel Dietrich,Officier supérieur nazi dans la quête de l’Arche d’Alliance.
+panama.hat@lucasfilm.com,password,panama.hat,nlpUser|botUser|admin|technicalAdmin,Panama Hat,Contrebandier détenant la Croix de Coronado.
+kao.kan@lucasfilm.com,password,kao.kan,nlpUser|botUser|admin|technicalAdmin,Kao Kan,"Fils de Lao Che, impliqué dans ses affaires criminelles."
+helen.seymour@lucasfilm.com,password,helen.seymour,nlpUser|botUser|admin|technicalAdmin,Helen Seymour,Préceptrice d’Indiana Jones jeune dans la série télévisée.
+remy.baudouin@lucasfilm.com,password,remy.baudouin,nlpUser|botUser|admin|technicalAdmin,Remy Baudouin,Ami d’Indiana durant la Première Guerre mondiale.
+omar@lucasfilm.com,password,omar,nlpUser|botUser|admin|technicalAdmin,Omar,"Contact d’Indiana au Moyen-Orient dans ""La Dernière Croisade""."
+ernst.vogel@lucasfilm.com,password,ernst.vogel,nlpUser|botUser|admin|technicalAdmin,Ernst Vogel,"Assistant du colonel Vogel, soldat nazi."
+simon.katanga@lucasfilm.com,password,simon.katanga,nlpUser|botUser|admin|technicalAdmin,Simon Katanga,Capitaine africain d’un bateau aidant Indiana.
+roshan.seth@lucasfilm.com,password,roshan.seth,nlpUser|botUser|admin|technicalAdmin,Roshan Seth,Premier ministre complice de Mola Ram (acteur bien connu).
+indy.jeune@lucasfilm.com,password,indy.jeune,nlpUser|botUser|admin|technicalAdmin,Indy jeune,Version adolescente d’Indiana dans les flashbacks.
+fedora.guys@lucasfilm.com,password,fedora.guys,nlpUser|botUser|admin|technicalAdmin,Fedora Guy’s Boss,"Commanditaire de Fedora dans l’intro de ""La Dernière Croisade""."
+sophia.hapgood@lucasfilm.com,password,sophia.hapgood,nlpUser|botUser|admin|technicalAdmin,Sophia Hapgood,"Partenaire dans les jeux vidéo, ex-amour d’Indiana."
+general.ross@lucasfilm.com,password,general.ross,nlpUser|botUser|admin|technicalAdmin,General Ross,"Représentant du gouvernement américain dans ""Le Royaume du Crâne de cristal""."
+abner.ravenwood@lucasfilm.com,password,abner.ravenwood,nlpUser|botUser|admin|technicalAdmin,Abner Ravenwood,"Père de Marion, ancien mentor d’Indiana."
+charles.kingston@lucasfilm.com,password,charles.kingston,nlpUser|botUser|admin|technicalAdmin,Charles Kingston,Collègue d’université dans la série télévisée.
+harold.ox@lucasfilm.com,password,harold.ox,nlpUser|botUser|admin|technicalAdmin,Harold “Ox” Oxley jeune,Apparaît dans des souvenirs avant sa folie dans le 4e film.
+tote@lucasfilm.com,password,tote,nlpUser|botUser|admin|technicalAdmin,Tote,Agent nazi qui fond après avoir ouvert l’Arche d’alliance.
+harold.havelock@lucasfilm.com,password,harold.havelock,nlpUser|botUser|admin|technicalAdmin,Harold Havelock,Professeur britannique dans la série Young Indiana Jones.
+vogel.jr@lucasfilm.com,password,vogel.jr,nlpUser|botUser|admin|technicalAdmin,Vogel Jr,"Fils fictif du colonel Vogel, inventé pour enrichir l’univers."
+sophie.langley@lucasfilm.com,password,sophie.langley,nlpUser|botUser|admin|technicalAdmin,Sophie Langley,Archéologue britannique concurrente dans une BD dérivée.
+antonio.ravello@lucasfilm.com,password,antonio.ravello,nlpUser|botUser|admin|technicalAdmin,Antonio Ravello,Antiquaire italien dans le jeu vidéo Indiana Jones and the Fate of Atlantis.
+rebecca.stein@lucasfilm.com,password,rebecca.stein,nlpUser|botUser|admin|technicalAdmin,Rebecca Stein,"Historienne juive ayant fui l’Allemagne nazie, personnage de roman."
+james.clark@lucasfilm.com,password,james.clark,nlpUser|botUser|admin|technicalAdmin,James Clark,Officier de l’armée américaine dans les comics.
+nina.petras@lucasfilm.com,password,nina.petras,nlpUser|botUser|admin|technicalAdmin,Nina Petras,Agent du renseignement soviétique rivale de Spalko.
+frederick.toth@lucasfilm.com,password,frederick.toth,nlpUser|botUser|admin|technicalAdmin,Frederick Toth,Scientifique fou ayant travaillé sur les expériences paranormales.
+lena.mahler@lucasfilm.com,password,lena.mahler,nlpUser|botUser|admin|technicalAdmin,Lena Mahler,Exploratrice autrichienne croisée dans les romans étendus.
+benjamin@tock.ai,password,benjamin,nlpUser|botUser|admin|technicalAdmin,Benjamin BERNARD,Anim du lab
+pierre@tock.ai,password,pierre,nlpUser|botUser|admin|technicalAdmin,Pierre T,Anim du lab
+francois@tock.ai,password,francois,nlpUser|botUser|admin|technicalAdmin,François N,Anim du lab

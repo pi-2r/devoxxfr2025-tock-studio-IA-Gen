@@ -15,7 +15,7 @@
     - [X] Mettre lien promptfoo dans la partie 7 -red teaming-
     - [ ] Lire promptfoo sur le hacking LLM
     - [X] Step 7 capture d'écran sur le ban de jailbreak / Rag Excluded avec un exemple de jailbreak. @Pierre
-    - [ ] Step 7 revoir les reco prompt coté Arkéa @Benjamin
+    - [ ] Step 7 revoir les reco prompt coté Arkéa @Benjamin ou faire un prompt personalisé
     - [ ] Step 7 ou bis ? ajouter la partie compresseur avec leur serveur amené chez nous.
     - [X] Step 9 où lancer les commandes scrapy
     - [X] Changement du dataset film horreur ?? ==> Séries.
@@ -34,7 +34,7 @@
   - [ ] Multiprises.
 - Plan de backup :
   - [X] Azure OpenAI, @Benjamin voir avec l'équipe Data Archi pour avoir au moins une clé. ==> Orga de dev bis sinon ?
-  - [ ] Machine de backup avec tout le codelab, générer 20 indentifiants avec property et roles et prévoir un PAD pour que chaque personnes choissent son ID @Benjamin.
+  - [X] Machine de backup avec tout le codelab, générer 20 indentifiants avec property et roles et prévoir un PAD pour que chaque personnes choissent son ID @Benjamin.
   - [ ] Préparer le MAC en backup de l'UC.
   - [ ] Tester une registry ollama locale : https://github.com/simonfrey/ollama-registry-pull-through-proxy
   - [ ] Voir pour gérer l'hébergement du nomic embed tiny (si la registry local ollama marche pas)
