@@ -227,7 +227,8 @@ n'utilise aucun exemple démonstratif.
 
 #### Fonctionnement
 
-Dans cette approche, le modèle s'appuie exclusivement sur :
+<details>
+  <summary>Dans cette approche, le modèle s'appuie exclusivement sur :</summary>
 
 - Sa compréhension générale du langage.
 
@@ -237,12 +238,14 @@ Dans cette approche, le modèle s'appuie exclusivement sur :
 
 - Les instructions explicites fournies dans le prompt.
 
-Le modèle doit ainsi interpréter la demande et produire une réponse appropriée uniquement à partir des instructions 
+Le modèle doit ainsi interpréter la demande et produire une réponse appropriée uniquement à partir des instructions
 textuelles, sans référence à des cas similaires.
+</details>
 
 #### Applications
 
-Le Zero-Shot Inference présente plusieurs avantages significatifs :
+<details>
+  <summary>Le Zero-Shot Inference présente plusieurs avantages significatifs :</summary>
 
 - **Flexibilité :** permet d'aborder des tâches totalement nouvelles sans réentraînement.
 
@@ -250,8 +253,9 @@ Le Zero-Shot Inference présente plusieurs avantages significatifs :
 
 - **Adaptabilité :** facilite l'utilisation des modèles dans des domaines de niche ou émergents.
 
-- **Accessibilité :** rend les modèles d'IA utilisables par des personnes sans expertise technique en apprentissage 
-automatique.
+- **Accessibilité :** rend les modèles d'IA utilisables par des personnes sans expertise technique en apprentissage
+  automatique.
+</details>
 
 #### Limites
 
