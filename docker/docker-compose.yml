@@ -165,7 +165,7 @@ services:
       - tock_gen_ai_orchestrator_technical_error=Technical error :( sorry!
       - tock_gen_ai_orchestrator_document_number_neighbors=2
       - tock_gen_ai_orchestrator_dialog_number_messages=5
-      - tock_gen_ai_orchestrator_rag_debug_enabled=false
+      - tock_gen_ai_orchestrator_rag_debug_enabled=true
       - tock_gen_ai_orchestrator_vector_store_provider=PGVector
       - tock_web_use_default_cors_handler=true
     #      - tock_default_log_level=warn
