@@ -5,10 +5,12 @@
     - [X] Tester de nouveaux LLMs en choisir 1-2.
     - [ ] Screenshot le nom du bot.
     - [ ] Compresseur introduit en plus (?)
+    - [ ] Proposer les modèles suivants en terme de llm `qwen2.5:1.5b` (pour le gen sentence), `qwen2.5:3b`, `mistral:7b`.
     - [X] Step 4 capture d'écran à revoir.
     - [ ] Schéma de réseau en annexe pour ces histoire de docker et host internal.
     - [X] Step 5 refaire un test avec model Mistral.
     - [ ] Step 5 refaire un test avec model gemma.
+    - [ ] Step 5 revoir les screenshot avec la nouvelle version de TOCK bien expliquer ce qu'est le prompt de condensation.
     - [X] Step 6 MAJ la capture d'écran.
     - [X] Mettre lien promptfoo dans la partie 7 -red teaming-
     - [ ] Lire promptfoo sur le hacking LLM
@@ -25,12 +27,12 @@
   - [ ] Nombre de participants : => répondre à l'orga
 - [X] Revoir la page du tock vue kit `index-tvk.html` en mode Indiana Johnes @Rodolphe.
 - [ ] Matériel :
-  - [ ] @Benjamin vient avec un Mac à la place de l'UC, bien penser à fixer son IP sur l'AP wifi.
+  - [X] @Benjamin vient avec un Mac à la place de l'UC, bien penser à fixer son IP sur l'AP wifi.
   - [X] @Benjamin routeur Wifi
   - [ ] Pierre ou autre ? Avoir un 2ème switch 4p si possible.
   - [ ] Multiprises.
 - Plan de backup :
-  - [ ] Azure OpenAI, @Benjamin voir avec l'équipe Data Archi pour avoir au moins une clé. ==> Orga de dev bis sinon ?
+  - [X] Azure OpenAI, @Benjamin voir avec l'équipe Data Archi pour avoir au moins une clé. ==> Orga de dev bis sinon ?
   - [ ] Machine de backup avec tout le codelab, générer 20 indentifiants avec property et roles et prévoir un PAD pour que chaque personnes choissent son ID @Benjamin.
   - [ ] Préparer le MAC en backup de l'UC.
   - [ ] Tester une registry ollama locale : https://github.com/simonfrey/ollama-registry-pull-through-proxy
