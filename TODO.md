@@ -18,6 +18,7 @@
     - [X] Step 9 où lancer les commandes scrapy
     - [ ] Changement du dataset film horreur ?? ==> Séries.
     - [ ] Langfuse partie public URL et indiquer qu'il y a un lien dans tock.
+    - [ ] Tock Vue Kit se base sur la locale du navigateur est doc le bot répond en FR. Changement dans le prompt possible.
 - [ ] Activer le debug RAG par défaut dans le docker compose.
 - [ ] Voir avec l'orga :
   - [X] Prise réseau.
