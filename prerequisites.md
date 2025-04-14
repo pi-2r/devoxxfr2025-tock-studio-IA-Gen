@@ -10,7 +10,7 @@ Ce tutorial est proposé en amont de la session [A la recherche du RAG perdu �
 
 ### Ollama
 - Avoir installé [Ollama](https://ollama.com/download) sur votre machine
-  <img src="img/ollama.png"  alt="ollama">
+<img src="img/ollama.png"  alt="ollama">
 
 
 ### Les modèles
