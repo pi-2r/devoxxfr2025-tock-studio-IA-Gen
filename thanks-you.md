@@ -10,6 +10,6 @@
 ## Votre avis compte
 
 
-[<img src="img/your-feedback.webp" alt="your-feedback-devoxx-2025">](https://mobile.devoxx.com/events/devoxxfr2025/rate-talk/65062)
+[<img src="img/your-feedback.png" alt="your-feedback-devoxx-2025">](https://mobile.devoxx.com/events/devoxxfr2025/rate-talk/65062)
 
 
