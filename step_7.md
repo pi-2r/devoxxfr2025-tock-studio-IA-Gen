@@ -40,6 +40,9 @@
     - [Contexte](#contexte)
 
   - [L'apprentissage en contexte avec inférence à partir de peu d'exemples](#l'apprentissage-en-contexte-avec-inférence-à-partir-de-peu-d'exemples)
+    - [Vous avez dit inférence](#vous-avez-dit-inférence)
+      - [Types d'inférence](#types-d'inférence)
+    - [few-shot learning](#few-shot-learning)
     - [Zero-shot inference](#zero-shot-inference)
       - [Fonctionnement](#fonctionnement)
       - [Applications](#applications)
@@ -208,11 +211,25 @@ d'apprentissage en contexte du modèle.
 
 ## L'apprentissage en contexte avec inférence à partir de peu d'exemples
 
+### Vous avez dit inférence
+L'inférence est un concept fondamental en intelligence artificielle (IA) qui joue un rôle crucial dans l'application 
+pratique des modèles d'IA. Il s'agit de la capacité d'un modèle d'IA entraîné à reconnaître des schémas, à tirer des 
+conclusions et à prendre des décisions à partir de nouvelles données qu'il n'a jamais vues auparavant.
+
+#### Types d'inférence
+On distingue généralement deux types principaux d'inférence en IA :
+
+- **L'inférence déductive :** Elle implique l'application de principes généraux pour parvenir à des conclusions spécifiques.
+
+- **L'inférence inductive :** Elle fonctionne à l'inverse, en déduisant des principes généraux ou des règles à partir 
+d'observations spécifiques ou de modèles de données.
+
+### few-shot learning
 Cette technique, appelée "few-shot learning" en anglais, permet à un modèle d'intelligence artificielle d'apprendre à 
 effectuer une nouvelle tâche à partir de seulement quelques exemples.
 
 Le fonctionnement de base est le suivant :
- - On fournit au modèle quelques exemples (généralement entre 2 et 10) de la tâche à accomplir, directement dans le texte d'entrée
+ - On fournit au modèle quelques exemples de la tâche à accomplir, directement dans le texte d'entrée
  - Ces exemples servent de démonstrations pour guider le modèle sur la façon d'aborder la nouvelle tâche.
  - Le modèle utilise alors ces exemples comme contexte pour inférer comment traiter de nouveaux cas similaires
 
@@ -259,22 +276,28 @@ textuelles, sans référence à des cas similaires.
 
 #### Limites
 
-Malgré ses avantages, cette approche présente certaines limitations :
+<details>
+  <summary>Malgré ses avantages, cette approche présente certaines limitations :</summary>
 
 - Généralement moins précise que les méthodes utilisant des exemples (few-shot)
 
 - Performance variable selon la complexité et la spécificité de la tâche
 
 - Dépendance à la qualité et à la clarté des instructions fournies
-
+</details>
 
 #### En quelques mots
 
-Le **Zero-Shot Inference** représente une avancée majeure dans le domaine de l'IA générative, permettant aux modèles de 
-langage d'être utilisés comme des outils polyvalents capables de s'adapter à une multitude de tâches sans entraînement 
+<details>
+  <summary>Le Zero-Shot Inference représente ..</summary>
+
+Le **Zero-Shot Inference** représente une avancée majeure dans le domaine de l'IA générative, permettant aux modèles de
+langage d'être utilisés comme des outils polyvalents capables de s'adapter à une multitude de tâches sans entraînement
 spécifique supplémentaire.
+</details>
 
 ### One-shot inference
+
 Le **One-Shot Inference** représente une approche intermédiaire entre le Zero-Shot (sans exemple) et le Few-Shot 
 (plusieurs exemples). Dans cette méthode, un unique exemple de la tâche attendue est présenté au modèle dans le contexte 
 du prompt, illustrant le format d'entrée et le résultat souhaité.
@@ -282,7 +305,8 @@ du prompt, illustrant le format d'entrée et le résultat souhaité.
 
 #### Fonctionnement
 
-Le processus se déroule généralement comme suit :
+<details>
+  <summary>Le processus se déroule généralement comme suit :</summary>
 
 - Un exemple complet (entrée + sortie attendue) est fourni dans le prompt.
 
@@ -292,9 +316,12 @@ Le processus se déroule généralement comme suit :
 
 - Il applique ce schéma à la nouvelle entrée pour générer une réponse similaire.
 
+</details>
+
 #### Applications
 
-Le One-Shot Inference est particulièrement efficace dans plusieurs contextes:
+<details>
+  <summary>Le One-Shot Inference est particulièrement efficace dans plusieurs contextes:</summary>
 
 - **Tâches de classification :** catégorisation de textes, analyse de sentiments.
 
@@ -304,12 +331,15 @@ Le One-Shot Inference est particulièrement efficace dans plusieurs contextes:
 
 - **Résolution de problèmes :** application d'une méthode démontrée à un nouveau problème.
 
-Cette technique est également utilisée dans des domaines spécialisés comme la reconnaissance faciale ou la vérification 
-de signatures, mais dans ces cas, elle fait souvent référence à une architecture d'apprentissage différente des grands 
+Cette technique est également utilisée dans des domaines spécialisés comme la reconnaissance faciale ou la vérification
+de signatures, mais dans ces cas, elle fait souvent référence à une architecture d'apprentissage différente des grands
 modèles de langage.
+</details>
 
 #### Avantages
 
+<details>
+  <summary>Les avantages sont: </summary>
 
 - Plus précis que le Zero-Shot pour des tâches complexes ou spécifiques.
 
@@ -318,22 +348,28 @@ modèles de langage.
 - Fournit une direction claire au modèle tout en restant concis.
 
 - Particulièrement efficace pour les tâches de formatage ou de style.
+</details>
 
 #### Limites
 
+<details>
+  <summary>Les limites sont: </summary>
 
 - Moins robuste que le Few-Shot qui offre plus de variations
 
 - L'exemple unique peut introduire des biais si mal choisi
 
 - Certaines tâches complexes nécessitent plus d'un exemple pour être bien comprises
-
+</details>
 
 ##### En quelques mots
-Le **One-Shot Inference** constitue un excellent compromis entre économie de contexte et guidage efficace du modèle, 
+
+<details>
+  <summary>Le One-Shot Inference constitue un excellent .. </summary>
+
+Le **One-Shot Inference** constitue un excellent compromis entre économie de contexte et guidage efficace du modèle,
 particulièrement utile lorsque l'espace de prompt est limité mais qu'une direction claire est nécessaire.
-
-
+</details>
 
 ### Few-shot inference
 
@@ -344,16 +380,19 @@ peut identifier et reproduire.
 
 #### Fonctionnement
 
-Le processus de Few-Shot Inference se déroule généralement comme suit :
+<details>
+  <summary>Le processus de Few-Shot Inference se déroule généralement comme suit :</summary>
 
 - Plusieurs exemples complets (entrées + sorties attendues) sont présentés dans le prompt
 - Ces exemples établissent un schéma de raisonnement ou un format spécifique
 - La nouvelle entrée pour laquelle on souhaite une prédiction est fournie
 - Le modèle identifie les patterns dans les exemples et les applique à la nouvelle entrée
+</details>
 
 #### Applications
 
-Le Few-Shot Inference excelle particulièrement dans :
+<details>
+  <summary>Le Few-Shot Inference excelle particulièrement dans :</summary>
 
 - **Tâches complexes :** problèmes nécessitant un raisonnement en plusieurs étapes
 
@@ -364,10 +403,12 @@ Le Few-Shot Inference excelle particulièrement dans :
 - **Classification nuancée :** catégorisation avec des distinctions subtiles
 
 - **Tâches spécialisées :** domaines techniques ou de niche
+</details>
 
 #### Avantages
 
-Cette technique offre plusieurs bénéfices significatifs :
+<details>
+  <summary>Cette technique offre plusieurs bénéfices significatifs :</summary>
 
 - **Précision accrue :** les multiples exemples réduisent l'ambiguïté et clarifient les attentes
 
@@ -378,21 +419,29 @@ Cette technique offre plusieurs bénéfices significatifs :
 - **Flexibilité :** facilite l'adaptation rapide à de nouvelles tâches ou domaines
 
 - **Démonstration de raisonnement :** permet d'illustrer des chaînes de pensée complexes
+</details>
 
 #### Limites
-Malgré ses avantages, cette approche présente certaines contraintes :
+
+<details>
+  <summary>Malgré ses avantages, cette approche présente certaines contraintes :</summary>
 
 - Consomme plus d'espace dans le contexte du prompt que les méthodes Zero ou One-Shot
 
 - Peut introduire des biais si les exemples ne sont pas soigneusement sélectionnés
 
 - Reste moins performante que le fine-tuning pour des tâches très spécifiques nécessitant une grande précision
+</details>
 
 #### En quelques mots
 
-Le **Few-Shot Inference** représente un équilibre optimal entre adaptabilité et performance, permettant d'exploiter 
-efficacement les capacités des grands modèles de langage pour des tâches variées sans nécessiter d'entraînement 
+<details>
+  <summary>Le Few-Shot Inference représente un équilibre ..</summary>
+
+Le **Few-Shot Inference** représente un équilibre optimal entre adaptabilité et performance, permettant d'exploiter
+efficacement les capacités des grands modèles de langage pour des tâches variées sans nécessiter d'entraînement
 spécifique supplémentaire.
+</details>
 
 ## Prompt-Engineering les best practices
 
