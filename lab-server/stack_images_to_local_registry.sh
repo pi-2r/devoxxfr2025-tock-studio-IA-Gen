@@ -2,17 +2,17 @@
 # docker run -d -p 5000:5000 --restart always --name registry registry:2
 
 images=(
-    "mongo:7.0.9"
-    "tock/build_worker:24.9.3"
-    "tock/duckling:24.9.3"
-    "tock/kotlin_compiler:24.9.3"
-    "tock/bot_admin:24.9.3"
-    "tock/nlp_api:24.9.3"
-    "tock/bot_api:24.9.3"
-    "pgvector/pgvector:pg16"
-    "tock/gen-ai-orchestrator-server:24.9.3"
-    "langfuse/langfuse:2.84"
-    "tock/llm-indexing-tools:24.9.3"
+    "mongo:8.0.6"
+    "tock/build_worker:25.3.2"
+    "tock/duckling:25.3.2"
+    "tock/kotlin_compiler:25.3.2"
+    "tock/bot_admin:25.3.2"
+    "tock/nlp_api:25.3.2"
+    "tock/bot_api:25.3.2"
+    "pgvector/pgvector:pg17"
+    "tock/gen-ai-orchestrator-server:25.3.2"
+    "langfuse/langfuse:2.95.8"
+    "tock/llm-indexing-tools:25.3.2"
 )
 
 platforms=("linux/arm64" "linux/amd64")

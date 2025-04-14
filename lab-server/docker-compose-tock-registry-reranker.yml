@@ -233,6 +233,12 @@ services:
       - TELEMETRY_ENABLED=${TELEMETRY_ENABLED:-true}
       - LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES=${LANGFUSE_ENABLE_EXPERIMENTAL_FEATURES:-false}
 
+  docker_registry:
+    image: registry:3
+    restart: always
+    ports:
+      - "5000:5000"
+
 volumes:
   tockmongo:
   tockmongo2:

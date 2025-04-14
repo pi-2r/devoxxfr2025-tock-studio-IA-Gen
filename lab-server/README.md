@@ -22,3 +22,10 @@ cp template.env .env
 source .env
 docker compose -p devoxx_lab_server -f docker-compose-tock-registry-reranker.yml up -d
 ```
+
+## Registry local
+
+Elle est lancé par le docker compose il faut penser à y push les images dedans avant via :
+```bash
+./stack_images_to_local_registry.sh
+```
