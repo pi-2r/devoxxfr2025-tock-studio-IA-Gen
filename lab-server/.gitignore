@@ -1,0 +1,3 @@
+
+data/ollama_registry_proxy/*
+!data/ollama_registry_proxy/.gitkeep
