@@ -528,7 +528,7 @@ C'est maintenant à vous de jouer, pour affiner le prompt de votre bot, en suiva
 
 <img src="img/prompt-tock-studio.png" alt="prompt tock studio">
 
-## Exemple de prompt "Devoxx"
+## Exemple de prompt "Devoxxy"
 
 Voici un prompt pour un chatbot appelé Devoxxy :
   * Le prompt indique clairement que le nom du bot
