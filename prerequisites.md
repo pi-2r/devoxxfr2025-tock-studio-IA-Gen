@@ -4,6 +4,13 @@ Ce tutorial est proposé en amont de la session [A la recherche du RAG perdu �
 
 ## Prérequis
 
+### Récupérer l'atelier
+  - Récupérez le projet depuis votre terminal en faisant une git clone du projet
+  ```bash
+  git clone https://github.com/pi-2r/devoxxfr2025-tock-studio-IA-Gen.git
+  ```
+- Ou bien téléchargez le projet en zip et dézippez-le sur votre machine: https://github.com/pi-2r/devoxxfr2025-tock-studio-IA-Gen/archive/refs/heads/main.zip
+
 ### Docker
 - Avoir installé [Docker Desktop](https://www.docker.com/products/docker-desktop/) sur votre machine
 <img src="img/docker-desktop-install.png" alt="docker-desktop" >
