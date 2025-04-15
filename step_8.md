@@ -35,6 +35,12 @@
 
 ## Docker, lancer le service langfuse
 
+<details>
+  <summary>Docker marche pas chez moi je suis sur tock.lan</summary>
+  
+  Vous pouvez utiliser le langfuse mutualisé sur [http://tock.lan:3000](http://tock.lan:3000).
+</details>
+
 Dans le fichier `docker/docker-compose.yml` décommenter la block `langfuse-server:` et relancer un :
 ```bash
 cd docker
@@ -48,13 +54,21 @@ Vous devriez avoir ce résultat :
 
 
 ## Accéder à Langfuse
-Pour accéder à la plateforme Langfuse, rendez à l'adresse suivante http://localhost:3000/.
+Pour accéder à la plateforme Langfuse, rendez à l'adresse suivante http://localhost:3000/ ou sur http://tock.lan:3000 (si vous êtes sur l'instance mutualisée).
 
 <img src="img/langfuse.png" alt="langfuse">
 
 Là vous allez devoir créer un accés, en cliquant sur le bouton **Sign Up** vous allez être redirigé vers la page de création de compte.
 
 <img src="img/langfuse-create-account.png" alt="creation de compte">
+
+<details>
+  <summary>J'utilise le langfuse mutualisé sur tock.lan</summary>
+  
+  Veuillez suivre les consignes suivantes :
+  * Créer un compte avec le même identifiant que sur le Tock Studio (tock.lan)
+  * Créer une organisation avec pour nom d'organisation le nom de votre namespace sur Tock Studio
+</details>
 
 Dans notre cas, nous allons utiliser le login **admin**, l'email **admin@app.com** et le mot de passe **password** (ces éléments sont donnés à titre d'exemple, vous pouvez utiliser les vôtres).
 Une fois que vous avez rempli les champs, cliquez sur le bouton **Sign Up**.
@@ -65,7 +79,8 @@ Une fois que vous avez créé votre compte, vous allez être redirigé vers la p
 
 <img src="img/langfuse-new-organisation.png" alt="nouvelle organisation">
 
-Là vous allez cliquer sur **New Organization**, et lui donner un nom. Dans notre cas, se sera **codelab-tock-2025**, puis de cliquer sur **Create**.
+Là vous allez cliquer sur **New Organization**, et lui donner un nom. Dans notre cas, se sera **codelab-tock-2025** (ou votre nom de namespace si vous êtes sur l'instance mutualisée), puis de cliquer sur **Create**.
+
 Vous devriez voir votre nouvelle organisation apparaitre dans la liste des organisations, comme ci-dessous.
 
 <img src="img/langfuse-finalize-organization.png" alt="nouvelle organisation">
@@ -95,34 +110,70 @@ Dès lors, vous allez voir apparaitre une pop-up qui contient les listes d’API
 
 Dans cette partie, nous allons voir comment connecter Tock Studio à Langfuse pour observer les performances du modèle.
 
+### Interlude réseau
 
-## Connecter Tock Studio à Langfuse
+Avant de configurer Langfuse dans Tock Studio il est important de comprendre que langfuse va être consommé / accéder
+de 2 manières différentes :
+ * par l'orchestrateur Gen AI, composant docker-compose `gen_ai_orchestrator-server` qui exécute la chaine RAG :
+   * ceci à lieu à l'intérieur du réseau docker on pourra doc l'appeler via http://langfuse-server:3000 car il est
+adressé par ce nom au sein du réseau docker. On appellera cet accès l'**URL privée de langfuse**.
+   * si vous utilisez l'instance partagée de Tock Studio, au sein de cette instance tourne la même stack docker
+   la configuration est donc identique.
+ * par vous en tant qu'utilisateur, depuis l'extérieur du réseau docker via http://localhost:3000 ou s'il s'agit du
+langfuse partagé via http://tock.lan:3000. On appellera cet accès l'**URL publique de langfuse**.
+
+Ce type de configuration est courrant si vous effectuée un déploiement kube de Tock via
+[tock-helm-chart](https://github.com/theopenconversationkit/tock-helm-chart) vous aurez aussi cette typologie
+des trace qui remontent internes au cluster et un backoffice accédé par l'extérieur.
+
+```mermaid
+flowchart TD
+    subgraph "Réseau Docker"
+        Orchestrateur[<b>gen_ai_orchestrator-server</b><br>Gen AI Orchestrator]
+        Langfuse[<b>langfuse-server</b><br>Langfuse Server<br/>]
+        Orchestrateur -->|Accès via URL privée <br> http://langfuse-server:3000| Langfuse
+    end
+
+    Utilisateur["👤 Admin Tock"]
+    Utilisateur -->|Accès via URL publique<br/>http://localhost:3000 ou http://tock.lan:3000| Langfuse
+```
+
+### Connecter Tock Studio à Langfuse
 
 Dans Tock Studio, allez dans le menu de gauche dans **Gen AI** > **Observability settings** pour arriver sur cette page
 
+
 <img src="img/obersvability-settings.png" alt="tock obersvability settings">
 
-Remplissez les différents champs, de cet écran avec la clé publique et sécrète qui est disponible depuis la pop-up 
-dans l’interface Langfuse.
-
-Pour l'url d'accès à Langfuse vous devez renseigner cette url: http://langfuse-server:3000
+Indiquez donc les valeurs suivantes pour les urls :
+* Public Key : celle générée dans langfuse
+* Secret Key : celle générée dans langfuse
+* Url : il s'agit de l'url privée `http://langfuse-server:3000`
+* Url Public : `http://localhost:3000` OU si vous êtes sur l'instance partagée `http://tock.lan:3000`.
 
 ⚠️ N'oubliez pas d'activer l'option **Observability activation** après avoir rempli les champs et sauvegarder les paramètres.
 
 
-## Interroger le bot
+### Interroger le bot
 Pour tester la connexion entre Tock et Langfuse, vous allez interroger le bot avec une phrase d’exemple.
 Dans le menu de gauche, allez dans **Bot** > **Test Bot** pour arriver sur cette page.
 
 ```bash
-is there a horror film with Bugs Bunny?
+What is the Umbrella Academy ?
 ```
 
 <img src="img/test_bot_for_langfuse.png" alt="test bot">
 
-## Voir les traces de génération de phrases
+## Retrouver les traces depuis la vue Analytics > Dialogs
 
-Maintenant allez sur tableau de bord de Langfuse (http://localhost:3000/) pour voir les traces.
+Chaque échange avec les bot est historisé et accesible depuis la vue Analytics > Dialogs.
+
+Vous y retrouvez notamment un lien vers la trace langfuse associée à chaque message RAG généré :
+![Icon trace langfuse](img/observability_trace-link.excalidraw.png)
+
+## Depuis le dashboard langfuse
+
+Maintenant, allez sur tableau de bord de Langfuse (http://localhost:3000/) pour voir les traces.
 
 <img src="img/langfuse-dashboard.png" alt="langfuse dashboard">
 

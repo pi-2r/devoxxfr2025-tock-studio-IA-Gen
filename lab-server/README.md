@@ -15,6 +15,26 @@ Ces différents serveur sont à utilisé pour les participants qui n'arrivent pa
 - [ ] Pull les modèle ollama sur la registry local / proxy ollama.
 - [ ] Initier un fichier Google Sheet pour que les gens puissent choisir les identifiants sur la stack tock de backup.
 
+## MacOS - Collima augmenter la RAM et nb CPU
+
+Editer :
+```
+nano ~/.colima/default/colima.yaml 
+```
+
+Changer :
+```
+cpu: 4
+# [...]
+memory: 9
+```
+
+Puis relancer collima 
+```
+colima stop
+colima start
+```
+
 ## Lancer la stack tock de backup
 
 ```bash
