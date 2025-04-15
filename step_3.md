@@ -173,12 +173,12 @@ Pour vérifier que nous avons les modèles sur notre machine, il suffit de taper
 
 💡Si vous souhaitez en savoir plus sur les modèles, c'est par ici :
 
-| Modèle            | Lien                                                                                       |
-|-------------------|--------------------------------------------------------------------------------------------|
-| Tinyllama         | [https://ollama.com/library/tinyllama](https://ollama.com/library/tinyllama)               |
-| Gemma             | [https://ollama.com/library/gemma](https://ollama.com/library/gemma)                       |
-| Mistral 🇫🇷      | [https://ollama.com/library/mistral](https://ollama.com/library/mistral)                   |
-| Nomic-embed-text  | [https://ollama.com/library/nomic-embed-text](https://ollama.com/library/nomic-embed-text) |
+| Modèle                 | Lien                                                                                       |
+|------------------------|--------------------------------------------------------------------------------------------|
+| qwen2.5:1.5b           | [https://ollama.com/library/qwen2.5:1.5b](https://ollama.com/library/qwen2.5:1.5b)         |
+| Gemma                  | [https://ollama.com/library/gemma](https://ollama.com/library/gemma)                       |
+| Mistral 🇫🇷           | [https://ollama.com/library/mistral](https://ollama.com/library/mistral)                   |
+| Nomic-embed-text       | [https://ollama.com/library/nomic-embed-text](https://ollama.com/library/nomic-embed-text) |
  
 
 ### Tester le prompt
