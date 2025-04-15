@@ -272,6 +272,8 @@ Vous pouvez créer un fichier dans le dossier `data/configurations/` inspiré d'
 
 ### Lancer l'ingestion
 
+<!-- TODO BENJAMIN, penser à faire ajuster l'IP du serveur Postgres -->
+
 Si besoin ajustez les variables d'environnement `TOCK_BOT_ID` / `TOCK_BOT_NAMESPACE` et `EMBEDDING_JSON_CONFIGURATION`, pour rappel vous pouvez retrouver votre namespace et bot_id via Configuration > Application :
 
 ![Application et namespace](./img/find_ns_app_bot_id_studio.png)
@@ -290,10 +292,13 @@ docker run --name tooling_tock --rm -it \
     /bin/bash
 ```
 
+⚠️ Si vous utilisez la stack tock sur gpu-server.lan (vous ne l'avez pas en local avec docker) penser à ajuster le namespace dans la commande suivante, vous avez chacun votre namespace.
+<!-- TODO BENJAMIN, pré-ingérer les docs pour tout les bots sur gpu-server.lan -->
+
 ```bash
 # A l'intérieur du shell de l'image
 export TOCK_BOT_ID=devoxx2025
-export TOCK_BOT_NAMESPACE=app
+export TOCK_BOT_NAMESPACE=benjamin
 export EMBEDDING_JSON_CONFIGURATION=/app/data/configurations/embeddings_ollama_settings.json
 python tock-llm-indexing-tools/index_documents.py --input-csv=data/documents_csv/filtered_tv_series.csv --namespace=$TOCK_BOT_NAMESPACE --bot-id=$TOCK_BOT_ID --embeddings-json-config=$EMBEDDING_JSON_CONFIGURATION --vector-store-json-config=data/configurations/vector_store_pgvector_settings.json --chunks-size=5000 -v
 ```
