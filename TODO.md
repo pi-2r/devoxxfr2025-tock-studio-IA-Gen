@@ -36,10 +36,11 @@
   - [X] Azure OpenAI, @Benjamin voir avec l'équipe Data Archi pour avoir au moins une clé. ==> Orga de dev bis sinon ?
   - [X] Machine de backup avec tout le codelab, générer 20 indentifiants avec property et roles et prévoir un PAD pour que chaque personnes choissent son ID @Benjamin.
   - [X] Préparer le MAC en backup de l'UC.
-  - [X] Tester une registry ollama locale : https://github.com/simonfrey/ollama-registry-pull-through-proxy
+  - [X] Tester une registry ollama locale : https://github.com/simonfrey/ollama-registry-pull-through-proxy KO remplacé.
   - [X] Voir pour gérer l'hébergement du nomic embed tiny (si la registry local ollama marche pas)
   - [ ] Test si registry:3 supporte ou pas mieux le multi architecture
   - [ ] Pré-ingérer des données dans tous les bots.
+  - [ ] Check tout ce qui référence 192.168.20.3 .. tout sera sur la 20.2 gpu-server.lan
 
 
 

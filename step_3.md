@@ -117,20 +117,24 @@ Pour installer Ollama, vous devez aller sur le lien suivant : https://ollama.com
 
 ### Récupérer les modèles pour l'atelier sur la machine GPU
 
-Pour éviter de congestionner le réseau, nous avons pré-téléchargé les modèles pour vous.
+Pour éviter de congestionner le réseau, nous avons pré-téléchargé les modèles pour vous et hébergé une registry ollama locale à partir de laquelle vous pouvez le modèle **nomic-embed-text:latest** pour l'embedding et dans un premier temps **qwen2.5:1.5b** :
 
-* Télécharger l'archive :
-  * Version light si vous n'avez pas de GPU ou peu d'espace disque disponible http://gpu-server.lan/ollama_models/tinyllama_nomic-embed-text.tar
-* Décompresser l'archive dans :
-  * macOS: `~/.ollama/models`
-  * Linux: `/usr/share/ollama/.ollama/models`
-  * Windows: `C:\Users\%username%\.ollama\models`
-* En lignes de commandes ça donne ça, avec l'emplacement sous linux :
+| Modèle | Type | Pull | Recommandation RAM vidéo min (en Q4_K_M) |
+| --- |--- |--- |--- |
+| **nomic-embed-text:latest** | Embedding | `ollama pull --insecure http://gpu-server.lan:9200/library/nomic-embed-text:latest` | Pass partout 😌 |
+| **qwen2.5:1.5b** | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:1.5b` | >2 GB (4bit quantized)  |
+| **qwen2.5:3b** | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:3b` | >2 GB (4bit quantized)  |
+| **mistral:7b** | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/mistral:7b` | >4 GB (4bit quantized)  |
+| qwen2.5:7b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:7b` | >4 GB (4bit quantized)  |
+| qwen2.5:14b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:14b` | >8 GB (4bit quantized)  |
+| phi4:14b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/phi4:14b` | >8 GB (4bit quantized)  |
+| gemma3:4b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/gemma3:4b` | >2 GB (4bit quantized)  |
+| gemma3:12b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/gemma3:12b` | >7 GB (4bit quantized)  |
+
+Les modèles en gras sont les modèles recommandés pour vos tests, ne téléchargez pas tout les modèles 😉, nous en avons mis plusieurs à votre disposition pour ceux qui souhaitent tester.
+
 ```bash
-curl -o /tmp/models.tar http://gpu-server.lan/ollama_models/tinyllama_nomic-embed-text.tar
-sudo mkdir -p /usr/share/ollama/.ollama/models
-sudo tar -xvf /tmp/models.tar -C /usr/share/ollama/.ollama/models
-sudo chown -R ollama:ollama /usr/share/ollama/.ollama/models
+
 ollama list # Devrait vous afficher les modèles
 ```
 

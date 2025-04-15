@@ -241,13 +241,15 @@ services:
     ports:
       - "5000:5000"
 
+  # See https://github.com/wbuntu/images/tree/master/ai/ollama-registry
   ollama_registry_proxy:
-    image: ghcr.io/beans-bytes/ollama-registry-pull-through-proxy:latest
+    image: wbuntu/ollama-registry:v0.1
     ports:
-      - "9200:9200"
+      - "9200:8080"
     volumes:
       # Using a local directory for the cache to prevent any model loss that would occur using "docker compose down -v" option
-      - ./data/ollama_registry_proxy:/pull-through-cache
+      - ./data/ollama_registry:/data
+
 
 volumes:
   tockmongo:

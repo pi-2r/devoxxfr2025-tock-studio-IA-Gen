@@ -1,6 +1,6 @@
 # Ollama local registry
-data/ollama_registry_proxy/*
-!data/ollama_registry_proxy/.gitkeep
+data/ollama_registry/*
+!data/ollama_registry/.gitkeep
 
 # Docker local registry
 data/docker_registry/*
