@@ -145,7 +145,7 @@ ollama list # Devrait vous afficher les modèles
 Pour utiliser les modèles en dehors de l'environnement d'atelier, nous vous recommandons de télécharger différents 
 modèles selon les capacités de votre machine :
 
-- **Tinyllama** idéal pour les machines avec des ressources limitées
+- **qwen2.5:1.5b** idéal pour les machines avec des ressources limitées
 - **Mistral** et **gemma**, recommandés si vous disposez d'au moins 16 Go de RAM
 
 Pour la partie embedding (vectorisation du texte), nous utiliserons :
