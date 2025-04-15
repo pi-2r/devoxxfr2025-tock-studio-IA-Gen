@@ -1,6 +1,7 @@
 # Accélérons l'entrainement avec de l'IAGen
 
 [<img src="img/Indiana-Jones-Temple-of-Doom.png"  alt="Indiana Jones Temple of Doom">](https://www.youtube.com/watch?v=wROFvWDyugU)
+> "Go !.. Go! Go!!",  Indiana Jones and the Temple of Doom, Steven Spielberg, 1984
 
 
 
@@ -119,17 +120,17 @@ Pour installer Ollama, vous devez aller sur le lien suivant : https://ollama.com
 
 Pour éviter de congestionner le réseau, nous avons pré-téléchargé les modèles pour vous et hébergé une registry ollama locale à partir de laquelle vous pouvez le modèle **nomic-embed-text:latest** pour l'embedding et dans un premier temps **qwen2.5:1.5b** :
 
-| Modèle | Type | Pull | Recommandation RAM vidéo min (en Q4_K_M) |
-| --- |--- |--- |--- |
-| **nomic-embed-text:latest** | Embedding | `ollama pull --insecure http://gpu-server.lan:9200/library/nomic-embed-text:latest` | Pass partout 😌 |
-| **qwen2.5:1.5b** | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:1.5b` | >2 GB (4bit quantized)  |
-| **qwen2.5:3b** | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:3b` | >2 GB (4bit quantized)  |
-| **mistral:7b** | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/mistral:7b` | >4 GB (4bit quantized)  |
-| qwen2.5:7b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:7b` | >4 GB (4bit quantized)  |
-| qwen2.5:14b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:14b` | >8 GB (4bit quantized)  |
-| phi4:14b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/phi4:14b` | >8 GB (4bit quantized)  |
-| gemma3:4b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/gemma3:4b` | >2 GB (4bit quantized)  |
-| gemma3:12b | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/gemma3:12b` | >7 GB (4bit quantized)  |
+| Modèle                      | Type            | Pull                                                                                | Recommandation RAM vidéo min (en Q4_K_M) |
+|-----------------------------|-----------------|-------------------------------------------------------------------------------------|------------------------------------------|
+| **nomic-embed-text:latest** | Embedding       | `ollama pull --insecure http://gpu-server.lan:9200/library/nomic-embed-text:latest` | Pass partout 😌                          |
+| **qwen2.5:1.5b**            | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:1.5b`            | >2 GB (4bit quantized)                   |
+| **qwen2.5:3b**              | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:3b`              | >2 GB (4bit quantized)                   |
+| **mistral:7b**              | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/mistral:7b`              | >4 GB (4bit quantized)                   |
+| qwen2.5:7b                  | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:7b`              | >4 GB (4bit quantized)                   |
+| qwen2.5:14b                 | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/qwen2.5:14b`             | >8 GB (4bit quantized)                   |
+| phi4:14b                    | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/phi4:14b`                | >8 GB (4bit quantized)                   |
+| gemma3:4b                   | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/gemma3:4b`               | >2 GB (4bit quantized)                   |
+| gemma3:12b                  | Text Generation | `ollama pull --insecure http://gpu-server.lan:9200/library/gemma3:12b`              | >7 GB (4bit quantized)                   |
 
 Les modèles en gras sont les modèles recommandés pour vos tests, ne téléchargez pas tout les modèles 😉, nous en avons mis plusieurs à votre disposition pour ceux qui souhaitent tester.
 
@@ -138,7 +139,6 @@ Les modèles en gras sont les modèles recommandés pour vos tests, ne télécha
 ollama list # Devrait vous afficher les modèles
 ```
 
-**TODO préparer l'archive et tester cette étape !!!**
 
 ### Récupérer les modèles depuis internet hors du Codelab
 
