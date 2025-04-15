@@ -12,18 +12,23 @@
 
 ## Sommaire
 
-- [ Gen AI - Observability Settings](#gen-ai---observability-settings)
-    - [Accéder à Langfuse](#accéder-à-langfuse)
-    - [Créer une nouvelle organisation](#créer-une-nouvelle-organisation)
-    - [Créer un nouveau projet](#créer-un-nouveau-projet)
-    - [Récupérer les clés d'API](#récupérer-les-clés-dapi)
-
-
-- [Langfuse et Tock Studio](#langfuse-et-tock-studio)
-    - [Connecter Tock Studio à Langfuse](#connecter-tock-studio-à-langfuse)
-    - [Interroger le bot](#interroger-le-bot)
-    - [générer des phrases d'entraînement](#générer-des-phrases-dentraînement)
-    - [Voir les traces dans Langfuse](#voir-les-traces-dans-langfuse)
+<!-- TOC -->
+* [Observabilité](#observabilité)
+  * [Sommaire](#sommaire)
+* [Gen AI - Observability Settings](#gen-ai---observability-settings)
+  * [Docker, lancer le service langfuse](#docker-lancer-le-service-langfuse)
+  * [Accéder à Langfuse](#accéder-à-langfuse)
+  * [Créer une nouvelle organisation](#créer-une-nouvelle-organisation)
+  * [Créer un nouveau projet](#créer-un-nouveau-projet)
+  * [Récupérer les clés d'API](#récupérer-les-clés-dapi)
+  * [Langfuse et Tock Studio](#langfuse-et-tock-studio)
+    * [Interlude réseau](#interlude-réseau)
+    * [Connecter Tock Studio à Langfuse](#connecter-tock-studio-à-langfuse)
+    * [Interroger le bot](#interroger-le-bot)
+  * [Retrouver les traces depuis la vue Analytics > Dialogs](#retrouver-les-traces-depuis-la-vue-analytics--dialogs)
+  * [Depuis le dashboard langfuse](#depuis-le-dashboard-langfuse)
+  * [Étape suivante](#étape-suivante)
+<!-- TOC -->
 
 
 
