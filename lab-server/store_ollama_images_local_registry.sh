@@ -13,6 +13,7 @@ models=(
     "qwen2.5:3b"
     "nomic-embed-text:latest"
     "qwen2.5:1.5b"
+    "tinyllama:latest"
 )
 
 for MODEL in "${models[@]}"; do

@@ -182,7 +182,7 @@ Pas de soucis nous mettons à disposition sur le réseau du codelab une stack co
 
 Pour accéder au tock studio sur cette stack allez sur : http://tock.lan
 
-Indiquez votre nom en face d'un des identifiants présent dans cette liste [Indiana Jones Tock Studio Accounts - Lab Server - Devoxx2025 - Google Sheet](https://docs.google.com/spreadsheets/d/10PP52HUJlzqiqCNzVZL58XGefgAzth2bBCCsrRd9M5E/edit?usp=sharing).
+Indiquez votre nom en face d'un des identifiants présent dans cette liste [Indiana Jones Tock Studio Accounts - Lab Server - Devoxx2025 - Google Sheet](https://docs.google.com/spreadsheets/d/1oNl4oBIJ0TEyhGZRk19Jzi8NHMLcialaBVY95lk-jq4/edit?usp=sharing).
 Vous pourrez l'utiliser pendant la suite de l'atelier.
 
 Modifiez votre fichier `docker/.env`, lignes suivantes :
