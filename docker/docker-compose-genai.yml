@@ -199,6 +199,7 @@ services:
      extra_hosts:
        host.docker.internal: host-gateway
        ollama-server: "${OLLAMA_SERVER}"
+       gpu-server.lan: "${GPU_SERVER}" # Needed for reranker access
      environment:
        no_proxy: host.docker.internal,ollama-server,langfuse-server,localhost
        NO_PROXY: host.docker.internal,ollama-server,langfuse-server,localhost

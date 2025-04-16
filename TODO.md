@@ -21,7 +21,7 @@
     - [X] Changement du dataset film horreur ?? ==> Séries.
     - [X] Langfuse partie public URL et indiquer qu'il y a un lien dans tock.
     - [ ] Tock Vue Kit se base sur la locale du navigateur est doc le bot répond en FR. Changement dans le prompt possible.
-    - [ ] Step 4 : Mettre à dispo le CSV `TMDB_tv_dataset_v3.csv` sur le serveur.
+    - [X] Step 4 : Mettre à dispo le CSV `TMDB_tv_dataset_v3.csv` sur le serveur.
 - [X] Activer le debug RAG par défaut dans le docker compose. Possible également via les RAG Settings.
 - [ ] Voir avec l'orga :
   - [X] Prise réseau.

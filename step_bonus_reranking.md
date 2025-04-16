@@ -137,11 +137,8 @@ documenté dans la model card sur huggingface également visible dans
 
 
 ## Tester et ajuster la configuration
-Dans l'exemple ci-dessous vous pouvez voir qu'un seul document a été conservé et son score :
+Dans l'exemple ci-dessous, vous pouvez voir qu'un seul document a été conservé et son score :
 ![score doc source](img/gen-ai-compressor-result.png)
 
 Vous pouvez également voir cette étape supplémentaire dans la trace langfuse associée et
-ainsi voir les document en entrée de reranking / compresseurs et ceux conservés en sortie.
-
-<!-- TODO BENJAMIN, ajouter l'extrat host gpu-server.lan ?? pour GenAI-->
-
+ainsi voir les documents en entrée de reranking / compresseurs et ceux conservés en sortie.
