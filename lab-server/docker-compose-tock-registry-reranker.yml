@@ -250,6 +250,14 @@ services:
       # Using a local directory for the cache to prevent any model loss that would occur using "docker compose down -v" option
       - ./data/ollama_registry:/data
 
+  # Uses to serve the data set
+  static_file_server:
+    image: caddy:alpine
+    ports:
+      - "8088:80"
+    volumes:
+      - ./data/static_file_server/Caddyfile:/etc/caddy/Caddyfile
+      - ./data/static_file_server/static_files/:/usr/share/caddy
 
 volumes:
   tockmongo:

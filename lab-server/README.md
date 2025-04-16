@@ -67,3 +67,7 @@ echo 'export HUGGING_FACE_HUB_TOKEN="<YOUR HF HUB TOKEN>"' > .env
 source .env
 python -m llm_inference --task SCORING --port 8082 --model cmarkea/bloomz-560m-reranking
 ```
+## Dataset file
+
+Go to  [Séries TV](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows)
+to download TMDB_tv_dataset_v3.csv place it into data/document_csv/TMDB_tv_dataset_v3.csv.

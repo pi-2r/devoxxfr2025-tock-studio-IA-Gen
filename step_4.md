@@ -136,7 +136,7 @@ Dataset proposés sur Kaggle :
 * [Horror Movies dataset](https://www.kaggle.com/datasets/sujaykapadnis/horror-movies-dataset/data)
 
 Télécharger le dataset en zip et le décompresser dans le dossier `data/documents_csv/`.
-Sinon fichier disponibles en local ici **TODO**.
+Sinon fichier disponibles en local ici [TMDB_tv_dataset_v3.csv](http://gpu-server.lan:8088/TMDB_tv_dataset_v3.csv).
 
 ![Kaggle interface](./img/kaggle_download_as_zip.png "Télécharger le dataset")
 

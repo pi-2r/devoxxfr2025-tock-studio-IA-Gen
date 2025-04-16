@@ -3,11 +3,11 @@
 - [ ] Rédac :
     - [X] Refaire le tuto avec la dernière version de TOCK et voir pour une autre release avec Julien si besoin.
     - [X] Tester de nouveaux LLMs en choisir 1-2.
-    - [ ] Screenshot le nom du bot.
+    - [X] Screenshot le nom du bot.
     - [X] Compresseur introduit en plus (?)
     - [X] Proposer les modèles suivants en terme de llm `qwen2.5:1.5b` (pour le gen sentence), `qwen2.5:3b`, `mistral:7b`.
     - [X] Step 4 capture d'écran à revoir.
-    - [ ] Schéma de réseau en annexe pour ces histoire de docker et host internal.
+    - [ ] Schéma de réseau en annexe pour ces histoires de docker et host internal.
     - [X] Step 5 refaire un test avec model Mistral.
     - [X] Step 5 refaire un test avec model gemma.
     - [X] Step 5 revoir les screenshot avec la nouvelle version de TOCK bien expliquer ce qu'est le prompt de condensation.
@@ -31,7 +31,7 @@
   - [X] @Benjamin vient avec un Mac à la place de l'UC, bien penser à fixer son IP sur l'AP wifi.
   - [X] @Benjamin routeur Wifi
   - [ ] Pierre ou autre ? Avoir un 2ème switch 4p si possible.
-  - [ ] Multiprises.
+  - [X] Multiprises.
 - Plan de backup :
   - [X] Azure OpenAI, @Benjamin voir avec l'équipe Data Archi pour avoir au moins une clé. ==> Orga de dev bis sinon ?
   - [X] Machine de backup avec tout le codelab, générer 20 indentifiants avec property et roles et prévoir un PAD pour que chaque personnes choissent son ID @Benjamin.
