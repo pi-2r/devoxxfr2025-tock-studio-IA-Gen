@@ -298,7 +298,7 @@ docker run --name tooling_tock --rm -it \
 ```bash
 # A l'intérieur du shell de l'image
 export TOCK_BOT_ID=devoxx2025
-export TOCK_BOT_NAMESPACE=benjamin
+export TOCK_BOT_NAMESPACE=app
 export EMBEDDING_JSON_CONFIGURATION=/app/data/configurations/embeddings_ollama_settings.json
 python tock-llm-indexing-tools/index_documents.py --input-csv=data/documents_csv/filtered_tv_series.csv --namespace=$TOCK_BOT_NAMESPACE --bot-id=$TOCK_BOT_ID --embeddings-json-config=$EMBEDDING_JSON_CONFIGURATION --vector-store-json-config=data/configurations/vector_store_pgvector_settings.json --chunks-size=5000 -v
 ```
