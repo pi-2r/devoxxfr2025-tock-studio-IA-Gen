@@ -1,7 +1,7 @@
 #  Reranking, trouver les bonnes sources
 
-<!-- TODO PIERRE -->
-[<img src="img/indiana_fx.png"  alt="indiana fx">](https://www.youtube.com/watch?v=zc6Q_TNd5pA)
+
+[<img src="img/indiana_fx.png"  alt="indiana fx">](https://www.youtube.com/watch?v=3xtvuD0SiWk)
 
 > "You're German, Voller. Don't try and be funny.", Indiana Jones and the Dial of Destiny, James Mangold, 2023
  

@@ -31,7 +31,8 @@ Ce projet github est issue du workshop fait par [Benjamin Bernard](https://www.d
 - [10 - Connecter notre bot à notre boutique](step_10.md)
 
 
-
+### Bonus
+- [11 - Reranking, trouver les bonnes sources](step_bonus_reranking.md)
 
 ## Pour aller plus loin
 
