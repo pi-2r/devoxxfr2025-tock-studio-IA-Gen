@@ -45,3 +45,8 @@ Toujours depuis ce dossier, lancez les commandes suivantes dans votre terminal :
 source .env
 docker compose -f docker-compose-genai.yml pull
 ```
+
+### Python
+
+Installer Python 3.10 ou supérieur sur votre machine: https://www.python.org/downloads/
+<img src="img/install_python.png" alt="python">
