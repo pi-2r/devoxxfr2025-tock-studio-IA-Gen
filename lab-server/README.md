@@ -71,3 +71,34 @@ python -m llm_inference --task SCORING --port 8082 --model cmarkea/bloomz-560m-r
 
 Go to  [Séries TV](https://www.kaggle.com/datasets/asaniczka/full-tmdb-tv-shows-dataset-2023-150k-shows)
 to download TMDB_tv_dataset_v3.csv place it into data/document_csv/TMDB_tv_dataset_v3.csv.
+
+## Pré-ingérer les docs pour tous les comptes
+
+C'est une reprise un peu "sale" du script d'ingestion mais bon it works.
+
+```bash
+docker run --name tooling_tock --rm -it \
+    -v "$(pwd)/index_documents_for_all_accounts.py":/app/tock-llm-indexing-tools/index_documents_for_all_accounts.py \
+    -v "$(pwd)/data/lab_accounts/":/data/lab_accounts \
+    -v "$(pwd)/../data":/app/data \
+    -e NO_PROXY="host.docker.internal,ollama-server,postgres-db,localhost" \
+    -e no_proxy="host.docker.internal,ollama-server,postgres-db,localhost" \
+    --add-host=ollama-server:$OLLAMA_SERVER \
+    --add-host=postgres-db:$POSTGRES_DB_SERVER \
+    "${PLATFORM}tock/llm-indexing-tools:${TAG}" \
+    /bin/bash
+```
+
+Then :
+```bash
+export EMBEDDING_JSON_CONFIGURATION=/app/data/configurations/embeddings_ollama_settings.json
+python tock-llm-indexing-tools/index_documents_for_all_accounts.py \
+       --input-csv=data/documents_csv/filtered_tv_series.csv \
+       --account-csv=/data/lab_accounts/Reordered_Indiana_Jones_Accounts.csv \
+       --output-account-csv=/data/lab_accounts/accounts_with_sessions_uuid.csv \
+       --embeddings-json-config=$EMBEDDING_JSON_CONFIGURATION \
+       --vector-store-json-config=data/configurations/vector_store_pgvector_settings.json \
+       --chunks-size=5000 -v
+```
+
+This will generate an output CSV with all indexing sessions UUIDs that you need to import to Google Drive / On Google Sheet.
