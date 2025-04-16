@@ -2,7 +2,7 @@
 
 [<img src="img/indiana_jones_and_the_dial_of_destiny_ending.png"  alt="indiana_jones_and_the_dial_of_destiny_ending">](https://www.youtube.com/watch?v=_6Tzlfd6-po)
 
-> "It's him", Indiana Jones and the Dial of Destiny, Steven Spielberg, 2023
+> "It's him", Indiana Jones and the Dial of Destiny, James Mangold, 2023
 
 
 <br/>
