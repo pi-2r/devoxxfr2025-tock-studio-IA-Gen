@@ -40,7 +40,6 @@
 - [Ressources](#ressources)
 
 
-- [En attendant la suite du Codelab...](#en-attendant-la-suite-du-codelab)
 - [Étape suivante](#étape-suivante)
 
 ## Le réseau de l'atelier
