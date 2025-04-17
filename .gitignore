@@ -47,3 +47,12 @@ data/documents_csv/*
 !data/documents_csv/filtered_horror_movies.csv
 !data/documents_csv/filtered_tv_series.csv
 !data/documents_csv/filtered_imdb_movies.csv
+
+# Custom HTML files
+./*.mine.html
+
+# Working location for scraping part
+./scraping/
+
+# Lab Server generated files
+./lab-server/data/lab_accounts/accounts_with_sessions_uuid.csv
