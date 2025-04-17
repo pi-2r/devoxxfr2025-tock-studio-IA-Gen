@@ -450,8 +450,12 @@ class ImdbSpiderSelenium(scrapy.Spider):
     self.driver.quit()
 
 ```
-Avant d'exécuter le spider, prenez le temps de lire le code et de comprendre les différentes étapes. Dés que cela est fait
-exécutez le Spider en utilisant la commande suivante :
+Avant d'exécuter le spider, prenez le temps de lire le code et de comprendre les différentes étapes.
+
+Dès que cela est fait, prenez soin de supprimer le fichier **imdb_films.csv** qui a été créer précédemment pour ne pas avoir de doublon dans votre document.
+
+Par la suite, vous pouvez exécutez le Spider en utilisant la commande suivante :
+
 
 ```bash
 scrapy crawl imdb_spider_selenium
@@ -459,11 +463,12 @@ scrapy crawl imdb_spider_selenium
 
 # Contourner les protections anti-bot via des proxys
 
-⚠️ La suite de l'étape 9 est à titre informatif. Il est important de respecter les lois en vigueur concernant 
-le scraping de données.
-
+⚠️ La suite de l'étape 9 est à titre informatif.
 
 ## Proxy low cost
+
+<details>
+  <summary>Une première approche consiste à utiliser des proxys ..</summary>
 
 Une première approche consiste à utiliser des proxys afin de se cacher derrière une adresse IP qui n’est pas la sienne pour ralentir le moment où l’on va être bloqué.
 
@@ -491,21 +496,30 @@ source: https://github.com/pi-2r/round-robin-tor-proxy/
 
 ⚠️ Attention à ne pas lancer l'image Docker quand vous êtes sur votre réseau d'entreprise.
 
-# Limites des proxys gratuits
+</details>
 
-L’utilisation de proxys gratuits peut se heurter à plusieurs limites, comme :
+
+### Limites des proxys gratuits
+
+<details>
+  <summary>L’utilisation de proxys gratuits peut se heurter à ..</summary>
+
 - Le fait qu’ils soient vites repérés par les systèmes de protections
 - Qu’ils sont parfois lents
 - Qu’ils sont peu fiable d’un point de vue disponibilité
 - Le fait qu’ils soient sans support client
-
+</details>
 
 ## Proxy plus avancé
 
-Il est possible d’utiliser des systèmes proxys plus avancés qui permettent d’échapper à certains blocages. 
+<details>
+  <summary>Il est possible d’utiliser des systèmes proxys plus avancés ..</summary>
+
+Il est possible d’utiliser des systèmes proxys plus avancés qui permettent d’échapper à certains blocages.
 En guise d’exemple on peut citer le projet open source [Scrapoxy](https://scrapoxy.io/).
 
 [<img src="img/scrapoxy.png" alt="scrapoxy">](https://scrapoxy.io/)
+</details>
 
 ## Ingérer la données scrapé dans le RAG
 Pour ingérer les données scrapées dans le RAG de Tock, il faut utiliser le fichier CSV généré par le spider et 
@@ -516,9 +530,14 @@ donc reprendre le même procédé et l’adapter pour notre besoin.
 
 ## Exécuter le script
 
-Le script est présent dans `data/scripts/transform_imdb_movies.py`, nous vous proposons une image docker de tooling pour l'exécuter plus bas.
+Le script est présent dans `data/scripts/transform_imdb_movies.py`, nous vous proposons une image docker de tooling 
+our l'exécuter plus bas.
 
-Ce script est volontairement simplifié nous vous invitons à le lire / adapter aux besoins en fonction de votre dataset. A noter que la colonne "source" peut-être laisée vide si vous n'avez pas de version en ligne du document.
+Ce script est volontairement simplifié nous vous invitons à le lire / adapter aux besoins en fonction de votre dataset. A
+noter que la colonne "source" peut être laissée vide si vous n'avez pas de version en ligne du document.
+
+⚠️ N’oubliez de déplacer votre fichier **imdb_films.csv** dans le dossier **data/documents_csv** avant d’exécuter 
+le fichier python.
 
 ```python
 import pandas as pd
