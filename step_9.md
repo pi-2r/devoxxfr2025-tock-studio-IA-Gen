@@ -243,7 +243,7 @@ Configurer le pipeline pour exporter en CSV : Dans le fichier `settings.py`, ajo
 ```python
 import os
 FEED_FORMAT = 'csv'
-FEED_URI = f'file:///{os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))}/imdb_films.csv'  # Chemin d'export à modifier
+FEED_URI = f'file:///{os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))}/imdb_movies.csv'  # Chemin d'export à modifier
 ```
 
 Exécutez le Spider : Exécutez le Spider en utilisant la commande suivante:
@@ -453,7 +453,7 @@ class ImdbSpiderSelenium(scrapy.Spider):
 ```
 Avant d'exécuter le spider, prenez le temps de lire le code et de comprendre les différentes étapes.
 
-Dès que cela est fait, prenez soin de supprimer le fichier **imdb_films.csv** qui a été créer précédemment pour ne pas avoir de doublon dans votre document.
+Dès que cela est fait, prenez soin de supprimer le fichier **imdb_movies.csv** qui a été créer précédemment pour ne pas avoir de doublon dans votre document.
 
 Par la suite, vous pouvez exécutez le Spider en utilisant la commande suivante :
 
@@ -537,14 +537,14 @@ our l'exécuter plus bas.
 Ce script est volontairement simplifié nous vous invitons à le lire / adapter aux besoins en fonction de votre dataset. A
 noter que la colonne "source" peut être laissée vide si vous n'avez pas de version en ligne du document.
 
-⚠️ N’oubliez de déplacer votre fichier **imdb_films.csv** dans le dossier **data/documents_csv** avant d’exécuter 
+⚠️ N’oubliez de déplacer votre fichier **imdb_movies.csv** dans le dossier **data/documents_csv** avant d’exécuter 
 le fichier python.
 
 ```python
 import pandas as pd
 
 # Load the CSV file
-df = pd.read_csv('/app/data/documents_csv/imdb_films.csv')
+df = pd.read_csv('/app/data/documents_csv/imdb_movies.csv')
 
 # Define the number of random rows to keep
 n = 50  # Example value or 5050 with all the movies
