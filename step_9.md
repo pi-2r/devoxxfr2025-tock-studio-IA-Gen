@@ -240,9 +240,10 @@ class ImdbSpider(scrapy.Spider):
 
 Configurer le pipeline pour exporter en CSV : Dans le fichier `settings.py`, ajoutez ou modifiez la ligne suivante pour exporter les données en CSV:
 
-```bash
+```python
+import os
 FEED_FORMAT = 'csv'
-FEED_URI = 'file:///MODIFIER_CETTE_VALEUR/imdb_films.csv'  # Chemin d'export à modifier
+FEED_URI = f'file:///{os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))}/imdb_movies.csv'  # Chemin d'export à modifier
 ```
 
 Exécutez le Spider : Exécutez le Spider en utilisant la commande suivante:
@@ -258,7 +259,7 @@ Là vous devriez avoir une erreur de type 403, c'est normal, c'est une protectio
 
 Une premiére étape de contournement consiste à utiliser un User-Agent de votre requête, tout en rajoutant un timer. Pour cela, ajoutez la ligne suivante dans le fichier `settings.py`:
 
-```bash
+```python
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
 DOWNLOAD_DELAY = 1.5  # Attendre 1,5 seconde entre chaque requête
 ```
@@ -543,7 +544,7 @@ le fichier python.
 import pandas as pd
 
 # Load the CSV file
-df = pd.read_csv('/app/data/documents_csv/imdb_movies.csv')
+df = pd.read_csv('/app/data/documents_csv/imdb_films.csv')
 
 # Define the number of random rows to keep
 n = 50  # Example value or 5050 with all the movies
