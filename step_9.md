@@ -243,7 +243,7 @@ Configurer le pipeline pour exporter en CSV : Dans le fichier `settings.py`, ajo
 ```python
 import os
 FEED_FORMAT = 'csv'
-FEED_URI = f'file:///{os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))}/imdb_movies.csv'  # Chemin d'export à modifier
+FEED_URI = f'file:///{os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))}/imdb_films.csv'  # Chemin d'export à modifier
 ```
 
 Exécutez le Spider : Exécutez le Spider en utilisant la commande suivante:
