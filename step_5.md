@@ -242,7 +242,7 @@ Normalement, si l’ingestion a été correctement réalisé le programme a term
 <details>
   <summary> 🙋‍♂️Je suis sur l'instance partagé je n'ai pas mon ID de session d'indexation</summary>
 
- Vous trouverez l'ID de sessions d'ingestion dans le [Indiana Jones Tock Studio Accounts - Lab Server - Devoxx2025 - Google Sheet](https://docs.google.com/spreadsheets/d/1oNl4oBIJ0TEyhGZRk19Jzi8NHMLcialaBVY95lk-jq4/edit?usp=sharing).
+ Vous trouverez l'ID de sessions d'ingestion dans le [Indiana Jones Tock Studio Accounts - Lab Server - Devoxx2025 - Google Sheet](https://docs.google.com/spreadsheets/d/17f02oSZ7yhbU4EIXqWMOlMe6bpoK3jmO4xLGvdzZYbo/edit?usp=sharing).
 </details>
 
 Dans ce résultat, vous avez une variable nommée **Index session ID** qui fournit un identifiant unique.

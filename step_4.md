@@ -294,7 +294,7 @@ docker run --name tooling_tock --rm -it \
 
 ⚠️ Si vous utilisez la stack tock sur tock.lan (vous ne l'avez pas en local avec docker) penser à ajuster le namespace dans la commande suivante, vous avez chacun votre namespace.
 
-⚠️ Si vous n'arrivez pas à faire tourner cette image et que vous êtes sur la stack tock.lan, nous avons déjà pré-ingéré les documents, vous trouverez l'ID de sessions d'ingestion dans le [Indiana Jones Tock Studio Accounts - Lab Server - Devoxx2025 - Google Sheet](https://docs.google.com/spreadsheets/d/1oNl4oBIJ0TEyhGZRk19Jzi8NHMLcialaBVY95lk-jq4/edit?usp=sharing).
+⚠️ Si vous n'arrivez pas à faire tourner cette image et que vous êtes sur la stack tock.lan, nous avons déjà pré-ingéré les documents, vous trouverez l'ID de sessions d'ingestion dans le [Indiana Jones Tock Studio Accounts - Lab Server - Devoxx2025 - Google Sheet](https://docs.google.com/spreadsheets/d/17f02oSZ7yhbU4EIXqWMOlMe6bpoK3jmO4xLGvdzZYbo/edit?usp=sharing).
 
 ```bash
 # A l'intérieur du shell de l'image
